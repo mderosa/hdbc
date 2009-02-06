@@ -1,0 +1,5 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Portlet development is a bit different than regular web development and its hard to remember all of the little gotchas.  This program knows all of the best practices and never forgets.
