@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment></comment>
+	<entry key="ref.db.friendly.name">ref</entry>
+	<entry key="ref.db.jdbc.connection.string">jdbc:oracle:thin:@localhost:1521:ORCL</entry>
+	<entry key="ref.db.user">ipso_atr</entry>
+	<entry key="ref.db.password">ipso_atr</entry>
+	<entry key="test.db.friendly.name">test</entry>
+    <entry key="test.db.jdbc.connection.string">jdbc:oracle:thin:@localhost:1521:ORCL</entry>
+    <entry key="test.db.user">test</entry>
+    <entry key="test.db.password">test</entry>
+</properties>
