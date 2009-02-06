@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+I've worked in one to many place where people are trying to manage several databases and in the normal course of confusion somehow? they get out of sync.  Sometimes its nice to be able to figure out how out of sync to databases are - or maybe just verify that the source of a problem isn't because two databases are not identical.  
+
+
+= At the moment this can =
+  * Compare oracle databases
+  * Compare whether compare db schemas have the same set of user objects
+  * Compare the details of tables and views in the schemas
