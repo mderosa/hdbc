@@ -1,0 +1,46 @@
+
+Error	Mon Aug  6 15:00:04 CST 2007	Mon Aug  6 16:37:34 CST 2007	development	logic	Im defining Ord for State and implemented >= instead of <=	357	52
+Stage	Mon Aug  6 15:00:04 CST 2007	Mon Aug  6 16:40:30 CST 2007	development	logic		357	60
+Stage	Mon Aug  6 16:40:34 CST 2007	Mon Aug  6 16:48:30 CST 2007	unit test	logic		357	63
+Stage	Mon Aug  6 16:48:35 CST 2007	Mon Aug  6 16:56:03 CST 2007	development	logic		363	63
+Error	Mon Aug  6 16:56:07 CST 2007	Mon Aug  6 16:57:57 CST 2007	unit test	compile	typo = ProjectActvie	363	63
+Error	Mon Aug  6 16:56:07 CST 2007	Mon Aug  6 17:00:26 CST 2007	unit test	compile	created a ProjectInactive data type but didnt give the constructor its projectRoot parameter	363	63
+Error	Mon Aug  6 16:56:07 CST 2007	Mon Aug  6 17:02:08 CST 2007	unit test	compile	ProjectActive "" Recording "" -- must add parenthesis around the Recording "" part	363	63
+Stage	Mon Aug  6 16:56:07 CST 2007	Mon Aug  6 17:02:34 CST 2007	unit test	compile		363	63
+Error	Tue Aug  7 15:16:38 CST 2007	Tue Aug  7 15:23:50 CST 2007	unit test	compile	imported HUnit as import HUnit.Test	388	72
+Error	Tue Aug  7 15:16:38 CST 2007	Tue Aug  7 15:26:29 CST 2007	unit test	compile	didnt terminate tuple with ')'	388	72
+Error	Tue Aug  7 15:16:38 CST 2007	Tue Aug  7 15:28:29 CST 2007	unit test	compile	forgot to import Data.Array	389	72
+Error	Tue Aug  7 15:16:38 CST 2007	Tue Aug  7 15:33:38 CST 2007	unit test	compile	declared constructors like ProjectActive with the undeclared var 'r' -- like ProjectActive r	389	72
+Error	Tue Aug  7 15:16:38 CST 2007	Tue Aug  7 15:35:33 CST 2007	unit test	compile	misspelled StageComboBox as StateComboBox	389	72
+Error	Tue Aug  7 15:16:38 CST 2007	Tue Aug  7 15:38:31 CST 2007	unit test	compile	for use with the array class didnt implement the index class Ix	389	72
+Pause	Tue Aug  7 17:16:06 CST 2007	Tue Aug  7 17:16:06 CST 2007	unit test	compile		389	72
+Stage	Tue Aug  7 17:55:53 CST 2007	Tue Aug  7 18:01:39 CST 2007	development			784	151
+Error	Tue Aug  7 18:01:44 CST 2007	Tue Aug  7 18:02:04 CST 2007	unit test	compile	have to import Data.Array for range	784	151
+Error	Tue Aug  7 18:01:44 CST 2007	Tue Aug  7 18:03:14 CST 2007	unit test	compile	create a state ProjectInactive with no string argument	784	151
+Error	Tue Aug  7 18:01:44 CST 2007	Tue Aug  7 18:05:22 CST 2007	unit test	compile	in assert statement compared an Int to a list -- wanted length [a]	784	151
+Stage	Tue Aug  7 18:01:44 CST 2007	Tue Aug  7 18:32:49 CST 2007	unit test	compile		784	151
+Error	Mon Aug 13 14:03:06 CST 2007	Mon Aug 13 14:30:47 CST 2007	development	compile	enumerated form [1..3] should be written [1 .. 3] 	749	151
+Error	Mon Aug 13 14:03:06 CST 2007	Mon Aug 13 14:36:13 CST 2007	development	compile	typo TestLable	747	158
+Error	Mon Aug 13 14:03:06 CST 2007	Mon Aug 13 14:45:17 CST 2007	development	compile	writting operator -- wrote pattern but in body of function mixed pattern incorrectly	749	158
+Stage	Mon Aug 13 14:03:06 CST 2007	Mon Aug 13 14:45:18 CST 2007	development	compile		749	158
+Error	Mon Aug 13 14:45:24 CST 2007	Mon Aug 13 14:49:48 CST 2007	unit test	compile	test case -- forget to add ) at the end	749	164
+Stage	Mon Aug 13 14:45:24 CST 2007	Mon Aug 13 14:50:51 CST 2007	unit test	compile		749	164
+Error	Mon Aug 13 14:50:57 CST 2007	Mon Aug 13 15:28:59 CST 2007	development	compile	pattern matching on the States must add () for cases like ProjectActive Wait	751	164
+Error	Mon Aug 13 14:50:57 CST 2007	Mon Aug 13 16:21:43 CST 2007	development	compile	missing imports	761	181
+Stage	Mon Aug 13 14:50:57 CST 2007	Mon Aug 13 16:21:47 CST 2007	development	compile		761	181
+Stage	Mon Aug 13 16:21:53 CST 2007	Mon Aug 13 16:26:27 CST 2007	unit test	compile		761	180
+Stage	Mon Aug 13 16:26:31 CST 2007	Mon Aug 13 16:48:45 CST 2007	development	compile		766	185
+Error	Mon Aug 13 16:48:50 CST 2007	Mon Aug 13 16:51:25 CST 2007	unit test	compile	wrote OpenProjectItem as OpenProjectMenu	766	185
+Stage	Mon Aug 13 16:48:50 CST 2007	Mon Aug 13 16:51:44 CST 2007	unit test	compile		766	185
+Stage	Mon Aug 13 16:51:48 CST 2007	Mon Aug 13 16:52:51 CST 2007	development	compile		767	185
+Stage	Mon Aug 13 16:52:54 CST 2007	Mon Aug 13 16:53:10 CST 2007	unit test	compile		767	185
+Stage	Mon Aug 13 16:53:17 CST 2007	Mon Aug 13 17:52:36 CST 2007	development	compile		749	185
+Error	Fri Aug 17 09:09:58 CST 2007	Fri Aug 17 09:11:55 CST 2007	development		logic	in state table I missed adding one of the ui controls, lead to array range error	726	226
+Stage	Fri Aug 17 09:09:58 CST 2007	Fri Aug 17 09:12:00 CST 2007	development		logic		726	226
+Stage	Fri Aug 17 09:12:12 CST 2007	Fri Aug 17 09:43:49 CST 2007	development		logic		726	226
+Stage	Wed Aug 22 09:13:29 CST 2007	Wed Aug 22 09:53:23 CST 2007	refactoring				728	284
+Pause,Tue Jun 24 20:12:55 CST 2008,Tue Jun 24 20:12:55 CST 2008,development,,,,370,171
+Stage,Tue Jun 24 20:12:45 CST 2008,Tue Jun 24 20:13:04 CST 2008,development,,,,370,171
+Stage,Tue Jun 24 20:18:27 CST 2008,Tue Jun 24 20:18:31 CST 2008,,,,,372,171
+Pause,Tue Jun 24 20:18:39 CST 2008,Tue Jun 24 20:18:39 CST 2008,design,,,,372,171
+Stage,Tue Jun 24 20:18:34 CST 2008,Tue Jun 24 20:18:42 CST 2008,design,,,,372,171
