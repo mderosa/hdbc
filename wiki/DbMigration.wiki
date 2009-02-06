@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+I've worked in to many places where it never occurred to the developers that versioning and managing the database systematically is a fundamental prerequisite for managing a product.  So instead of reinventing one of these everywhere I go, here is one I hope to keep and improve for the long term.
+
+= The basics of managing the database = 
+  * Have a version table that represents the update state of the database - a single number in the table will do
+  * Log all changes and who does the changes and when
+  * Be able to run the version up or down
+  * Automate everything so there are no mistakes and everything is repeatable
