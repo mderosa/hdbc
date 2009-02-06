@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="migration" default="tar">
+    <property name="version" value="1" />
+
+    <target name="clean">
+        <delete file="target/migration.war" />
+    </target>
+    
+    <target name="tar">
+        <mkdir dir="target" />
+        <tar destfile="target/migration.tar" basedir="." includes="**/*.sql" />
+    </target>
+
+</project>
+
