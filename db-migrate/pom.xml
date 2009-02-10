@@ -43,7 +43,7 @@
   <plugins>
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compilier-plugin</artifactId>
+        <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
