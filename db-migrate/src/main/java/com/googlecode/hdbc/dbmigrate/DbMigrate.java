@@ -5,8 +5,10 @@ import static com.googlecode.hdbc.dbmigrate.MenuItem.*;
 
 import java.io.IOException;
 
+import com.googlecode.hdbc.dbmigrate.processor.MigrationScriptNameProcessor;
 import com.googlecode.hdbc.dbmigrate.processor.TopLevelMenuResponseProcessor;
 import com.googlecode.hdbc.dbmigrate.processor.NullProcessor;
+import com.googlecode.hdbc.dbmigrate.validator.MigrationScriptNameValidator;
 import com.googlecode.hdbc.dbmigrate.validator.NullValidator;
 import com.googlecode.hdbc.dbmigrate.validator.TopLevelMenuResponseValidator;
 
@@ -19,7 +21,7 @@ public final class DbMigrate {
     public static void main(final String[] args) {
         Menu menu = menu(processWith(TopLevelMenuResponseProcessor.class), validateWith(TopLevelMenuResponseValidator.class))
                 .add(item("1. Create a new do/undo script from a template",
-                        menu(processWith(NullProcessor.class), validateWith(NullValidator.class))
+                        menu(processWith(MigrationScriptNameProcessor.class), validateWith(MigrationScriptNameValidator.class))
                         .add(item("Enter the name of the migration script:",
                                 menu(processWith(NullProcessor.class), validateWith(NullValidator.class))
                                 .add(item("Do you wish to create a DDL script or a PL/SQL DML script (DDL/DML):", null))))))
