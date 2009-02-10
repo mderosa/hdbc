@@ -4,8 +4,7 @@ import java.util.regex.Pattern;
 
 public class MigrationScriptNameValidator implements IInputValidator {
 
-    @Override
-    public boolean validate(String response) {
+    public final boolean validate(final String response) {
         //Pattern p = new Pattern();
 
         if ("".equals(response)) {
