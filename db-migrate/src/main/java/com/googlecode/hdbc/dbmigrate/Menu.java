@@ -1,18 +1,22 @@
 package com.googlecode.hdbc.dbmigrate;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.googlecode.hdbc.dbmigrate.processor.IInputProcessor;
 import com.googlecode.hdbc.dbmigrate.validator.IInputValidator;
 
 public final class Menu {
-    private final ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
-    private final IInputProcessor inputProcessor = null;
-    private final IInputValidator inputValidator = null;
+    private final List<MenuItem> menuItems = new ArrayList<MenuItem>();
+    private IInputProcessor inputProcessor = null;
+    private IInputValidator inputValidator = null;
 
     private Menu(final IInputProcessor prc, final IInputValidator vld) {
         this.inputProcessor = prc;
-        this.inputValidator = vad;
+        this.inputValidator = vld;
     }
 
     public static Menu menu(final IInputProcessor processor, final IInputValidator validator) {
@@ -39,12 +43,26 @@ public final class Menu {
         return instantiate(cls);
     }
 
-    public Menu item(final MenuItem item) {
+    public Menu add(final MenuItem item) {
         menuItems.add(item);
         return this;
     }
 
-    public void run() {
+    private void printMenu() {
+        for (MenuItem item : this.menuItems) {
+            System.out.println(item.toString());
+        }
+    }
 
+    public void run() throws IOException {
+        printMenu();
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        String response = in.readLine();
+        if (this.inputValidator.validate(response)) {
+            this.inputProcessor.process(response, menuItems);
+        } else {
+            System.out.println("invalid response");
+            run();
+        }
     }
 }
