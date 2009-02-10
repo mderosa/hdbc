@@ -1,18 +1,16 @@
 package com.googlecode.hdbc.dbmigrate.processor;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import com.googlecode.hdbc.dbmigrate.MenuItem;
 
 public class MigrationScriptNameProcessor implements IInputProcessor {
 
-    @Override
-    public void process(String input, List<MenuItem> items) throws IOException {
-        
-    } 
+    public void process(final String input, final List<MenuItem> items) throws IOException {
 
-    protected String preprocessRawInputName(String input) {
+    }
+
+    protected final String preprocessRawInputName(final String input) {
         StringBuilder temp = new StringBuilder();
         String[] parts = input.split("[-_]");
         for (String part : parts) {
@@ -23,8 +21,8 @@ public class MigrationScriptNameProcessor implements IInputProcessor {
         }
         return temp.toString();
     }
-    
-    protected String nextFileIndex(List<String> fileNames) {
+
+    protected final String nextFileIndex(final List<String> fileNames) {
         return "";
     }
 }

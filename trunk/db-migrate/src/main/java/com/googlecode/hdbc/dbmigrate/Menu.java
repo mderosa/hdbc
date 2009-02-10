@@ -11,8 +11,8 @@ import com.googlecode.hdbc.dbmigrate.validator.IInputValidator;
 
 public final class Menu {
     private final List<MenuItem> menuItems = new ArrayList<MenuItem>();
-    private IInputProcessor inputProcessor = null;
-    private IInputValidator inputValidator = null;
+    private IInputProcessor inputProcessor;
+    private IInputValidator inputValidator;
 
     private Menu(final IInputProcessor prc, final IInputValidator vld) {
         this.inputProcessor = prc;

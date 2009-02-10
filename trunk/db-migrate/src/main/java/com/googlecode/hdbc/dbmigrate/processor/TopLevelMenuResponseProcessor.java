@@ -7,8 +7,7 @@ import com.googlecode.hdbc.dbmigrate.MenuItem;
 
 public class TopLevelMenuResponseProcessor implements IInputProcessor {
 
-    @Override
-    public void process(String input, List<MenuItem> items) throws IOException {
+    public final void process(final String input, final List<MenuItem> items) throws IOException {
         if ("1".equals(input)) {
             items.get(0).runSubMenu();
         } else {
