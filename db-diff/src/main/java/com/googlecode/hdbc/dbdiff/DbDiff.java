@@ -78,6 +78,7 @@ public class DbDiff {
 
 	protected final boolean diffTabularObject(final IDatabase testDb,
 			final IDatabase refDb, final String objectName) {
+	    System.out.println(objectName);
 		TabularObjects testObj = testDb.selectTabularObject(objectName);
 		TabularObjects refObj = refDb.selectTabularObject(objectName);
 		return new Analyze<ColumnDefinition>(objectName)
