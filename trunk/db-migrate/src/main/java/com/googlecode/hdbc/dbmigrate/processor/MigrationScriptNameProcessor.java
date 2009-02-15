@@ -1,6 +1,7 @@
 package com.googlecode.hdbc.dbmigrate.processor;
 
 import java.io.IOException;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,29 +22,34 @@ public class MigrationScriptNameProcessor implements IInputProcessor {
         provider = prvdr;
     }
 
-    public final void process(final String input, final List<MenuItem> items) throws IOException {
+    public final void process(final String input, final List<MenuItem> items,
+            final EnumMap<Key, String> params) throws IOException {
         String finalFileName = this.preprocessRawInputName(input);
         String migrationNumber = this.nextFileIndex(provider.migrationFileList());
         MenuItem nextItem = items.get(0);
-        nextItem.passParameter(Key.MIGRATION_NAME, finalFileName);
-        nextItem.passParameter(Key.MIGRATION_NUMBER, migrationNumber);
-        nextItem.runSubMenu();
+        params.put(Key.MIGRATION_NAME, finalFileName);
+        params.put(Key.MIGRATION_NUMBER, migrationNumber);
+        nextItem.runSubMenu(params);
     }
 
     protected final String preprocessRawInputName(final String input) {
         StringBuilder temp = new StringBuilder();
         String[] parts = input.split("[-_]");
+        boolean beginningOfInput = true;
         for (String part : parts) {
             String head = part.substring(0, 1);
             String tail = part.substring(1);
-            head = head.toUpperCase();
+            if (!beginningOfInput) {
+                head = head.toUpperCase();
+            }
             temp.append(head + tail);
+            beginningOfInput = false;
         }
         return temp.toString();
     }
 
-    protected final String nextFileIndex(final List<String> fileNames) {
-        Pattern pat = Pattern.compile("^([0-9]+)-do[a-zA-Z0-9]+");
+    protected final String nextFileIndex(final String[] fileNames) {
+        Pattern pat = Pattern.compile("^([0-9]+)-do_[a-zA-Z0-9]+");
         int max = 1;
         for (String fileName : fileNames) {
             Matcher match = pat.matcher(fileName);
@@ -55,6 +61,6 @@ public class MigrationScriptNameProcessor implements IInputProcessor {
                 }
             }
         }
-        return Integer.toString(max);
+        return Integer.toString(max + 1);
     }
 }
