@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <assembly>
-  <id>distribution</id>
+  <id>bin</id>
   <formats>
     <format>tar.gz</format>
   </formats>
   <fileSets>
-    <fileSet>
-      <directory>do</directory>
-      <outputDirectory>do</outputDirectory>
-    </fileSet>
-    <fileSet>
-      <directory>undo</directory>
-      <outputDirectory>undo</outputDirectory>
-    </fileSet>
     <fileSet>
       <directory>templates</directory>
       <outputDirectory>templates</outputDirectory>
