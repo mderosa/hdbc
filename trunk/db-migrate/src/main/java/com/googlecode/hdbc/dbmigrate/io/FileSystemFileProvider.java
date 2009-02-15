@@ -165,10 +165,8 @@ public class FileSystemFileProvider implements IFileProvider {
             .append(migrationDir);
         String[] templateFileNames = getSqlFileNamesInDirectory(templateDir.toString());
         for (String templateFileName : templateFileNames) {
-            String content = fileContent(templateDir
-                    .append(File.separator)
-                    .append(templateFileName)
-                    .toString());
+            String content = fileContent(templateDir.toString() +
+                    File.separator + templateFileName);
             String substituted = content.replaceAll("\\$\\{schema\\}", schema);
             this.writeFile(migrationDir, templateFileName, substituted);
         }
