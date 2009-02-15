@@ -23,7 +23,7 @@ public class CollectionOperationsTest {
 	}
 
 	@Test
-	public void shouldSplitListInHalf() {
+	public final void shouldSplitListInHalf() {
 		HashSet<Integer> test = new HashSet<Integer>();
 		test.add(new Integer(1));
 		test.add(new Integer(2));

@@ -2,9 +2,6 @@ package com.googlecode.hdbc.dbdiff.model;
 
 import java.util.HashSet;
 import org.junit.Test;
-
-import com.googlecode.hdbc.dbdiff.model.Analyze;
-
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;

@@ -6,13 +6,10 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
 import org.jmock.integration.junit4.JUnit4Mockery;
-
-import com.googlecode.hdbc.dbdiff.DbDiff;
 import com.googlecode.hdbc.dbdiff.DbDiff.Check;
 import com.googlecode.hdbc.dbdiff.db.IDatabase;
 import com.googlecode.hdbc.dbdiff.model.ColumnDefinition;
@@ -48,7 +45,7 @@ public class DbDiffTest {
 	}
 
 	@Test
-	public void shouldIndicateIdenticalUserObjects2() {
+	public final void shouldIndicateIdenticalUserObjects2() {
 		final IDatabase testDb = context.mock(IDatabase.class, "test");
 		final IDatabase refDb = context.mock(IDatabase.class, "ref");
 		final DbObjects<UserObjectDefinition> test = new UserObjects("db1")
@@ -69,7 +66,7 @@ public class DbDiffTest {
 	}
 
 	@Test
-	public void shouldIndicateDifferentUserObjects() {
+	public final void shouldIndicateDifferentUserObjects() {
 		final IDatabase testDb = context.mock(IDatabase.class, "test");
 		final IDatabase refDb = context.mock(IDatabase.class, "ref");
 		final DbObjects<UserObjectDefinition> test = new UserObjects("db1")
@@ -89,7 +86,7 @@ public class DbDiffTest {
 	}
 
 	@Test
-	public void shouldIndicateIdenticalTablularObjs() {
+	public final void shouldIndicateIdenticalTablularObjs() {
 		final IDatabase testDb = context.mock(IDatabase.class, "test");
 		final IDatabase refDb = context.mock(IDatabase.class, "ref");
 		final DbObjects<ColumnDefinition> test = new TabularObjects("db1")
