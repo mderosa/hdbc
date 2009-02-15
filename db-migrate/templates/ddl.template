@@ -11,7 +11,7 @@ END;
 ---------------------------------------------------------
 
 BEGIN
-    ipso_atr.sp_update_version(7);
+    ipso_atr.sp_update_version(${version_no});
     ipso_atr.sp_log_version_change_finish(:v_pk, 'success');
 EXCEPTION
     WHEN OTHERS THEN 

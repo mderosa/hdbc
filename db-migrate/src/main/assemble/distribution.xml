@@ -29,5 +29,17 @@
         <include>*.jar</include>
       </includes>
     </fileset>
+    <fileset>
+      <directory>/do</directory>
+      <outputDirectory>/do</outputDirectory>
+    </fileset>
+    <fileset>
+      <dirctory>/undo</dirctory>
+      <outputDirectory>/undo</outputDirectory>
+    </fileset>
+    <fileset>
+      <directory>/templates</directory>
+      <outputDirectory>/templates</outputDirectory>
+    </fileset>
   </filesets>
 </assembly>
