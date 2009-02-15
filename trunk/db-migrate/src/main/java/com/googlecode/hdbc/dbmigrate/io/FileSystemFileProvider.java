@@ -170,7 +170,7 @@ public class FileSystemFileProvider implements IFileProvider {
                     .append(templateFileName)
                     .toString());
             String substituted = content.replaceAll("\\$\\{schema\\}", schema);
-            this.writeFile(initDir.toString(), templateFileName, substituted);
+            this.writeFile(migrationDir, templateFileName, substituted);
         }
     }
 
