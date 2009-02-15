@@ -115,8 +115,10 @@ public class FileSystemFileProvider implements IFileProvider {
         String header = STD_HEADER.replaceFirst(SUBSTITUTION_RGX, user);
         StringBuilder buffer = new StringBuilder(header);
         for (int n = files.size(); n > 0; n--) {
+            String doFileName = files.get(n - 1);
+            String undoFileName = doFileName.replaceFirst("-do_", "-undo_");
             buffer.append("@@ undo/")
-                .append(files.get(n - 1))
+                .append(undoFileName)
                 .append(CRLF);
         }
         this.writeFile("", "undo_migration.sql", buffer.toString());
