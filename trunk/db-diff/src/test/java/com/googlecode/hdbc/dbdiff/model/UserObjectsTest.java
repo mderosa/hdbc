@@ -1,11 +1,6 @@
 package com.googlecode.hdbc.dbdiff.model;
 
 import org.junit.Test;
-
-import com.googlecode.hdbc.dbdiff.model.DbObjects;
-import com.googlecode.hdbc.dbdiff.model.UserObjectDefinition;
-import com.googlecode.hdbc.dbdiff.model.UserObjects;
-
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
@@ -13,9 +8,10 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class UserObjectsTest {
 	private static final String DB_NAME = "adb";
-	private UserObjectDefinition sum1 = new UserObjectDefinition("name1", "table");
-	private UserObjectDefinition sum2 = new UserObjectDefinition("name2", "table");
-	private UserObjectDefinition sum3 = new UserObjectDefinition("name3", "table");
+	private static final String DB_TABLE_IDENTIFIER = "table";
+	private UserObjectDefinition sum1 = new UserObjectDefinition("name1", DB_TABLE_IDENTIFIER);
+	private UserObjectDefinition sum2 = new UserObjectDefinition("name2", DB_TABLE_IDENTIFIER);
+	private UserObjectDefinition sum3 = new UserObjectDefinition("name3", DB_TABLE_IDENTIFIER);
 
 	@Test
 	public final void twoEmptyObjectsShouldBeEqual() {
