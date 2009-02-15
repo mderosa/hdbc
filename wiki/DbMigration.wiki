@@ -1,7 +1,6 @@
-
 = Introduction =
 
-I've worked in to many places where it never occurred to the developers that versioning and managing the database systematically is a fundamental prerequisite for managing a product.  So instead of reinventing one of these everywhere I go, here is one I hope to keep and improve for the long term.
+I've worked in too many places where it never occurred to the developers that versioning and managing the database systematically is a fundamental prerequisite for managing a product.  So instead of reinventing one of these everywhere I go, here is one I hope to keep and improve for the long term.
 
 = The basics of managing the database = 
   * Have a version table that represents the update state of the database - a single number in the table will do
