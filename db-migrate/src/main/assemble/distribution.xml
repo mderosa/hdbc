@@ -4,9 +4,27 @@
   <formats>
     <format>tar.gz</format>
   </formats>
+  <fileSets>
+    <fileSet>
+      <directory>do</directory>
+      <outputDirectory>do</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>undo</directory>
+      <outputDirectory>undo</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>templates</directory>
+      <outputDirectory>templates</outputDirectory>
+    </fileSet>
+  </fileSets>
   <files>
     <file>
       <source>ReadMe.txt</source>
+      <outputDirectory>/</outputDirectory>
+    </file>
+    <file>
+      <source>build.xml</source>
       <outputDirectory>/</outputDirectory>
     </file>
     <file>
@@ -21,25 +39,4 @@
       <outputDirectory>/lib</outputDirectory>
     </dependencySet>
   </dependencySets>
-  <filesets>
-    <fileset>
-      <directory>${project.build.outputDirectory}</directory>
-      <outputDirectory>/lib</outputDirectory>
-      <includes>
-        <include>*.jar</include>
-      </includes>
-    </fileset>
-    <fileset>
-      <directory>/do</directory>
-      <outputDirectory>/do</outputDirectory>
-    </fileset>
-    <fileset>
-      <dirctory>/undo</dirctory>
-      <outputDirectory>/undo</outputDirectory>
-    </fileset>
-    <fileset>
-      <directory>/templates</directory>
-      <outputDirectory>/templates</outputDirectory>
-    </fileset>
-  </filesets>
 </assembly>
