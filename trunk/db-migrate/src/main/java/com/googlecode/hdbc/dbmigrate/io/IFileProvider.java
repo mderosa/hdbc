@@ -11,4 +11,7 @@ public interface IFileProvider {
     void writeUndoFile(String fileName, String fileContent) throws IOException;
     void writeMasterMigrationDoScript(List<String> files) throws IOException;
     void writeMasterMigrationUnDoScript(List<String> files) throws IOException;
+
+    void initializeDoDirectory(String schema) throws IOException;
+    void initializeUnDoDirectory(String schema) throws IOException;
 }

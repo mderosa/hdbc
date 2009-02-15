@@ -2,9 +2,15 @@ package com.googlecode.hdbc.dbmigrate;
 
 import static com.googlecode.hdbc.dbmigrate.Menu.*;
 import static com.googlecode.hdbc.dbmigrate.MenuItem.*;
+
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.EnumMap;
 
+import com.googlecode.hdbc.dbmigrate.io.FileSystemFileProvider;
+import com.googlecode.hdbc.dbmigrate.io.IFileProvider;
 import com.googlecode.hdbc.dbmigrate.processor.CurrentDbVersionProcessor;
 import com.googlecode.hdbc.dbmigrate.processor.GoToDbVersionProcessor;
 import com.googlecode.hdbc.dbmigrate.processor.MigrationScriptNameProcessor;
@@ -35,12 +41,27 @@ public final class DbMigrate {
                                 menu(processWith(GoToDbVersionProcessor.class), validateWith(GoToDbVersionValidator.class), Prompt.NUMERIC)
                                 .add(item("Enter the version that you wish to migrate to:", null))))));
         try {
+            new DbMigrate().personalizeOnFirstRun(new FileSystemFileProvider());
             menu.run(new EnumMap<Key, String>(Key.class));
             System.out.println("Success");
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
 
+    }
+
+    protected void personalizeOnFirstRun(final IFileProvider provider) throws IOException {
+        File doDir = new File("do");
+        if (!doDir.exists()) {
+            System.out.println("Configuring project for the target db schema:");
+            System.out.println("");
+            System.out.println("What is the name of the schema that you will be running scripts against?");
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            String response = in.readLine();
+            provider.initializeDoDirectory(response.trim());
+            provider.initializeUnDoDirectory(response.trim());
+            System.out.println("Initialized...");
+        }
     }
 
 }

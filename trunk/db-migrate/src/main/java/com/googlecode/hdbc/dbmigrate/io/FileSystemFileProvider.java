@@ -9,8 +9,10 @@ import java.util.List;
 
 public class FileSystemFileProvider implements IFileProvider {
     private static final int BUFFER_LENGTH = 512;
-    private static final String DO_DIRECTORY = "do" + File.separator;
-    private static final String UNDO_DIRECTORY = "undo" + File.separator;
+    private static final String USER_HOME = "user.home";
+    private static final String DO_DIRECTORY = "do";
+    private static final String UNDO_DIRECTORY = "undo";
+    private static final String TEMPLATES_DIRECTORY = "templates";
     private static final String CRLF = "\n";
     private static final String STD_HEADER = CRLF +
             "WHENEVER SQLERROR EXIT SQL.SQLCODE\n" +
@@ -40,7 +42,12 @@ public class FileSystemFileProvider implements IFileProvider {
 
     @Override
     public final String[] migrationFileList() {
-        File dir = new File(this.workingDir + File.separator + DO_DIRECTORY);
+        String directory = this.workingDir + File.separator + DO_DIRECTORY;
+        return this.getSqlFileNamesInDirectory(directory);
+    }
+
+    private String[] getSqlFileNamesInDirectory(final String directory) {
+        File dir = new File(directory);
         String[] files = dir.list(new FilenameFilter() {
             @Override
             public boolean accept(final File file, final String fileName) {
@@ -55,11 +62,15 @@ public class FileSystemFileProvider implements IFileProvider {
         StringBuilder name = new StringBuilder()
             .append(this.workingDir)
             .append(File.separator)
-            .append("templates")
+            .append(TEMPLATES_DIRECTORY)
             .append(File.separator)
             .append(templateType.toLowerCase())
             .append(".template");
-        File file = new File(name.toString());
+        return fileContent(name.toString());
+    }
+
+    private String fileContent(final String filePath) throws IOException {
+        File file = new File(filePath);
         FileReader reader = new FileReader(file);
         char[] buffer = new char[BUFFER_LENGTH];
         StringBuilder temp = new StringBuilder();
@@ -81,10 +92,11 @@ public class FileSystemFileProvider implements IFileProvider {
 
     private void writeFile(final String subDirectory, final String fileName, final String fileContent) throws IOException {
         StringBuilder name = new StringBuilder()
-        .append(this.workingDir)
-        .append(File.separator)
-        .append(subDirectory)
-        .append(fileName);
+        .append(this.workingDir);
+        if (!"".equals(subDirectory)) {
+            name.append(File.separator).append(subDirectory);
+        }
+        name.append(File.separator).append(fileName);
 
         File file = new File(name.toString());
         if (file.createNewFile()) {
@@ -98,7 +110,7 @@ public class FileSystemFileProvider implements IFileProvider {
 
     @Override
     public final void writeMasterMigrationDoScript(final List<String> files) throws IOException {
-        String user = userName(System.getProperty("user.home"));
+        String user = userName(System.getProperty(USER_HOME));
         String header = STD_HEADER.replaceFirst(SUBSTITUTION_RGX, user);
         StringBuilder buffer = new StringBuilder(header);
         for (String file : files) {
@@ -111,7 +123,7 @@ public class FileSystemFileProvider implements IFileProvider {
 
     @Override
     public final void writeMasterMigrationUnDoScript(final List<String> files) throws IOException {
-        String user = userName(System.getProperty("user.home"));
+        String user = userName(System.getProperty(USER_HOME));
         String header = STD_HEADER.replaceFirst(SUBSTITUTION_RGX, user);
         StringBuilder buffer = new StringBuilder(header);
         for (int n = files.size(); n > 0; n--) {
@@ -127,5 +139,46 @@ public class FileSystemFileProvider implements IFileProvider {
     protected final String userName(final String userHome) {
         int pos = userHome.lastIndexOf(File.separator);
         return userHome.substring(pos + 1);
+    }
+
+    @Override
+    public final void initializeDoDirectory(final String schema) throws IOException {
+        initializeMigrationDirectory(schema, DO_DIRECTORY);
+    }
+
+    @Override
+    public final void initializeUnDoDirectory(final String schema) throws IOException {
+        initializeMigrationDirectory(schema, UNDO_DIRECTORY);
+    }
+
+    private void initializeMigrationDirectory(final String schema, final String migrationDir) throws IOException {
+        StringBuilder initDir = new StringBuilder().append(workingDir)
+            .append(File.separator)
+            .append(migrationDir);
+        makeDirectory(initDir.toString());
+
+        StringBuilder templateDir = new StringBuilder()
+            .append(this.workingDir)
+            .append(File.separator)
+            .append(TEMPLATES_DIRECTORY)
+            .append(File.separator)
+            .append(migrationDir);
+        String[] templateFileNames = getSqlFileNamesInDirectory(templateDir.toString());
+        for (String templateFileName : templateFileNames) {
+            String content = fileContent(templateDir
+                    .append(File.separator)
+                    .append(templateFileName)
+                    .toString());
+            String substituted = content.replaceAll("\\$\\{schema\\}", schema);
+            this.writeFile(initDir.toString(), templateFileName, substituted);
+        }
+    }
+
+    private void makeDirectory(final String directory) throws IOException {
+        File dir = new File(directory);
+        boolean created = dir.mkdir();
+        if (!created) {
+            throw new IOException("unable to create directory, " + directory);
+        }
     }
 }
