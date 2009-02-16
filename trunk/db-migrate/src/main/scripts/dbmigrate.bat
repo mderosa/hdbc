@@ -1,2 +1,2 @@
 
-java -jar ./lib/db-migrate-0.4.jar
+java -jar ./lib/db-migrate-0.5.jar

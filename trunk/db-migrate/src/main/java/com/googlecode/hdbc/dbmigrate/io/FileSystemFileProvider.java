@@ -13,6 +13,8 @@ public class FileSystemFileProvider implements IFileProvider {
     private static final String DO_DIRECTORY = "do";
     private static final String UNDO_DIRECTORY = "undo";
     private static final String TEMPLATES_DIRECTORY = "templates";
+    private static final String SCRIPT_PARAMETER = " :migrate_user";
+    private static final String SUCCESS = "!!! Success !!!";
     private static final String CRLF = "\n";
     private static final String STD_HEADER = CRLF +
             "WHENEVER SQLERROR EXIT SQL.SQLCODE\n" +
@@ -74,6 +76,7 @@ public class FileSystemFileProvider implements IFileProvider {
         StringBuilder temp = new StringBuilder();
         while(-1 != reader.read(buffer)) {
             temp.append(buffer);
+            buffer = new char[BUFFER_LENGTH];
         }
         return temp.toString().trim();
     }
@@ -88,13 +91,16 @@ public class FileSystemFileProvider implements IFileProvider {
 
     private void writeFile(final String subDirectory, final String fileName, final String fileContent) throws IOException {
         StringBuilder name = new StringBuilder()
-        .append(this.workingDir);
+        	.append(this.workingDir);
         if (!"".equals(subDirectory)) {
             name.append(File.separator).append(subDirectory);
         }
         name.append(File.separator).append(fileName);
 
         File file = new File(name.toString());
+        if (file.exists()) {
+        	file.delete();
+        }
         if (file.createNewFile()) {
             FileWriter writer = new FileWriter(file);
             writer.write(fileContent);
@@ -109,10 +115,15 @@ public class FileSystemFileProvider implements IFileProvider {
         String header = STD_HEADER.replaceFirst(SUBSTITUTION_RGX, user);
         StringBuilder buffer = new StringBuilder(header);
         for (String file : files) {
-            buffer.append("@@ do/")
+            buffer.append("prompt running ")
+            	.append(file)
+            	.append(CRLF)
+            	.append("@@ do/")
                 .append(file)
+                .append(SCRIPT_PARAMETER)
                 .append(CRLF);
         }
+        buffer.append(SUCCESS);
         this.writeFile("", "do_migration.sql", buffer.toString());
     }
 
@@ -123,10 +134,15 @@ public class FileSystemFileProvider implements IFileProvider {
         for (int n = files.size(); n > 0; n--) {
             String doFileName = files.get(n - 1);
             String undoFileName = doFileName.replaceFirst("-do_", "-undo_");
-            buffer.append("@@ undo/")
+            buffer.append("prompt running ")
+            	.append(undoFileName)
+            	.append(CRLF)
+            	.append("@@ undo/")
                 .append(undoFileName)
+                .append(SCRIPT_PARAMETER)
                 .append(CRLF);
         }
+        buffer.append(SUCCESS);
         this.writeFile("", "undo_migration.sql", buffer.toString());
     }
 
