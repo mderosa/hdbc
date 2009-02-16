@@ -23,7 +23,6 @@ public class ScriptTypeProcessor implements IInputProcessor {
         provider = prvdr;
     }
 
-    @Override
     public final void process(final String input, final List<MenuItem> items,
             final EnumMap<Key, String> params) throws IOException {
         String rawContent = provider.templateContent(input);

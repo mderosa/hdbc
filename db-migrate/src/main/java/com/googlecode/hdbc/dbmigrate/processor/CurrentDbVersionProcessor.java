@@ -9,7 +9,6 @@ import com.googlecode.hdbc.dbmigrate.MenuItem;
 
 public class CurrentDbVersionProcessor implements IInputProcessor {
 
-    @Override
     public final void process(final String input, final List<MenuItem> items,
             final EnumMap<Key, String> params) throws IOException {
         params.put(Key.CURRENT_DB_VERSION, input.trim());

@@ -22,7 +22,6 @@ public class GoToDbVersionProcessor implements IInputProcessor {
         provider = pvdr;
     }
 
-    @Override
     public final void process(final String input, final List<MenuItem> items,
             final EnumMap<Key, String> params) throws IOException {
         int fromVersion = Integer.parseInt(params.get(Key.CURRENT_DB_VERSION));
@@ -52,7 +51,7 @@ public class GoToDbVersionProcessor implements IInputProcessor {
             list.add(name);
         }
         Collections.sort(list, new Comparator<String>() {
-            @Override
+
             public final int compare(final String fst, final String snd) {
                 int n1 = fileVersion(fst);
                 int n2 = fileVersion(snd);

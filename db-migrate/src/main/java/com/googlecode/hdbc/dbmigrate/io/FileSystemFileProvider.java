@@ -40,7 +40,6 @@ public class FileSystemFileProvider implements IFileProvider {
         this.workingDir = workingDirectory;
     }
 
-    @Override
     public final String[] migrationFileList() {
         String directory = this.workingDir + File.separator + DO_DIRECTORY;
         return this.getSqlFileNamesInDirectory(directory);
@@ -49,7 +48,7 @@ public class FileSystemFileProvider implements IFileProvider {
     private String[] getSqlFileNamesInDirectory(final String directory) {
         File dir = new File(directory);
         String[] files = dir.list(new FilenameFilter() {
-            @Override
+
             public boolean accept(final File file, final String fileName) {
                 return fileName.endsWith(".sql");
             }
@@ -57,7 +56,6 @@ public class FileSystemFileProvider implements IFileProvider {
         return files;
     }
 
-    @Override
     public final String templateContent(final String templateType) throws IOException {
         StringBuilder name = new StringBuilder()
             .append(this.workingDir)
@@ -80,12 +78,10 @@ public class FileSystemFileProvider implements IFileProvider {
         return temp.toString().trim();
     }
 
-    @Override
     public final void writeDoFile(final String fileName, final String fileContent) throws IOException {
         this.writeFile(DO_DIRECTORY, fileName, fileContent);
     }
 
-    @Override
     public final void writeUndoFile(final String fileName, final String fileContent) throws IOException {
         this.writeFile(UNDO_DIRECTORY, fileName, fileContent);
     }
@@ -108,7 +104,6 @@ public class FileSystemFileProvider implements IFileProvider {
         }
     }
 
-    @Override
     public final void writeMasterMigrationDoScript(final List<String> files) throws IOException {
         String user = userName(System.getProperty(USER_HOME));
         String header = STD_HEADER.replaceFirst(SUBSTITUTION_RGX, user);
@@ -121,7 +116,6 @@ public class FileSystemFileProvider implements IFileProvider {
         this.writeFile("", "do_migration.sql", buffer.toString());
     }
 
-    @Override
     public final void writeMasterMigrationUnDoScript(final List<String> files) throws IOException {
         String user = userName(System.getProperty(USER_HOME));
         String header = STD_HEADER.replaceFirst(SUBSTITUTION_RGX, user);
@@ -141,12 +135,10 @@ public class FileSystemFileProvider implements IFileProvider {
         return userHome.substring(pos + 1);
     }
 
-    @Override
     public final void initializeDoDirectory(final String schema) throws IOException {
         initializeMigrationDirectory(schema, DO_DIRECTORY);
     }
 
-    @Override
     public final void initializeUnDoDirectory(final String schema) throws IOException {
         initializeMigrationDirectory(schema, UNDO_DIRECTORY);
     }
