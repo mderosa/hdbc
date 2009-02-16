@@ -7,7 +7,7 @@ DECLARE
 BEGIN
     v_migration_user := &1;
     v_version_no := ${version_no};
-    v_script_name := ${script_name};
+    v_script_name := '${script_name}';
     ipso_atr.sp_log_version_change_begin(v_script_name, v_migration_user, v_log_pk); -- does commit
     ---- script below ---------------------------------
 
