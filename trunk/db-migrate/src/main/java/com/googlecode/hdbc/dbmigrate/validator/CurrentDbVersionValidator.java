@@ -6,7 +6,6 @@ import com.googlecode.hdbc.dbmigrate.Key;
 
 public class CurrentDbVersionValidator implements IInputValidator {
 
-    @Override
     public final boolean validate(final String response, final EnumMap<Key, String> params) {
         boolean ok;
         try {
