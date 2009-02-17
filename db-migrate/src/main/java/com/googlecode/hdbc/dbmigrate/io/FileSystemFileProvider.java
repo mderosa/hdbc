@@ -14,7 +14,7 @@ public class FileSystemFileProvider implements IFileProvider {
     private static final String UNDO_DIRECTORY = "undo";
     private static final String TEMPLATES_DIRECTORY = "templates";
     private static final String SCRIPT_PARAMETER = " :migrate_user";
-    private static final String SUCCESS = "!!! Success !!!";
+    private static final String SUCCESS = "prompt !!! Success !!!";
     private static final String CRLF = "\n";
     private static final String STD_HEADER = CRLF +
             "WHENEVER SQLERROR EXIT SQL.SQLCODE\n" +
@@ -91,7 +91,7 @@ public class FileSystemFileProvider implements IFileProvider {
 
     private void writeFile(final String subDirectory, final String fileName, final String fileContent) throws IOException {
         StringBuilder name = new StringBuilder()
-        	.append(this.workingDir);
+            .append(this.workingDir);
         if (!"".equals(subDirectory)) {
             name.append(File.separator).append(subDirectory);
         }
@@ -99,7 +99,7 @@ public class FileSystemFileProvider implements IFileProvider {
 
         File file = new File(name.toString());
         if (file.exists()) {
-        	file.delete();
+            file.delete();
         }
         if (file.createNewFile()) {
             FileWriter writer = new FileWriter(file);
@@ -116,9 +116,9 @@ public class FileSystemFileProvider implements IFileProvider {
         StringBuilder buffer = new StringBuilder(header);
         for (String file : files) {
             buffer.append("prompt running ")
-            	.append(file)
-            	.append(CRLF)
-            	.append("@@ do/")
+                .append(file)
+                .append(CRLF)
+                .append("@@ do/")
                 .append(file)
                 .append(SCRIPT_PARAMETER)
                 .append(CRLF);
@@ -135,9 +135,9 @@ public class FileSystemFileProvider implements IFileProvider {
             String doFileName = files.get(n - 1);
             String undoFileName = doFileName.replaceFirst("-do_", "-undo_");
             buffer.append("prompt running ")
-            	.append(undoFileName)
-            	.append(CRLF)
-            	.append("@@ undo/")
+                .append(undoFileName)
+                .append(CRLF)
+                .append("@@ undo/")
                 .append(undoFileName)
                 .append(SCRIPT_PARAMETER)
                 .append(CRLF);
