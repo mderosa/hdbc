@@ -152,17 +152,17 @@ public class FileSystemFileProvider implements IFileProvider {
     }
 
     public final void initializeDoDirectory(final String schema) throws IOException {
-        initializeMigrationDirectory(schema, DO_DIRECTORY);
+        initializeBaseDirectory(schema, DO_DIRECTORY);
     }
 
     public final void initializeUnDoDirectory(final String schema) throws IOException {
-        initializeMigrationDirectory(schema, UNDO_DIRECTORY);
+        initializeBaseDirectory(schema, UNDO_DIRECTORY);
     }
 
-    private void initializeMigrationDirectory(final String schema, final String migrationDir) throws IOException {
+    private void initializeBaseDirectory(final String schema, final String baseDir) throws IOException {
         StringBuilder initDir = new StringBuilder().append(workingDir)
             .append(File.separator)
-            .append(migrationDir);
+            .append(baseDir);
         makeDirectory(initDir.toString());
 
         StringBuilder templateDir = new StringBuilder()
@@ -170,21 +170,28 @@ public class FileSystemFileProvider implements IFileProvider {
             .append(File.separator)
             .append(TEMPLATES_DIRECTORY)
             .append(File.separator)
-            .append(migrationDir);
+            .append(baseDir);
         String[] templateFileNames = getSqlFileNamesInDirectory(templateDir.toString());
         for (String templateFileName : templateFileNames) {
             String content = fileContent(templateDir.toString() +
                     File.separator + templateFileName);
             String substituted = content.replaceAll("\\$\\{schema\\}", schema);
-            this.writeFile(migrationDir, templateFileName, substituted);
+            this.writeFile(baseDir, templateFileName, substituted);
         }
     }
 
     private void makeDirectory(final String directory) throws IOException {
         File dir = new File(directory);
+        if (dir.exists()) {
+            return;
+        }
         boolean created = dir.mkdir();
         if (!created) {
             throw new IOException("unable to create directory, " + directory);
         }
+    }
+
+    public final void initializeTemplatesDirectory(final String schema) throws IOException {
+        initializeBaseDirectory(schema, TEMPLATES_DIRECTORY);
     }
 }
