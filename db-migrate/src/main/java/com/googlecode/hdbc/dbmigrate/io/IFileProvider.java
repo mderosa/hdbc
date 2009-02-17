@@ -14,4 +14,5 @@ public interface IFileProvider {
 
     void initializeDoDirectory(String schema) throws IOException;
     void initializeUnDoDirectory(String schema) throws IOException;
+    void initializeTemplatesDirectory(String schema) throws IOException;
 }

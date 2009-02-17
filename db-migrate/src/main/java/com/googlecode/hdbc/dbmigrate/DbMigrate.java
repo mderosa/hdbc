@@ -60,6 +60,7 @@ public final class DbMigrate {
             String response = in.readLine();
             provider.initializeDoDirectory(response.trim());
             provider.initializeUnDoDirectory(response.trim());
+            provider.initializeTemplatesDirectory(response.trim());
             System.out.println("Initialized...");
         }
     }
