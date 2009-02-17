@@ -65,7 +65,7 @@ public class FileSystemFileProvider implements IFileProvider {
             .append(TEMPLATES_DIRECTORY)
             .append(File.separator)
             .append(templateType.toLowerCase())
-            .append(".template");
+            .append(".sql");
         return fileContent(name.toString());
     }
 
