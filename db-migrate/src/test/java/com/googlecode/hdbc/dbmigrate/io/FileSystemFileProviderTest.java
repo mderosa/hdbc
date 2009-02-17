@@ -10,7 +10,7 @@ public class FileSystemFileProviderTest {
     @Test
     public final void testTemplateContent() throws IOException {
         int atLeastThisBig = MIN_FILE_SIZE;
-        FileSystemFileProvider prov = new FileSystemFileProvider();
+        FileSystemFileProvider prov = new FileSystemFileProvider("./templates");
         String content = prov.templateContent("ddl");
         assertNotNull(content);
         assertTrue(content.length() > atLeastThisBig);
