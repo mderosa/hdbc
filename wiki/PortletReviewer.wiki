@@ -1,4 +1,7 @@
-
 = Introduction =
 
 Portlet development is a bit different than regular web development and its hard to remember all of the little gotchas.  This program knows all of the best practices and never forgets.
+
+= Using =
+  * If you want to use this starting with a source distribution, download the source and compile it with the Glasgow Haskell Compiler (download separately).  The appropriate command to compile is 'ghc --make Main reviewer'.  Once you have compiled your executable you can run the program and it will ask you for the infomation it needs.
+  * Alternatively you can download a precompiled executable from the downloads page.  This is compiled for a Windows system.
