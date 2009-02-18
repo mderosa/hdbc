@@ -5,7 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="M2_REPO"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/4.5/junit-4.5.jar"/>
-	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
 	<classpathentry kind="var" path="M2_REPO/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/hamcrest/hamcrest-library/1.1/hamcrest-library-1.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/jmock/jmock/2.5.1/jmock-2.5.1.jar">
@@ -15,5 +14,6 @@
 	</classpathentry>
 	<classpathentry kind="var" path="M2_REPO/jmock/jmock-junit4/2.5.1/jmock-junit4-2.5.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/oracle/ojdbc14/10.2.0/ojdbc14-10.2.0.jar"/>
-	<classpathentry kind="output" path="target/classes"/>
+	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
+	<classpathentry kind="output" path="target/build"/>
 </classpath>
