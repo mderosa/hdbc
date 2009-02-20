@@ -73,6 +73,7 @@
         	<configuration>
           		<archive>
             		<manifest>
+            		    <addClasspath>true</addClasspath>
             			<mainClass>com.googlecode.hdbc.dbdiff.DbDiff</mainClass>
             		</manifest>
           		</archive>
