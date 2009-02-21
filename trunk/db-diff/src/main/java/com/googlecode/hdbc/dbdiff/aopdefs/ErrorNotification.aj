@@ -1,12 +1,16 @@
 package com.googlecode.hdbc.dbdiff.aopdefs;
 
 import java.util.Collection;
-
+import com.googlecode.hdbc.dbdiff.DbDiff;
+import com.googlecode.hdbc.dbdiff.db.IDatabase;
 import com.googlecode.hdbc.dbdiff.model.Analyze;
 
 public aspect ErrorNotification {
 
     pointcut diffAnalysisResult() : call (Analyze collections(Collection, Collection));
+    pointcut diffProgressReport(String s) :
+        ((call (boolean DbDiff.diffTabularObject(IDatabase, IDatabase, String))) ||
+        (call (boolean DbDiff.diffScriptedObject(IDatabase, IDatabase, String)))) && args(*,*,s);
 
     after(Analyze an) returning : diffAnalysisResult()
         && target(an) {
@@ -23,6 +27,10 @@ public aspect ErrorNotification {
             System.out.println("");
         }
 
+    }
+
+    before(String objName) : diffProgressReport(objName) {
+        System.out.println("examining " + objName);
     }
 
 }

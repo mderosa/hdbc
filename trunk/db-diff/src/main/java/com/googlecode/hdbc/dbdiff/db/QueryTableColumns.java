@@ -11,6 +11,9 @@ import com.googlecode.hdbc.dbdiff.model.TabularObjects;
 public class QueryTableColumns implements IQueryDefinition<ColumnDefinition> {
     private final String tableName;
     private final TabularObjects result;
+    private static final String SQL = "SELECT column_name, data_type, data_length, data_precision, data_scale, nullable " +
+        "FROM user_tab_columns " +
+        "WHERE table_name = ? ";
 
     public QueryTableColumns(final String owningDb, final String table) {
         tableName = table;
@@ -18,9 +21,7 @@ public class QueryTableColumns implements IQueryDefinition<ColumnDefinition> {
     }
 
     public final String getParameterizedSQL() {
-        return "SELECT column_name, data_type, data_length, data_precision, data_scale, nullable " +
-            "FROM user_tab_columns " +
-            "WHERE table_name = ? ";
+        return SQL;
     }
 
     public final void processStatement(final PreparedStatement stmt) throws SQLException {

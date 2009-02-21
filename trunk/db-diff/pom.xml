@@ -4,7 +4,7 @@
   <groupId>com.googlecode.hdbc</groupId>
   <artifactId>db-diff</artifactId>
   <packaging>jar</packaging>
-  <version>0.6</version>
+  <version>0.7</version>
   <name>DbDiff</name>
   <url>http://www.googlecode.com/p/hdbc</url>
   <dependencies>
@@ -44,50 +44,50 @@
         <version>10.2.0</version>
     </dependency>
     <dependency>
-    	<groupId>org.aspectj</groupId>
-    	<artifactId>aspectjrt</artifactId>
-    	<version>1.6.2</version>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.6.2</version>
     </dependency>
   </dependencies>
   <build>
-	<plugins>
-    	<plugin>
-      		<groupId>org.codehaus.mojo</groupId>
-		    <artifactId>aspectj-maven-plugin</artifactId>
-		    <version>1.1</version>
-		    <configuration>
-		    	<source>1.5</source>
-		    	<target>1.5</target>
-		    </configuration>
-			<executions>
-				<execution>
-					<goals>
-						<goal>compile</goal>
-					</goals>
-				</execution>
-			</executions>
-    	</plugin>
-    	<plugin>
-        	<groupId>org.apache.maven.plugins</groupId>
-        	<artifactId>maven-jar-plugin</artifactId>
-        	<configuration>
-          		<archive>
-            		<manifest>
-            		    <addClasspath>true</addClasspath>
-            			<mainClass>com.googlecode.hdbc.dbdiff.DbDiff</mainClass>
-            		</manifest>
-          		</archive>
-        	</configuration>
-      	</plugin>
-    	<plugin>
-    		<artifactId>maven-assembly-plugin</artifactId>
-        	<configuration>
-          		<descriptors>
-            		<descriptor>src/main/assemble/distribution.xml</descriptor>
-          		</descriptors>
-        	</configuration>
-    	</plugin>
-  	</plugins>
+  <plugins>
+      <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+        <artifactId>aspectj-maven-plugin</artifactId>
+        <version>1.1</version>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      <executions>
+        <execution>
+          <goals>
+            <goal>compile</goal>
+          </goals>
+        </execution>
+      </executions>
+      </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <configuration>
+              <archive>
+                <manifest>
+                    <addClasspath>true</addClasspath>
+                  <mainClass>com.googlecode.hdbc.dbdiff.DbDiff</mainClass>
+                </manifest>
+              </archive>
+          </configuration>
+        </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+              <descriptors>
+                <descriptor>src/main/assemble/distribution.xml</descriptor>
+              </descriptors>
+          </configuration>
+      </plugin>
+    </plugins>
 </build>
 
 </project>
