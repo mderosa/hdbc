@@ -5,7 +5,7 @@ I've worked in one to many place where people are trying to manage several datab
 
 = At the moment this can =
   * Compare oracle databases
-  * Compare whether compare db schemas have the same set of user objects
+  * Compare whether two db schemas have the same set of user objects
   * Compare the details of tables, views, stored procedures, and functions
 
 = Using =
