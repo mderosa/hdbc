@@ -9,13 +9,14 @@ import com.googlecode.hdbc.dbdiff.model.UserObjects;
 
 public class QueryUserObjects implements IQueryDefinition<UserObjectDefinition> {
     private UserObjects result;
+    private static final String SQL = "SELECT object_name, object_type FROM user_objects";
 
     public QueryUserObjects(final String owningDb) {
         result = new UserObjects(owningDb);
     }
 
     public final String getParameterizedSQL() {
-       return "SELECT object_name, object_type FROM user_objects";
+       return SQL;
 
     }
 

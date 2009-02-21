@@ -1,2 +1,2 @@
 
-java -jar ../lib/db-diff-0.6.jar
+java -jar ../lib/db-diff-0.7.jar

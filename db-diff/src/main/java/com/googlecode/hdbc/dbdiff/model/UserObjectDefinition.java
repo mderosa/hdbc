@@ -21,6 +21,10 @@ public class UserObjectDefinition {
 		return this.objectType.equals("TABLE") || this.objectType.equals("VIEW");
 	}
 
+	public final boolean isScriptedObject() {
+	    return this.objectType.equals("FUNCTION") || this.objectType.equals("PROCEDURE");
+	}
+
 	@Override
 	public final boolean equals(final Object obj) {
 		if (obj == null) {
