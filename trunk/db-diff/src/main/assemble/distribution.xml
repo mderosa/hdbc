@@ -12,10 +12,11 @@
     <file>
       <source>src/main/scripts/dbdiff.bat</source>
       <outputDirectory>/bin</outputDirectory>
+      <filtered>true</filtered>
     </file>
     <file>
-    	<source>src/main/config/config.xml</source>
-    	<outputDirectory>/bin</outputDirectory>
+      <source>src/main/config/config.xml</source>
+      <outputDirectory>/bin</outputDirectory>
     </file>
   </files>
   <dependencySets>
