@@ -4,10 +4,27 @@ I've worked in too many places where it never occurred to the developers that ve
 
 = The basics of managing the database = 
   * Have a version table that represents the update state of the database - a single number in the table will do
-  * Log all changes and who does the changes and when
-  * Be able to run the version up or down
+  * Every change to the database increments or decrements the version and logs who ran the changes and when
+  * Any single or multiple version increment script has a corresponding decrement script
   * Automate everything so there are no mistakes and everything is repeatable
 
+= This implementation =
+  * This tool creates a series of scripts in matched directories like this:
+{{{
+DBMIGRATE_HOME
+            |__do
+                |__00001-do_script1.sql
+                |__00002-do_script2.sql
+                |__ .....    
+            |__undo
+                |__00001-undo_script1.sql
+                |__00002-undo_script2.sql
+                |__ .....
+}}}
+  * As developers need to make changes to the database they use to tool to generate matched template scripts in the do / undo directories.  These will have the next number increment in the series and have automatically generated infrastructure code.
+  * Once the developer has added his database change code to both templates.  He can use the tool to automatically generate a master migration script which will run the database forward either one or several versions.  At the same time the forward master migration script is generated a corresponding master rollback script will also be generated.
+  * Automating the whole process this way creates a process that is easy to follow and also, because it prevents common script based errors, easy to carry out.
+ 
 = Using =
   * Take the tar.gz distribution and unpack it to location on you hard disk, DBMIGRATE_HOME.
   * In DBMIGRATE_HOME there is a script dbmigrate.bat which runs the program, bringing up a command line menu.
