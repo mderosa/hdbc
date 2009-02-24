@@ -28,10 +28,10 @@ public class MigrationScriptNameProcessorTest {
     @Test
     public final void testNextFileIndex() {
         String[] files = new String[] {
-        "1-do_ScriptOne.sql",
-        "44-do_Script44.sql",
-        "3-do_ScriptThree.sql",
-        "2-do_ScriptTwo.sql",};
+        "00001-do_ScriptOne.sql",
+        "00044-do_Script44.sql",
+        "00003-do_ScriptThree.sql",
+        "00002-do_ScriptTwo.sql",};
         String actual = proc.nextFileIndex(files);
         assertEquals("45", actual);
     }
