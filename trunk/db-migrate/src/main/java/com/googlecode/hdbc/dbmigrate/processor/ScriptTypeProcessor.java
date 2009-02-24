@@ -14,6 +14,7 @@ public class ScriptTypeProcessor implements IInputProcessor {
     private static final String SCRIPT_EXTENSION = ".sql";
     protected static final String SCRIPT_NAME_RGX = "\\$\\{script_name\\}";
     protected static final String VERSION_RGX = "\\$\\{version_no\\}";
+    private static final int SCRIPT_NUMBER_WIDTH = 5;
 
     public ScriptTypeProcessor() {
         provider = new FileSystemFileProvider();
@@ -42,7 +43,8 @@ public class ScriptTypeProcessor implements IInputProcessor {
 
     private String doFileName(final EnumMap<Key, String> params) {
         StringBuilder builder = new StringBuilder();
-        builder.append(params.get(Key.MIGRATION_NUMBER))
+        String migrationNumber = leftPad(params.get(Key.MIGRATION_NUMBER), SCRIPT_NUMBER_WIDTH);
+        builder.append(migrationNumber)
             .append("-do_")
             .append(params.get(Key.MIGRATION_NAME))
             .append(SCRIPT_EXTENSION);
@@ -52,11 +54,19 @@ public class ScriptTypeProcessor implements IInputProcessor {
 
     private String undoFileName(final EnumMap<Key, String> params) {
         StringBuilder builder = new StringBuilder();
-        builder.append(params.get(Key.MIGRATION_NUMBER))
+        String migrationNumber = leftPad(params.get(Key.MIGRATION_NUMBER), SCRIPT_NUMBER_WIDTH);
+        builder.append(migrationNumber)
             .append("-undo_")
             .append(params.get(Key.MIGRATION_NAME))
             .append(SCRIPT_EXTENSION);
         return builder.toString();
     }
 
+    private String leftPad(final String number, final int width) {
+    	StringBuilder temp = new StringBuilder(number);
+    	while (temp.length() < width) {
+    		temp.insert(0, "0");
+    	}
+    	return temp.toString();
+    }
 }

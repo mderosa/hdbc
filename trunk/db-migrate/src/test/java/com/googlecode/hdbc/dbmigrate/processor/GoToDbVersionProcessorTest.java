@@ -14,10 +14,10 @@ public class GoToDbVersionProcessorTest {
     @Before
     public final void setUp() {
         test = new ArrayList<String>();
-        test.add("2-do_This");
-        test.add("1-do_That");
-        test.add("22-do_Another");
-        test.add("11-do_Last");
+        test.add("00002-do_This");
+        test.add("00001-do_That");
+        test.add("00022-do_Another");
+        test.add("00011-do_Last");
     }
 
     @Test
@@ -26,7 +26,7 @@ public class GoToDbVersionProcessorTest {
         String[] array = test.toArray(new String[0]);
         List<String> actual = proc.filteredFileList(array, 2, 15);
         assertEquals(actual.size(), 1);
-        assertFalse(actual.contains("2-do_This"));
+        assertFalse(actual.contains("00002-do_This"));
     }
 
     @Test

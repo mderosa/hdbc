@@ -45,8 +45,8 @@ public class ScriptTypeProcessorTest {
         context.checking(new Expectations() {{
             oneOf(mockProvider).templateContent(with(equalTo(userTypeSelection)));
             will(returnValue("version goto ${version_no} "));
-            oneOf(mockProvider).writeDoFile(with(equalTo("5-do_Test.sql")), with(equalTo("version goto 5 ")));
-            oneOf(mockProvider).writeUndoFile(with(equalTo("5-undo_Test.sql")), with(equalTo("version goto 4 ")));
+            oneOf(mockProvider).writeDoFile(with(equalTo("00005-do_Test.sql")), with(equalTo("version goto 5 ")));
+            oneOf(mockProvider).writeUndoFile(with(equalTo("00005-undo_Test.sql")), with(equalTo("version goto 4 ")));
         }});
 
         ScriptTypeProcessor processor = new ScriptTypeProcessor(mockProvider);
