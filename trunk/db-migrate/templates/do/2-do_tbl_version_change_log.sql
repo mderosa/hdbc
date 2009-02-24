@@ -6,3 +6,6 @@ CREATE TABLE ${schema}.version_change_log (
        create_user                  VARCHAR2(64 CHAR),
        create_dt				    DATE
 );
+
+UPDATE ${schema}.version SET version = 2;
+COMMIT;

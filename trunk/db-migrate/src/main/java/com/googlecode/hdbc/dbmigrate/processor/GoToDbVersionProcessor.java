@@ -38,7 +38,7 @@ public class GoToDbVersionProcessor implements IInputProcessor {
         List<String> filtered = new ArrayList<String>();
         for (String name : fileNames) {
             int version = fileVersion(name);
-            if (version >= from && version <= to) {
+            if (version > from && version <= to) {
                 filtered.add(name);
             }
         }

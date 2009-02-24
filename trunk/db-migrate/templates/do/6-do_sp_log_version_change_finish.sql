@@ -11,3 +11,6 @@ BEGIN
     COMMIT;
 END;
 /
+
+UPDATE ${schema}.version SET version = 6;
+COMMIT;

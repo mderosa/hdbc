@@ -7,3 +7,6 @@ BEGIN
   UPDATE version SET version = version_no;
 END;
 /
+
+UPDATE ${schema}.version SET version = 4;
+COMMIT;
