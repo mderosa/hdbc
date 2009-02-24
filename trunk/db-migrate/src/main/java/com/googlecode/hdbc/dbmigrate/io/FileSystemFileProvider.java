@@ -70,15 +70,22 @@ public class FileSystemFileProvider implements IFileProvider {
     }
 
     private String fileContent(final String filePath) throws IOException {
-        File file = new File(filePath);
-        FileReader reader = new FileReader(file);
-        char[] buffer = new char[BUFFER_LENGTH];
-        StringBuilder temp = new StringBuilder();
-        while(-1 != reader.read(buffer)) {
-            temp.append(buffer);
-            buffer = new char[BUFFER_LENGTH];
-        }
-        return temp.toString().trim();
+    	FileReader reader = null;
+    	try {
+	        File file = new File(filePath);
+	        reader = new FileReader(file);
+	        char[] buffer = new char[BUFFER_LENGTH];
+	        StringBuilder temp = new StringBuilder();
+	        while(-1 != reader.read(buffer)) {
+	            temp.append(buffer);
+	            buffer = new char[BUFFER_LENGTH];
+	        }
+	        return temp.toString().trim();
+    	} finally {
+    		if (reader != null) {
+    			reader.close();
+    		}
+    	}
     }
 
     public final void writeDoFile(final String fileName, final String fileContent) throws IOException {
@@ -99,7 +106,9 @@ public class FileSystemFileProvider implements IFileProvider {
 
         File file = new File(name.toString());
         if (file.exists()) {
-            file.delete();
+            if (!file.delete()) {
+            	throw new IOException("unable to overwrite file, " + name.toString());
+            }
         }
         if (file.createNewFile()) {
             FileWriter writer = new FileWriter(file);
