@@ -25,8 +25,8 @@ public class GoToDbVersionProcessorTest {
         GoToDbVersionProcessor proc = new GoToDbVersionProcessor();
         String[] array = test.toArray(new String[0]);
         List<String> actual = proc.filteredFileList(array, 2, 15);
-        assertEquals(actual.size(), 2);
-        assertTrue(actual.contains("2-do_This"));
+        assertEquals(actual.size(), 1);
+        assertFalse(actual.contains("2-do_This"));
     }
 
     @Test
