@@ -58,10 +58,15 @@ public final class DbMigrate {
             System.out.println("What is the name of the schema that you will be running scripts against?");
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
             String response = in.readLine();
+            if (response != null && response.length() > 0) {
             provider.initializeDoDirectory(response.trim());
             provider.initializeUnDoDirectory(response.trim());
             provider.initializeTemplatesDirectory(response.trim());
             System.out.println("Initialized...");
+            } else {
+            	System.out.println("Invalid response");
+            	personalizeOnFirstRun(provider);
+            }
         }
     }
 
