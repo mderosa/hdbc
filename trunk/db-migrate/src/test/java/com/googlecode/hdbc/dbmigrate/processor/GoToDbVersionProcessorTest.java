@@ -30,6 +30,19 @@ public class GoToDbVersionProcessorTest {
     }
 
     @Test
+    public final void testThatWeCanFiterAFileList2() {
+        GoToDbVersionProcessor proc = new GoToDbVersionProcessor();
+        ArrayList<String> tst = new ArrayList<String>();
+        tst.add("00009-do_That");
+        tst.add("00010-do_Another");
+        tst.add("00011-do_Last");
+        String[] array = tst.toArray(new String[0]);
+        List<String> actual = proc.filteredFileList(array, 10, 11);
+        assertEquals(actual.size(), 1);
+        assertTrue(actual.contains("00011-do_Last"));
+    }
+
+    @Test
     public final void testThatWeCanSortAFileList() {
         GoToDbVersionProcessor proc = new GoToDbVersionProcessor();
         List<String> actual = proc.sortedFileList(test);
