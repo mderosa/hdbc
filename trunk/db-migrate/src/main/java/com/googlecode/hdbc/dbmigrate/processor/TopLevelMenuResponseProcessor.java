@@ -13,10 +13,9 @@ public class TopLevelMenuResponseProcessor implements IInputProcessor {
             final EnumMap<Key, String> params) throws IOException {
         if ("1".equals(input)) {
             items.get(0).runSubMenu(params);
-        } else {
+        } else if ("2".equals(input)){
             items.get(1).runSubMenu(params);
         }
-
     }
 
 }
