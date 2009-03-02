@@ -1,10 +1,10 @@
 package com.googlecode.hdbc.dbmigrate;
 
 public enum Prompt {
-    ONE_TWO {
+    ONE_TWO_THREE {
         @Override
         public final String toString() {
-            return "('1' or '2'):";
+            return "('1','2', or '3'):";
         }
     },
 
