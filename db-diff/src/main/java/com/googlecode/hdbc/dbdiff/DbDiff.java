@@ -35,10 +35,10 @@ public class DbDiff {
 
     public static void main(final String[] args) {
         DbDiff diff = new DbDiff();
-
+        Pair<DataSource, DataSource> testAndRef = null;
         try {
             Properties props = diff.readProperties();
-            Pair<DataSource, DataSource> testAndRef = diff.makeDataSources(props);
+            testAndRef = diff.makeDataSources(props);
 
             boolean dbsAreIdentical = diff.diffUserObjects(new Database("test", testAndRef.getLeft()),
                     new Database("ref", testAndRef.getRight()),
@@ -51,6 +51,8 @@ public class DbDiff {
             }
         } catch (Exception e) {
             System.out.println("FAIL: " + e.getMessage());
+        } finally {
+            diff.closeDatasources(testAndRef);
         }
     }
 
@@ -111,6 +113,7 @@ public class DbDiff {
         OracleDataSource odsRef;
         try {
             odsTest = new OracleDataSource();
+            odsTest.setConnectionCachingEnabled(true);
             String url = props.getProperty(TEST_CONNECTION_STRING);
             odsTest.setURL(url);
             String user = props.getProperty(TEST_USER);
@@ -118,6 +121,7 @@ public class DbDiff {
             String pwd = props.getProperty(TEST_PWD);
             odsTest.setPassword(pwd);
             odsRef = new OracleDataSource();
+            odsRef.setConnectionCachingEnabled(true);
             odsRef.setURL(props.getProperty(REF_CONNECTION_STRING));
             odsRef.setUser(props.getProperty(REF_USER));
             odsRef.setPassword(props.getProperty(REF_PWD));
@@ -126,5 +130,19 @@ public class DbDiff {
         }
         return new Pair<DataSource, DataSource>(odsTest, odsRef);
     }
+
+    private void closeDatasources(final Pair<DataSource, DataSource> ds) {
+        if (ds == null) {
+            return;
+        }
+
+        try {
+            ((OracleDataSource) ds.getLeft()).close();
+        } catch (SQLException e) {}
+        try {
+        ((OracleDataSource) ds.getRight()).close();
+        } catch (SQLException e) {}
+    }
+
 }
 
