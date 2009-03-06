@@ -4,7 +4,7 @@
   <groupId>com.googlecode.hdbc</groupId>
   <artifactId>db-diff</artifactId>
   <packaging>jar</packaging>
-  <version>0.7</version>
+  <version>0.8</version>
   <name>DbDiff</name>
   <url>http://www.googlecode.com/p/hdbc</url>
   <dependencies>
