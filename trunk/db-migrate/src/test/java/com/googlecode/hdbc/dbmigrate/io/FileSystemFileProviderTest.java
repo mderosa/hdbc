@@ -20,9 +20,9 @@ public class FileSystemFileProviderTest {
     @Test
     public final void testUserName() {
         FileSystemFileProvider provider = new FileSystemFileProvider();
-        String actual = provider.userName("C:\\Users\\Marc");
-        assertEquals("Marc", actual);
-
+        String home = System.getProperty("user.home");
+        String actual = provider.userName(home);
+        assertTrue(actual.matches("[a-zA-Z]+"));
     }
 
     /*@Test
