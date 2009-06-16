@@ -1,0 +1,13 @@
+
+body {
+	margin-left: 20px;
+	margin-rigth: 20px;	
+}
+
+div#nav {
+	float: left;
+}
+	
+div#content {
+	margin-left: 200px;
+}
