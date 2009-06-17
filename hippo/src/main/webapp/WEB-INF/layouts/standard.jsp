@@ -7,6 +7,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
+		<style type="text/css" media="screen" >
+		 	@import url("<c:url value="/css/hippo.css" />");
+		</style>
 		<title>
 			<tiles:getAsString name="title" />
 		</title>
