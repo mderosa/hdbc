@@ -15,13 +15,12 @@
     <div id="page">
         <div id="content" class="clearfix">
             <div id="main">
-                <h1><fmt:message key="errorPage.heading"/></h1>
-                 <% if (exception != null) { %>
-                    <pre><% exception.printStackTrace(new java.io.PrintWriter(out)); %></pre>
-                 <% } else if ((Exception)request.getAttribute("javax.servlet.error.exception") != null) { %>
-                    <pre><% ((Exception)request.getAttribute("javax.servlet.error.exception"))
-                                           .printStackTrace(new java.io.PrintWriter(out)); %></pre>
-                 <% } %>
+                <h1>
+                <!-- 
+                <fmt:message key="errorPage.heading"/>
+                -->
+                Error</h1>
+                
             </div>
         </div>
     </div>
