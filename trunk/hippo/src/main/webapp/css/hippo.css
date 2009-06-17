@@ -1,13 +1,17 @@
 
 body {
 	margin-left: 20px;
-	margin-rigth: 20px;	
+	margin-right: 20px;	
 }
 
 div#nav {
 	float: left;
 }
 	
-div#content {
+div#main {
 	margin-left: 200px;
+}
+
+div#footer {
+	clear: both;
 }
