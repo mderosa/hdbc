@@ -6,7 +6,7 @@
 
 <tiles-definitions>
 	
-	<definition name="experiments/index" extends="standard-layout">
+	<definition name="experiments" extends="standard-layout">
 		<put-attribute name="title" value="Experiment Overview" />
 		<put-attribute name="body" value="/WEB-INF/jsp/experiments/index.jsp" />
 	</definition>
