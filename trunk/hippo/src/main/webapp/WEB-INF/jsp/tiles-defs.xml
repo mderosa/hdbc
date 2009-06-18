@@ -8,7 +8,7 @@
 	
 	<definition name="experiments" extends="standard-layout">
 		<put-attribute name="title" value="Experiment Overview" />
-		<put-attribute name="body" value="/WEB-INF/jsp/experiments/index.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/experiments.jsp" />
 	</definition>
 	
 </tiles-definitions>
