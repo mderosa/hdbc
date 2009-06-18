@@ -25,5 +25,11 @@
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="requestContextAttribute" value="requestContext"/>
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
-	</bean>			
+	</bean>
+		
+	<bean id="experimentsController" class="com.googlecode.hdbc.controller.ExperimentsController" >
+		<constructor-arg ref="experimentsDao" />
+	</bean>
+				
+	<bean id="experimentsDao" class="com.googlecode.hdbc.dao.StubExperimentsDao" />
 </beans>
