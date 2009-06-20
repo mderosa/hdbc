@@ -9,7 +9,7 @@ import com.googlecode.hdbc.dao.IExperimentsDao;
 import com.googlecode.hdbc.model.IExperiment;
 
 @Controller
-@RequestMapping("/experiments")
+@RequestMapping("/experiments/*")
 public class ExperimentsController {
 	private IExperimentsDao data;
 	
@@ -17,10 +17,15 @@ public class ExperimentsController {
 		data = dao;
 	}
 
-	@RequestMapping(method=RequestMethod.GET)
-	public void index(Model model) {
+	@RequestMapping(value="active", method=RequestMethod.GET)
+	public void active(Model model) {
 		List<IExperiment> experiments = data.findActiveExperiments();
 		model.addAttribute("experiments", experiments);
 	}
 	
+	@RequestMapping(value="search", method=RequestMethod.GET)
+	public void search(Model model) {
+		List<IExperiment> experiments = data.findActiveExperiments();
+		model.addAttribute("experiments", experiments);
+	}
 }

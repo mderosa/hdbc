@@ -22,7 +22,25 @@
 		</property>
 	</bean>
 	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    	<property name="mediaTypes">
+        	<map>
+            	<entry key="html" value="text/html"/>
+            	<entry key="xml" value="text/xml" />
+        	</map>
+    	</property>
+    	<property name="viewResolvers">
+        	<list>
+        		<ref bean="textHtmlResolver" />		
+            	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                	<property name="prefix" value="/WEB-INF/jsp/"/>
+                	<property name="suffix" value=".jsp"/>
+	            </bean>
+    	    </list>
+    	</property>
+	</bean>
+	
+	<bean id="textHtmlResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="requestContextAttribute" value="requestContext"/>
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 	</bean>

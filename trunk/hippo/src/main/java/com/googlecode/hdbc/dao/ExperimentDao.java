@@ -5,7 +5,7 @@ import com.googlecode.hdbc.model.IExperiment;
 public class ExperimentDao implements IExperimentDao {
 
 	@Override
-	public IExperiment find(Long uid) {
+	public IExperiment find(long uid) {
 		return null;
 	}
 

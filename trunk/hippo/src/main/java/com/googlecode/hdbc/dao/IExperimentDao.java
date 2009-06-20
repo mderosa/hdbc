@@ -4,7 +4,7 @@ import com.googlecode.hdbc.model.IExperiment;
 
 public interface IExperimentDao {
 
-	IExperiment find(Long uid);
+	IExperiment find(long uid);
 	
 	Long insert(IExperiment experiment);
 	
