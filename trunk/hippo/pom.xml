@@ -17,13 +17,8 @@
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
-    	<artifactId>spring</artifactId>
-    	<version>2.5.6.SEC01</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-webmvc</artifactId>
-    	<version>2.5.6.SEC01</version>
+  		<artifactId>org.springframework.web.servlet</artifactId>
+	  	<version>3.0.0.M3</version>
     </dependency>
     <dependency>
     	<groupId>javax.servlet</groupId>
