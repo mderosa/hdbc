@@ -30,6 +30,10 @@
 	<bean id="experimentsController" class="com.googlecode.hdbc.controller.ExperimentsController" >
 		<constructor-arg ref="experimentsDao" />
 	</bean>
-				
+	<bean id="experimentController" class="com.googlecode.hdbc.controller.ExperimentController" >
+		<constructor-arg ref="experimentDao" />
+	</bean>		
+		
 	<bean id="experimentsDao" class="com.googlecode.hdbc.dao.StubExperimentsDao" />
+	<bean id="experimentDao" class="com.googlecode.hdbc.dao.StubExperimentDao" />
 </beans>
