@@ -1,11 +1,11 @@
-package com.googlecode.hdbc.model;
+package com.googlecode.hdbc.model.record;
 
-public class Experiment implements IExperiment {
+public class ExperimentData {
 	private Long uid;
 	private String name;
 	private String purpose;
 	
-	public Experiment(Long id, String nm, String purpse) {
+	public ExperimentData(Long id, String nm, String purpse) {
 		uid = id;
 		name = nm;
 		purpose = purpse;
