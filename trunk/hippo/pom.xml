@@ -16,6 +16,26 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+    	<groupId>org.antlr</groupId>
+      	<artifactId>com.springsource.org.antlr</artifactId>
+      	<version>3.0.1</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+  		<artifactId>org.springframework.aop</artifactId>
+	  	<version>3.0.0.M3</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+  		<artifactId>org.springframework.asm</artifactId>
+	  	<version>3.0.0.M3</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+  		<artifactId>org.springframework.expression</artifactId>
+	  	<version>3.0.0.M3</version>
+    </dependency>
+    <dependency>
     	<groupId>org.springframework</groupId>
   		<artifactId>org.springframework.web.servlet</artifactId>
 	  	<version>3.0.0.M3</version>
