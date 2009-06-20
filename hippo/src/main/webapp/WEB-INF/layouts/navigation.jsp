@@ -2,6 +2,9 @@
 
 <ul>
 	<li>
-		<a href="<c:url value="/console" />">Home</a>
+		<a href="<c:url value="/console/experiments/active" />">Home</a>
+	</li>
+	<li>
+		<a href="<c:url value="/console/experiment" />">New Experiment</a>
 	</li>
 </ul>
