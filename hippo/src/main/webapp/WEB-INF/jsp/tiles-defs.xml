@@ -6,9 +6,9 @@
 
 <tiles-definitions>
 	
-	<definition name="experiments/active" extends="standard-layout">
+	<definition name="experiments/lists/active" extends="standard-layout">
 		<put-attribute name="title" value="Active Experiments" />
-		<put-attribute name="body" value="/WEB-INF/jsp/experiments.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/experimentsLists.jsp" />
 	</definition>
 	
 	<definition name="experiment" extends="standard-layout">

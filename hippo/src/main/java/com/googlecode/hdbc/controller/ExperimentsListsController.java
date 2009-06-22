@@ -9,11 +9,11 @@ import com.googlecode.hdbc.dao.IExperimentsDao;
 import com.googlecode.hdbc.model.IExperiment;
 
 @Controller
-@RequestMapping("/experiments/*")
-public class ExperimentsController {
+@RequestMapping("/experiments/lists/*")
+public class ExperimentsListsController {
 	private IExperimentsDao data;
 	
-	public ExperimentsController(IExperimentsDao dao) {
+	public ExperimentsListsController(IExperimentsDao dao) {
 		data = dao;
 	}
 
