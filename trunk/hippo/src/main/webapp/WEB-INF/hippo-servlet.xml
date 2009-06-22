@@ -48,7 +48,7 @@
 	<bean id="experimentsListsController" class="com.googlecode.hdbc.controller.ExperimentsListsController" >
 		<constructor-arg ref="experimentsDao" />
 	</bean>
-	<bean id="experimentController" class="com.googlecode.hdbc.controller.ExperimentController" >
+	<bean id="experimentsController" class="com.googlecode.hdbc.controller.ExperimentsController" >
 		<constructor-arg ref="experimentDao" />
 	</bean>		
 		
