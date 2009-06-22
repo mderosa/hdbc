@@ -111,5 +111,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.test/3.0.0.M3/org.springframework.test-3.0.0.M3.jar"/>
 	<classpathentry kind="output" path="target/build"/>
 </classpath>

@@ -23,6 +23,6 @@
 				<form:textarea id="conclusion" path="conclusion" />
 			</li>
 		</ol>
-		<input type="submit" value="submit" />
+		<input type="submit" name="submit" value="submit" />
 	</fieldset>
 </form:form>

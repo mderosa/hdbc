@@ -1,10 +1,15 @@
 package com.googlecode.hdbc.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.DataBinder;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.googlecode.hdbc.dao.IExperimentDao;
 import com.googlecode.hdbc.model.IExperiment;
 import com.googlecode.hdbc.model.record.ExperimentData;
@@ -31,12 +36,20 @@ public class ExperimentsController {
 	}
 	
 	@RequestMapping(value="/experiments", method=RequestMethod.POST)
-	void put() {
+	void create() {
 		
 	}
 	
 	@RequestMapping(value="/experiments/{uid}", method=RequestMethod.PUT)
-	void put(@PathVariable("uid") long uid) {
+	void update(@PathVariable("uid") long uid) {
 		
+	}
+	
+	protected DataBinder bind(HttpServletRequest request) {
+		ServletRequestDataBinder binder = new ServletRequestDataBinder(new ExperimentData());
+		binder.setAllowedFields(new String[] {"uid","name","purpose","method","conclusion"});
+		binder.setRequiredFields(new String[] {"name","purpose"});
+		binder.bind(request);
+		return binder;
 	}
 }
