@@ -6,12 +6,55 @@ body {
 
 div#nav {
 	float: left;
-}
-	
+}	
 div#main {
 	margin-left: 200px;
 }
-
 div#footer {
 	clear: both;
+}
+
+form.stdform fieldset {
+  margin-bottom: 10px;
+}
+form.stdform legend {
+  padding: 0 2px;
+  font-weight: bold;
+}
+form.stdform label {
+  display: inline-block;
+  line-height: 1.8;
+  vertical-align: top;
+}
+form.stdform fieldset ol {
+  margin: 0;
+  padding: 0;
+}
+form.stdform fieldset li {
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+}
+form.stdform fieldset fieldset {
+  border: none;
+  margin: 3px 0 0;
+}
+form.stdform fieldset fieldset legend {
+  padding: 0 0 5px;
+  font-weight: normal;
+}
+form.stdform fieldset fieldset label {
+  display: block;
+  width: auto;
+}
+form.stdform em {
+  font-weight: bold;
+  font-style: normal;
+  color: #f00;
+}
+form.stdform label {
+  width: 120px; /* Width of labels */
+}
+form.stdform fieldset fieldset label {
+  margin-left: 123px; /* Width plus 3 (html space) */
 }
