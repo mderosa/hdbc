@@ -11,9 +11,9 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/experimentsLists.jsp" />
 	</definition>
 	
-	<definition name="experiment" extends="standard-layout">
-		<put-attribute name="title" value="New Experiment" />
-		<put-attribute name="body" value="/WEB-INF/jsp/experiment.jsp" />
+	<definition name="experiments" extends="standard-layout">
+		<put-attribute name="title" value="Experiment" />
+		<put-attribute name="body" value="/WEB-INF/jsp/experiments.jsp" />
 	</definition>
 	
 </tiles-definitions>

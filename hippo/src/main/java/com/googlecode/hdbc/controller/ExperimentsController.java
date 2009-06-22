@@ -10,32 +10,32 @@ import com.googlecode.hdbc.model.IExperiment;
 import com.googlecode.hdbc.model.record.ExperimentData;
 
 @Controller
-public class ExperimentController {
+public class ExperimentsController {
 	IExperimentDao dao;
 	
-	public ExperimentController(IExperimentDao exprmntDao) {
+	public ExperimentsController(IExperimentDao exprmntDao) {
 		dao = exprmntDao;
 	}
 
-	@RequestMapping(value="/experiment", method=RequestMethod.GET)
+	@RequestMapping(value="/experiments", method=RequestMethod.GET)
 	public String newExperiment(Model model) {
 		model.addAttribute("experiment", new ExperimentData());
-		return "experiment";
+		return "experiments";
 	}
 	
-	@RequestMapping(value="/experiment/{uid}", method=RequestMethod.GET)
+	@RequestMapping(value="/experiments/{uid}", method=RequestMethod.GET)
 	public String get(@PathVariable("uid") String uid, Model model) {
 		IExperiment experiment = dao.find(10);
 		model.addAttribute("experiment", experiment.getData());
-		return "experiment";
+		return "experiments";
 	}
 	
-	@RequestMapping(value="/experiment/{uid}", method=RequestMethod.POST)
-	void post(@PathVariable("uid") long uid) {
+	@RequestMapping(value="/experiments", method=RequestMethod.POST)
+	void put() {
 		
 	}
-
-	@RequestMapping(value="/experiment/{uid}", method=RequestMethod.PUT)
+	
+	@RequestMapping(value="/experiments/{uid}", method=RequestMethod.PUT)
 	void put(@PathVariable("uid") long uid) {
 		
 	}
