@@ -45,7 +45,7 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 	</bean>
 		
-	<bean id="experimentsController" class="com.googlecode.hdbc.controller.ExperimentsController" >
+	<bean id="experimentsListsController" class="com.googlecode.hdbc.controller.ExperimentsListsController" >
 		<constructor-arg ref="experimentsDao" />
 	</bean>
 	<bean id="experimentController" class="com.googlecode.hdbc.controller.ExperimentController" >
