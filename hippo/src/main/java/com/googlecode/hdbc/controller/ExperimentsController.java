@@ -24,8 +24,8 @@ public class ExperimentsController {
 	}
 	
 	@RequestMapping(value="/experiments/{uid}", method=RequestMethod.GET)
-	public String get(@PathVariable("uid") String uid, Model model) {
-		IExperiment experiment = dao.find(10);
+	public String get(@PathVariable("uid") long uid, Model model) {
+		IExperiment experiment = dao.find(uid);
 		model.addAttribute("experiment", experiment.getData());
 		return "experiments";
 	}
