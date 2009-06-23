@@ -13,8 +13,8 @@ public class StubExperimentDao implements IExperimentDao {
 	}
 
 	@Override
-	public Long insert(IExperiment experiment) {
-		return null;
+	public long insert(IExperiment experiment) {
+		return 0;
 	}
 
 	@Override

@@ -6,7 +6,7 @@ public interface IExperimentDao {
 
 	IExperiment find(long uid);
 	
-	Long insert(IExperiment experiment);
+	long insert(IExperiment experiment);
 	
 	void update(IExperiment experiment);
 }
