@@ -40,7 +40,7 @@ public class ExperimentsControllerTest {
 		DataBinder actual = ctlr.bind(req);
 		assertNotNull(actual);
 		ExperimentData data = (ExperimentData) actual.getTarget();
-		assertEquals("some name", data.getName());
+		assertEquals("some name", data.getTitle());
 		assertEquals(23, data.getUid());
 	}
 	

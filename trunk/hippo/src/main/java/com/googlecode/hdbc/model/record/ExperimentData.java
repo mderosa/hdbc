@@ -2,7 +2,7 @@ package com.googlecode.hdbc.model.record;
 
 public class ExperimentData {
 	private long uid;
-	private String name;
+	private String title;
 	private String purpose;
 	private String method;
 	private String conclusion;
@@ -11,7 +11,7 @@ public class ExperimentData {
 	
 	public ExperimentData(Long id, String nm, String purpse) {
 		uid = id;
-		name = nm;
+		title = nm;
 		purpose = purpse;
 	}
 
@@ -22,11 +22,11 @@ public class ExperimentData {
 		this.uid = uid;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String name) {
+		this.title = name;
 	}
 
 	public String getPurpose() {
