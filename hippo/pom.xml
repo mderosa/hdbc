@@ -8,6 +8,14 @@
   <name>hippo Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
+    <repositories>
+		<repository>
+			<id>com.springsource.repository.bundles.milestone</id>
+			<name>SpringSource Enterprise Bundle Repository - External Bundle Milestones</name>
+			<url>http://repository.springsource.com/maven/bundles/milestone</url>
+		</repository>
+    </repositories>
+    
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
