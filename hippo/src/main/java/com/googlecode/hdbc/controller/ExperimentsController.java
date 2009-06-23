@@ -47,7 +47,6 @@ public class ExperimentsController {
 	
 	protected DataBinder bind(HttpServletRequest request) {
 		ServletRequestDataBinder binder = new ServletRequestDataBinder(new ExperimentData());
-		binder.setAllowedFields(new String[] {"uid","name","purpose","method","conclusion"});
 		binder.setRequiredFields(new String[] {"name","purpose"});
 		binder.bind(request);
 		return binder;
