@@ -31,7 +31,7 @@ public class ExperimentsControllerTest {
 		req.setParameter("purpose", "to test values");
 		req.setParameter("method", "very good method");
 		
-		ctlr = new ExperimentsController(null);
+		ctlr = new ExperimentsController(null, null);
 	}
 	
 	/**

@@ -50,8 +50,11 @@
 	</bean>
 	<bean id="experimentsController" class="com.googlecode.hdbc.controller.ExperimentsController" >
 		<constructor-arg ref="experimentDao" />
+		<constructor-arg ref="experimentDataValidator" />
 	</bean>		
 		
 	<bean id="experimentsDao" class="com.googlecode.hdbc.dao.StubExperimentsDao" />
 	<bean id="experimentDao" class="com.googlecode.hdbc.dao.StubExperimentDao" />
+	
+	<bean id="experimentDataValidator" class="com.googlecode.hdbc.model.validator.ExperimentDataValidator" />
 </beans>
