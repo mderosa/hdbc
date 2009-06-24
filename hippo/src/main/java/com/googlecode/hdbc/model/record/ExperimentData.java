@@ -1,7 +1,9 @@
 package com.googlecode.hdbc.model.record;
 
+import org.apache.commons.lang.StringUtils;
+
 public class ExperimentData {
-	private long uid;
+	private Long uid;
 	private String title;
 	private String purpose;
 	private String method;
@@ -15,10 +17,10 @@ public class ExperimentData {
 		purpose = purpse;
 	}
 
-	public long getUid() {
+	public Long getUid() {
 		return uid;
 	}
-	public void setUid(long uid) {
+	public void setUid(Long uid) {
 		this.uid = uid;
 	}
 
@@ -26,28 +28,28 @@ public class ExperimentData {
 		return title;
 	}
 	public void setTitle(String name) {
-		this.title = name;
+		this.title = StringUtils.trimToNull(name);
 	}
 
 	public String getPurpose() {
 		return purpose;
 	}
 	public void setPurpose(String purpose) {
-		this.purpose = purpose;
+		this.purpose = StringUtils.trimToNull(purpose);
 	}
 
 	public String getMethod() {
 		return method;
 	}
 	public void setMethod(String method) {
-		this.method = method;
+		this.method = StringUtils.trimToNull(method);
 	}
 
 	public String getConclusion() {
 		return conclusion;
 	}
 	public void setConclusion(String conclusion) {
-		this.conclusion = conclusion;
+		this.conclusion = StringUtils.trimToNull(conclusion);
 	}
 	
 }
