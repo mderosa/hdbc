@@ -4,7 +4,7 @@
 <c:forEach var="experiment" items="${experiments}" >
 	<h3>
 		<a href="<c:url value="/console/experiments/${experiment.data.uid}" />" >
-			<c:out value="${experiment.data.name}" />
+			<c:out value="${experiment.data.title}" />
 		</a>
 	</h3>
 	<p>

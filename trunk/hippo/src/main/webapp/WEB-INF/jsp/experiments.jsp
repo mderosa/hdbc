@@ -7,8 +7,8 @@
 		<form:hidden path="uid" />
 		<ol>
 			<li>
-				<label for="name">Name:<em>*</em></label>
-				<form:input id="name" path="name" />
+				<label for="name">Title:<em>*</em></label>
+				<form:input id="title" path="title" />
 			</li>
 			<li>
 				<label for="purpose">Purpose:<em>*</em></label>
