@@ -20,15 +20,18 @@ import com.googlecode.hdbc.model.record.ExperimentData;
  * 
  */
 public class ExperimentsControllerTest {
-	MockHttpServletRequest req;
+	private MockHttpServletRequest req;
+	private ExperimentsController ctlr;
 	
 	@Before
 	public final void setUp() {
 		req = new MockHttpServletRequest();
 		req.setParameter("uid", "23");
-		req.setParameter("name", "some name");
+		req.setParameter("title", "some name");
 		req.setParameter("purpose", "to test values");
 		req.setParameter("method", "very good method");
+		
+		ctlr = new ExperimentsController(null);
 	}
 	
 	/**
@@ -36,12 +39,11 @@ public class ExperimentsControllerTest {
 	 */
 	@Test
 	public void testBinding1() {
-		ExperimentsController ctlr = new ExperimentsController(null);
 		DataBinder actual = ctlr.bind(req);
 		assertNotNull(actual);
 		ExperimentData data = (ExperimentData) actual.getTarget();
 		assertEquals("some name", data.getTitle());
-		assertEquals(23, data.getUid());
+		assertEquals(23, data.getUid().longValue());
 	}
 	
 	/**
@@ -49,8 +51,7 @@ public class ExperimentsControllerTest {
 	 */
 	@Test
 	public final void testBinding2() {
-		ExperimentsController ctlr = new ExperimentsController(null);
-		req.removeParameter("name");
+		req.removeParameter("title");
 		DataBinder actual = ctlr.bind(req);
 		int count = actual.getBindingResult().getErrorCount();
 		assertEquals(1, count);
@@ -61,8 +62,7 @@ public class ExperimentsControllerTest {
 	 */
 	@Test
 	public final void testBinding2EmptyValue() {
-		ExperimentsController ctlr = new ExperimentsController(null);
-		req.removeParameter("name");
+		req.removeParameter("title");
 		DataBinder actual = ctlr.bind(req);
 		int count = actual.getBindingResult().getErrorCount();
 		assertEquals(1, count);
@@ -73,10 +73,20 @@ public class ExperimentsControllerTest {
 	 */
 	@Test
 	public final void testBinding3() {
-		ExperimentsController ctlr = new ExperimentsController(null);
 		req.addParameter("submit", "submit");
 		DataBinder actual = ctlr.bind(req);
 		int count = actual.getBindingResult().getErrorCount();
 		assertEquals(0, count);
+	}
+	
+	/**
+	 * Test that the bound fields are trimmed
+	 */
+	@Test
+	public final void testBoundFieldsHaveTrimmedValues() {
+		req.addParameter("conclusion", "  conclusion   ");
+		DataBinder actual = ctlr.bind(req);
+		ExperimentData data = (ExperimentData) actual.getTarget();
+		assertEquals("conclusion", data.getConclusion());
 	}
 }

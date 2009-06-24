@@ -10,19 +10,16 @@ import org.springframework.validation.Validator;
 
 import com.googlecode.hdbc.model.record.ExperimentData;
 
-/**
- * Specification
- * <p>
-
- */
 public class ExperimentDataValidatorTest {
 	private ExperimentData data;
+	private Validator validator;
 	
 	@Before
 	public final void setUp() {
 		data = new ExperimentData(-1L, 
 				"title that is way to long aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 
 				"purpose");
+		validator = new ExperimentDataValidator();
 	}
 	
 	/**
@@ -30,10 +27,21 @@ public class ExperimentDataValidatorTest {
 	 */
 	@Test
 	public final void testBadEquipmentData() {
-		Validator v = new ExperimentDataValidator();
 		Errors errors = new BeanPropertyBindingResult(data, "experimentData");
-		v.validate(data, errors);
+		validator.validate(data, errors);
 		assertEquals(2, errors.getErrorCount());
+	}
+	
+	/**
+	 * Test a minimally correct EquipmentData
+	 */
+	@Test
+	public final void testMinimalCorrectObject() {
+		data.setUid(null);
+		data.setTitle("aTitle");
+		Errors errors = new BeanPropertyBindingResult(data, "experimentData");
+		validator.validate(data, errors);
+		assertEquals(0, errors.getErrorCount());
 	}
 	
 }

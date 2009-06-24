@@ -5,7 +5,7 @@ import org.springframework.validation.Validator;
 
 import com.googlecode.hdbc.model.record.ExperimentData;
 
-public class ExperimentDataValidator implements Validator {
+public class ExperimentDataValidator extends DataValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -17,11 +17,11 @@ public class ExperimentDataValidator implements Validator {
 	 * <p>
 	 * Specification
 	 * validate :: Object -> Errors -> Boolean
-	 * validate obj | obj.uid == null || (isnumeric(obj.uid) && obj.uid > 0)
+	 * validate obj | obj.uid == null || obj.uid > 0
 	 * 					&&
-	 * 				  len(obj.title) <= 64
+	 * 				  obj.title != null && len(obj.title) <= 64
 	 * 					&&
-	 * 				  len(obj.purpose) <= 128
+	 * 				  obj.purpose != null && len(obj.purpose) <= 128
 	 * 					&&
 	 * 				  obj.method == null || len(obj.method) <= 4000
 	 * 					&&
@@ -34,7 +34,21 @@ public class ExperimentDataValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		ExperimentData data = (ExperimentData) target;
-
+		if (!this.isNullOrGreaterThan(data.getUid(), 0)) {
+			errors.rejectValue("uid", ValidationErrorCd.NUMBER_OUT_OF_RANGE.toString());
+		}
+		if (!this.isNotNullAndUpToLengthN(data.getTitle(), 64)) {
+			errors.rejectValue("title", ValidationErrorCd.REQUIRED_STRING_TOO_LONG.toString());
+		}
+		if (!this.isNotNullAndUpToLengthN(data.getPurpose(), 128)) {
+			errors.rejectValue("purpose", ValidationErrorCd.REQUIRED_STRING_TOO_LONG.toString());
+		}
+		if (!this.isNullOrUptoLengthN(data.getMethod(), 4000)) {
+			errors.rejectValue("method", ValidationErrorCd.OPTIONAL_STRING_TO_LONG.toString());
+		}
+		if (!this.isNullOrUptoLengthN(data.getConclusion(), 4000)) {
+			errors.rejectValue("conclusion", ValidationErrorCd.OPTIONAL_STRING_TO_LONG.toString());
+		}
 	}
 
 }
