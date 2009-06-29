@@ -50,11 +50,15 @@ form.stdform fieldset fieldset label {
 form.stdform em {
   font-weight: bold;
   font-style: normal;
-  color: #f00;
+  color: #F00;
 }
 form.stdform label {
   width: 120px; /* Width of labels */
 }
 form.stdform fieldset fieldset label {
   margin-left: 123px; /* Width plus 3 (html space) */
+}
+
+span.error {
+    color: #F00;
 }

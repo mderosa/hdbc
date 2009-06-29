@@ -33,19 +33,19 @@ public class ExperimentDataValidator extends DataValidator implements Validator 
 	public void validate(Object target, Errors errors) {
 		ExperimentData data = (ExperimentData) target;
 		if (!this.isNullOrGreaterThan(data.getUid(), 0)) {
-			errors.rejectValue("uid", ValidationErrorCd.NUMBER_OUT_OF_RANGE.toString());
+			errors.rejectValue("uid", ValidationErrorCd.NUMBER_BELOW_MINIMUM.toString(), new Object[] {0}, "na");
 		}
 		if (!this.isNotNullAndUpToLengthN(data.getTitle(), 64)) {
-			errors.rejectValue("title", ValidationErrorCd.REQUIRED_STRING_TOO_LONG.toString());
+			errors.rejectValue("title", ValidationErrorCd.REQUIRED_STRING_TOO_LONG.toString(), new Object[] {64}, "na");
 		}
 		if (!this.isNotNullAndUpToLengthN(data.getPurpose(), 128)) {
-			errors.rejectValue("purpose", ValidationErrorCd.REQUIRED_STRING_TOO_LONG.toString());
+			errors.rejectValue("purpose", ValidationErrorCd.REQUIRED_STRING_TOO_LONG.toString(), new Object[] {128}, "na");
 		}
 		if (!this.isNullOrUptoLengthN(data.getMethod(), 4000)) {
-			errors.rejectValue("method", ValidationErrorCd.OPTIONAL_STRING_TO_LONG.toString());
+			errors.rejectValue("method", ValidationErrorCd.OPTIONAL_STRING_TO_LONG.toString(), new Object[] {4000}, "na");
 		}
 		if (!this.isNullOrUptoLengthN(data.getConclusion(), 4000)) {
-			errors.rejectValue("conclusion", ValidationErrorCd.OPTIONAL_STRING_TO_LONG.toString());
+			errors.rejectValue("conclusion", ValidationErrorCd.OPTIONAL_STRING_TO_LONG.toString(), new Object[] {4000}, "na");
 		}
 	}
 
