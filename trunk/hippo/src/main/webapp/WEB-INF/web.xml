@@ -6,6 +6,11 @@
 	
 	<display-name>Hippo</display-name>
   
+  	<context-param>
+  		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+  		<param-value>language.page-text</param-value>
+  	</context-param>
+  	
 	<filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
