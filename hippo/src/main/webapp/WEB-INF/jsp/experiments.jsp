@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <form:form method="${(empty experiment.uid) ? 'post' : 'put'}" commandName="experiment" cssClass="stdform">
@@ -7,7 +8,9 @@
 		<form:hidden path="uid" />
 		<ol>
 			<li>
-				<label for="name">Title:<em>*</em></label>
+				<label for="name">
+					<fmt:message key="experiments.title" /><em>*</em>
+				</label>
 				<form:input id="title" path="title" />
 				<form:errors path="title" cssClass="error" />
 			</li>
