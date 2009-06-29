@@ -15,10 +15,10 @@ public abstract class DataValidator {
 				return "optional.string.too.long";
 			}
 		},
-		NUMBER_OUT_OF_RANGE {
+		NUMBER_BELOW_MINIMUM {
 			@Override
 			public final String toString () {
-				return "number.out.of.range";
+				return "number.below.minimum";
 			}
 		}
 	}

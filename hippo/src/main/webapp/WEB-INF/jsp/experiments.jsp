@@ -9,30 +9,22 @@
 			<li>
 				<label for="name">Title:<em>*</em></label>
 				<form:input id="title" path="title" />
-				<div class="error">
-					<form:errors path="title" />
-				</div>
+				<form:errors path="title" cssClass="error" />
 			</li>
 			<li>
 				<label for="purpose">Purpose:<em>*</em></label>
 				<form:textarea id="purpose" path="purpose"/>
-				<div class="error">
-					<form:errors path="purpose" />
-				</div>
+				<form:errors path="purpose" cssClass="error" />
 			</li>
 			<li>
 				<label for="method">Method:</label>
 				<form:textarea id="method" path="method" />
-				<div class="error">
-					<form:errors path="method" />
-				</div>
+				<form:errors path="method" cssClass="error" />
 			</li>
 			<li>
 				<label for="conclusion">Conclusion:</label>
 				<form:textarea id="conclusion" path="conclusion" />
-				<div class="error">
-					<form:errors path="method" />
-				</div>
+				<form:errors path="method" cssClass="error" />
 			</li>
 		</ol>
 		<input type="submit" name="submit" value="${empty experiment.uid ? 'create' : 'update'}" />
