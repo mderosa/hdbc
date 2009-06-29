@@ -125,6 +125,7 @@
         	<artifactId>maven-jetty-plugin</artifactId>
         	<groupId>org.mortbay.jetty</groupId>
         	<configuration>
+        		<scanIntervalSeconds>15</scanIntervalSeconds>
         		<stopPort>9966</stopPort>
         		<stopKey>stop</stopKey>
         	</configuration>
