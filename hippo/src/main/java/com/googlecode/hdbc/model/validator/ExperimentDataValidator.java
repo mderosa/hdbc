@@ -7,7 +7,6 @@ import com.googlecode.hdbc.model.record.ExperimentData;
 
 public class ExperimentDataValidator extends DataValidator implements Validator {
 
-	@Override
 	public boolean supports(Class<?> clazz) {
 		return false;
 	}
@@ -31,7 +30,6 @@ public class ExperimentDataValidator extends DataValidator implements Validator 
 	 * precondition is obj.title and obj.purpose /= null
 	 * postcondition error.count >= 0
 	 */
-	@Override
 	public void validate(Object target, Errors errors) {
 		ExperimentData data = (ExperimentData) target;
 		if (!this.isNullOrGreaterThan(data.getUid(), 0)) {

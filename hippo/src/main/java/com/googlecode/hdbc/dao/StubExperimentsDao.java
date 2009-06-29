@@ -9,7 +9,6 @@ import com.googlecode.hdbc.model.record.ExperimentData;
 
 public class StubExperimentsDao implements IExperimentsDao {
 
-	@Override
 	public List<IExperiment> findActiveExperiments() {
 		List<IExperiment> experiments = new ArrayList<IExperiment>();
 		experiments.add(new Experiment(

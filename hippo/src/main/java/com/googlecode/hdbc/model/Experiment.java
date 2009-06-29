@@ -11,17 +11,14 @@ public class Experiment implements IExperiment {
 		data = d;
 	}
 	
-	@Override
 	public ExperimentAnalysis analyseData() {
 		return null;
 	}
 
-	@Override
 	public ExperimentGraphics calculateGraphics() {
 		return null;
 	}
 
-	@Override
 	public ExperimentData getData() {
 		return data;
 	}

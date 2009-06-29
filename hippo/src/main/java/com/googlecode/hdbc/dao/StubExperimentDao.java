@@ -6,18 +6,15 @@ import com.googlecode.hdbc.model.record.ExperimentData;
 
 public class StubExperimentDao implements IExperimentDao {
 
-	@Override
 	public IExperiment find(long uid) {
 		ExperimentData data = new ExperimentData(23L, "test name", "test purpose");
 		return new Experiment(data); 
 	}
 
-	@Override
 	public long insert(IExperiment experiment) {
 		return 0;
 	}
 
-	@Override
 	public void update(IExperiment experiment) {
 
 	}
