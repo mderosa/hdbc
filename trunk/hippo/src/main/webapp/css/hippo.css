@@ -6,12 +6,22 @@ body {
 
 div#nav {
 	float: left;
-}	
+}
+
 div#main {
 	margin-left: 200px;
+	padding-left: 10px;
+	border-left: solid;
 }
+
+div#header {
+	background-color: #800;
+}
+
 div#footer {
 	clear: both;
+	background-color: #800;
+	text-align: center;
 }
 
 form.stdform fieldset {
@@ -61,4 +71,13 @@ form.stdform fieldset fieldset label {
 
 span.error {
     color: #F00;
+}
+
+ul.stdlist {
+	list-style-type: none;
+	padding: 0 0 0 0;
+}
+
+ul.stdlist li.gray {
+	background-color: #CCC;
 }
