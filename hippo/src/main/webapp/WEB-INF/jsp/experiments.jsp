@@ -4,28 +4,38 @@
 
 <form:form method="${(empty experiment.uid) ? 'post' : 'put'}" commandName="experiment" cssClass="stdform">
 	<fieldset>
-		<legend>Experiment Details</legend>
+		<legend>
+			<fmt:message key="experiments.experiment.details" />
+		</legend>
 		<form:hidden path="uid" />
 		<ol>
 			<li>
 				<label for="name">
-					<fmt:message key="experiments.title" /><em>*</em>
+					<fmt:message key="experiments.title" />
+					<em>*</em>
 				</label>
 				<form:input id="title" path="title" />
 				<form:errors path="title" cssClass="error" />
 			</li>
 			<li>
-				<label for="purpose">Purpose:<em>*</em></label>
+				<label for="purpose">
+					<fmt:message key="experiments.purpose" />
+					<em>*</em>
+				</label>
 				<form:textarea id="purpose" path="purpose"/>
 				<form:errors path="purpose" cssClass="error" />
 			</li>
 			<li>
-				<label for="method">Method:</label>
+				<label for="method">
+					<fmt:message key="experiments.method" />
+				</label>
 				<form:textarea id="method" path="method" />
 				<form:errors path="method" cssClass="error" />
 			</li>
 			<li>
-				<label for="conclusion">Conclusion:</label>
+				<label for="conclusion">
+					<fmt:message key="experiments.conclusion" />
+				</label>
 				<form:textarea id="conclusion" path="conclusion" />
 				<form:errors path="method" cssClass="error" />
 			</li>
