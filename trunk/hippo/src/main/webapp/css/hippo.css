@@ -16,6 +16,15 @@ div#main {
 
 div#header {
 	background-color: #800;
+	padding: 3px 3px 3px 3px;
+}
+
+div#header img {
+	vertical-align:middle;
+}
+div#header span {
+	font-size: 30px;
+	vertical-align: middle;
 }
 
 div#footer {
