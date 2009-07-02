@@ -33,6 +33,10 @@ div#footer {
 	text-align: center;
 }
 
+div#footer a {
+	color: #000;
+}
+
 form.stdform fieldset {
   margin-bottom: 10px;
 }
