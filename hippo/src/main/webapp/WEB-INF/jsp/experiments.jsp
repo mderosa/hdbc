@@ -40,6 +40,15 @@
 				<form:errors path="method" cssClass="error" />
 			</li>
 		</ol>
-		<input type="submit" name="submit" value="${empty experiment.uid ? 'create' : 'update'}" />
+		<c:choose>
+			<c:when test="${empty experiment.uid}" >
+				<input type="submit" name="submit" value="
+					<fmt:message key="experiments.create" />" />
+			</c:when>
+			<c:otherwise>
+				<input type="submit" name="submit" value="
+					<fmt:message key="experiments.update" />" />
+			</c:otherwise>
+		</c:choose>
 	</fieldset>
 </form:form>
