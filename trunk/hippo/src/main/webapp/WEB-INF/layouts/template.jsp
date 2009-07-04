@@ -16,21 +16,21 @@
 		</title>
 	</head>
 	<body>
-		<div id="header" >
-			<tiles:insertAttribute name="header" />
-		</div>
-		
-		<div id="content" >
+		<div id="page">
+			<div id="header" >
+				<tiles:insertAttribute name="header" />
+			</div>
+			
 			<div id="nav">
 				<tiles:insertAttribute name="navigation" />
 			</div>
 			<div id="main">
 				<tiles:insertAttribute name="body" />
 			</div>
-		</div>
 		
-		<div id="footer" >
-			<tiles:insertAttribute name="footer" />
+			<div id="footer" >
+				<tiles:insertAttribute name="footer" />
+			</div>
 		</div>
 	</body>
 </html>
