@@ -32,6 +32,15 @@ div#header span {
 	vertical-align: middle;
 }
 
+div#header form#search {
+	padding-top: 13px;
+	padding-bottom: 13px;
+	text-align: right;
+}
+div#header div#branding {
+	float:left;
+}
+
 div#footer {
 	clear: both;
 	background-color: #800;
@@ -44,6 +53,7 @@ div#footer a {
 
 form.stdform fieldset {
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 form.stdform legend {
   padding: 0 2px;
