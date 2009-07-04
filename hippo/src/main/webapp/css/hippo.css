@@ -1,7 +1,11 @@
 
 body {
-	margin-left: 20px;
-	margin-right: 20px;	
+	margin: 20px 40px 20px 40px;	
+	background-color:#666;
+}
+
+div#page {
+	background-color: #FFF;
 }
 
 div#nav {
@@ -11,6 +15,7 @@ div#nav {
 div#main {
 	margin-left: 200px;
 	padding-left: 10px;
+	padding-right: 10px;
 	border-left: solid;
 }
 
@@ -80,6 +85,12 @@ form.stdform label {
 }
 form.stdform fieldset fieldset label {
   margin-left: 123px; /* Width plus 3 (html space) */
+}
+form.stdform fieldset input {
+    width: 75%
+}
+form.stdform fieldset textarea {
+	width: 75%;
 }
 
 span.error {

@@ -14,7 +14,7 @@
 					<fmt:message key="experiments.title" />
 					<em>*</em>
 				</label>
-				<form:input id="title" path="title" />
+				<form:input id="title" path="title" maxlength="64" />
 				<form:errors path="title" cssClass="error" />
 			</li>
 			<li>
@@ -39,16 +39,16 @@
 				<form:textarea id="conclusion" path="conclusion" />
 				<form:errors path="method" cssClass="error" />
 			</li>
-		</ol>
-		<c:choose>
-			<c:when test="${empty experiment.uid}" >
-				<input type="submit" name="submit" value="
-					<fmt:message key="experiments.create" />" />
-			</c:when>
-			<c:otherwise>
-				<input type="submit" name="submit" value="
-					<fmt:message key="experiments.update" />" />
-			</c:otherwise>
-		</c:choose>
+		</ol>		
 	</fieldset>
+	<c:choose>
+		<c:when test="${empty experiment.uid}" >
+			<input type="submit" name="submit" value="
+				<fmt:message key="experiments.create" />" />
+		</c:when>
+		<c:otherwise>
+			<input type="submit" name="submit" value="
+				<fmt:message key="experiments.update" />" />
+		</c:otherwise>
+	</c:choose>
 </form:form>
