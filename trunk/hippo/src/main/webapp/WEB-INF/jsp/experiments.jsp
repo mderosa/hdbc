@@ -10,7 +10,7 @@
 		<form:hidden path="uid" />
 		<ol>
 			<li>
-				<label for="name">
+				<label for="title">
 					<fmt:message key="experiments.title" />
 					<em>*</em>
 				</label>
