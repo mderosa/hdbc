@@ -5,10 +5,9 @@
 	<span>Hippo</span>
 </div>
 
-<form id="search" method="GET" action="<c:url value="/experiments/list/search" />" >
-	<label for="search" >search
-		<input type="text" name="search" />
-	</label>
+<form id="searchform" method="GET" action="<c:url value="/experiments/list/search" />" >
+	<label for="search" >search</label>
+	<input type="text" id="search" name="search" />
 	<input type="submit" value="go" />
 </form>
 

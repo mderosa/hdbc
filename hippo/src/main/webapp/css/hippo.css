@@ -32,7 +32,7 @@ div#header span {
 	vertical-align: middle;
 }
 
-div#header form#search {
+div#header form#searchform {
 	padding-top: 13px;
 	padding-bottom: 13px;
 	text-align: right;
