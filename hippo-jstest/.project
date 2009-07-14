@@ -37,12 +37,12 @@
 		<link>
 			<name>WebContent/ext</name>
 			<type>2</type>
-			<location>C:/Documents and Settings/mderosa/workspace/hdbc/hippo/src/main/webapp/ext</location>
+			<location>/home/odysseus/workspace/hdbc/hippo/src/main/webapp/ext</location>
 		</link>
 		<link>
 			<name>WebContent/js</name>
 			<type>2</type>
-			<location>C:/Documents and Settings/mderosa/workspace/hdbc/hippo/src/main/webapp/js</location>
+			<location>/home/odysseus/workspace/hdbc/hippo/src/main/webapp/js</location>
 		</link>
 	</linkedResources>
 </projectDescription>
