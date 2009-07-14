@@ -23,8 +23,14 @@
   		});
 	});
 
-	function testNewExperimentButton() {
-		assertTrue(true);
+	function testNewExperimentButtonConfiguration() {
+		var btn = Ext.get('newExperiment');
+		assertNotNull(btn);
+	}
+
+	function testNewExperimentButtonHandler() {
+		var btn = Ext.get('newExperiment');
+		assertNotNull(btn.onclick);
 	}
 </script>
 </head>
@@ -32,6 +38,7 @@
 <body>
 <h1>Experiment Tool Panel Test</h1>
 <div id="test"></div>
+
 <p>This page contains tests for the JsUnit Assertion
     functions. To see them, take a look at the source.</p>
 </body>
