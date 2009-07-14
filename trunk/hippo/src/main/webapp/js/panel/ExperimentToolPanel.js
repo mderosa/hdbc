@@ -6,7 +6,10 @@ Hippo.ExperimentToolPanel = Ext.extend(Ext.Toolbar, {
 	initComponent: function() {
 		Ext.apply(this, {
 			items: [{
-				text: 'new experiment'
+				text: 'New*'
+				,xtype: 'tbbutton'
+				,tooltip: 'create a new experiment'
+				,style: 'border: solid 1px #AAA'
 			}]
 		});
 		

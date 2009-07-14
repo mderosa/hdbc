@@ -10,8 +10,10 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 			items: [{
 				title: 'Hippo'
 				,region: 'north'
-				,height: 50
-				,tbar: 'experimenttoolpanel'
+				,height: 75
+				,items: [{
+					xtype: 'experimenttoolpanel'
+				}]
 			},
 			{
 				region: 'west',
