@@ -8,14 +8,12 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 		Ext.apply(this, {
 			id: 'viewport'
 			
-			,items: [{
-				title: 'Hippo'
-				,region: 'north'
-				,height: 75
-				,items: [{
-					xtype: 'experimenttoolpanel'
-				}]
-			},
+			,items: [//{
+				//region: 'north'
+				//,height: 30
+				//,xtype: 'experimenttoolpanel'
+			//},
+			new Hippo.panel.ExperimentToolPanel({region: 'north', height: 30}),
 			{
 				region: 'west',
 				collapsible: true,
@@ -42,6 +40,9 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 		
 		
 		Hippo.HippoViewport.superclass.initComponent.apply(this, arguments);
+		
+		//this.relayEvents(this.items[0], ['newexperiment']);
+		//this.on('newexperiment', function(){alert('viewport');}, this);
 	}
 	
 });
