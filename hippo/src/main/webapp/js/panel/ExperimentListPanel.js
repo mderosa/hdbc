@@ -19,6 +19,7 @@ Hippo.ExperimentListPanel = Ext.extend(Ext.grid.GridPanel, {
 					,{name: 'purpose'}
 				])
 			})
+			,autoScroll: true
 			,autoHeight: true
 			,viewConfig: {
 				forceFit: true
