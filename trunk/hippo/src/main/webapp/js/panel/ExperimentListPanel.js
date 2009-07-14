@@ -1,11 +1,12 @@
 
-Ext.namespace('Hippo');
+Ext.namespace('Hippo.panel');
 
-Hippo.ExperimentListPanel = Ext.extend(Ext.grid.GridPanel, {
+Hippo.panel.ExperimentListPanel = Ext.extend(Ext.grid.GridPanel, {
 	
 	initComponent: function() {
 		Ext.apply(this, {
-			columns: [
+			id: 'expList'
+			,columns: [
 				{header: 'Title', dataIndex: 'title'},
 				{header: 'Purpose', dataIndex: 'purpose'}
 			]
@@ -26,9 +27,9 @@ Hippo.ExperimentListPanel = Ext.extend(Ext.grid.GridPanel, {
 			}
 		});
 				
-		Hippo.ExperimentListPanel.superclass.initComponent.apply(this, arguments);		
+		Hippo.panel.ExperimentListPanel.superclass.initComponent.apply(this, arguments);		
 	}
 
 });
 
-Ext.reg('experimentlistpanel', Hippo.ExperimentListPanel);
+Ext.reg('experimentlistpanel', Hippo.panel.ExperimentListPanel);

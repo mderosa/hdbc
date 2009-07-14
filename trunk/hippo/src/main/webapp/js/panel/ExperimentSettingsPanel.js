@@ -1,11 +1,12 @@
 
 Ext.namespace('Hippo');
 
-Hippo.ExperimentSettingsPanel = Ext.extend(Ext.form.FormPanel, {
+Hippo.panel.ExperimentSettingsPanel = Ext.extend(Ext.form.FormPanel, {
 	
 	initComponent: function() {
 		Ext.apply(this, {
-			items: [{
+			id: 'settings'
+			,items: [{
 				fieldLabel: 'show active',
 				name: 'active',
 				checked: true,
@@ -18,9 +19,9 @@ Hippo.ExperimentSettingsPanel = Ext.extend(Ext.form.FormPanel, {
 			}]		
 		});
 		
-		Hippo.ExperimentSettingsPanel.superclass.initComponent.apply(this, arguments);
+		Hippo.panel.ExperimentSettingsPanel.superclass.initComponent.apply(this, arguments);
 	}
 
 });
 
-Ext.reg('experimentsettingspanel', Hippo.ExperimentSettingsPanel);
+Ext.reg('experimentsettingspanel', Hippo.panel.ExperimentSettingsPanel);

@@ -6,8 +6,9 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 	
 	initComponent: function() {
 		Ext.apply(this, {
+			id: 'viewport'
 			
-			items: [{
+			,items: [{
 				title: 'Hippo'
 				,region: 'north'
 				,height: 75
