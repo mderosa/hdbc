@@ -10,6 +10,7 @@
  	<script type="text/javascript" src="<c:url value="/ext/ext-all-debug.js" />" ></script>
  	
  	<script type="text/javascript" src="<c:url value="/js/HippoViewport.js" />" ></script>
+ 	<script type="text/javascript" src="<c:url value="/js/dialog/NewExperiment.js" />" ></script>
  	<script type="text/javascript" src="<c:url value="/js/panel/ExperimentTabPanel.js" />" ></script>
  	<script type="text/javascript" src="<c:url value="/js/panel/ExperimentListPanel.js" />" ></script>
  	<script type="text/javascript" src="<c:url value="/js/panel/ExperimentSettingsPanel.js" />" ></script>
