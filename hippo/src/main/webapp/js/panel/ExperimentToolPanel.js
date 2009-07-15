@@ -23,7 +23,6 @@ Hippo.panel.ExperimentToolPanel = Ext.extend(Ext.Toolbar, {
 				,listeners: {
 					click: {
 						fn: function(e, t) {
-							alert('button');
 							this.fireEvent('newexperiment');
 						},
 						scope: this
