@@ -3,18 +3,23 @@ Ext.namespace('Hippo');
 
 Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 	layout: 'border',
-	
+	getToolPanel: function() {
+		var toolPanel = this.getComponent(0);
+		if (toolPanel == null || toolPanel.xtype != 'experimenttoolpanel') {
+			throw new Error('the component has not been initialized or is misconfigured');
+		}
+		return toolPanel;
+	},
 	initComponent: function() {
 		Ext.apply(this, {
 			id: 'viewport'
 			
-			,items: [//{
-				//region: 'north'
-				//,height: 30
-				//,xtype: 'experimenttoolpanel'
-			//},
-			new Hippo.panel.ExperimentToolPanel({region: 'north', height: 30}),
-			{
+			,items: [{
+				region: 'north'
+				,height: 30
+				,xtype: 'experimenttoolpanel'
+			}
+			,{
 				region: 'west',
 				collapsible: true,
 				width: 300,
@@ -41,8 +46,8 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 		
 		Hippo.HippoViewport.superclass.initComponent.apply(this, arguments);
 		
-		//this.relayEvents(this.items[0], ['newexperiment']);
-		//this.on('newexperiment', function(){alert('viewport');}, this);
+		this.relayEvents(this.getToolPanel(), ['newexperiment']);
+		this.on('newexperiment', function(){alert('viewport');}, this);
 	}
 	
 });
