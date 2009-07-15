@@ -47,7 +47,10 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 		Hippo.HippoViewport.superclass.initComponent.apply(this, arguments);
 		
 		this.relayEvents(this.getToolPanel(), ['newexperiment']);
-		this.on('newexperiment', function(){alert('viewport');}, this);
+		this.on('newexperiment', function(){
+				var dlg = Hippo.dialog.NewExperiment;
+				dlg.show();
+			}, this);
 	}
 	
 });
