@@ -3,55 +3,26 @@ Ext.namespace('Hippo.dialog');
 
 Hippo.dialog.NewExperiment = Ext.extend(Ext.Window, {
 	
-	constructor: function(config) {
+	onTextFieldClick: function() {
+		console.log('begin on text field click');
+		var exists = function(id) {
+			return (Ext.get(id).getValue().length > 0);
+		}
+		var btnCreate = this.getComponent(0);
+		btnCreate.createButtonActive(exists('title') && exists('purpose'));
+	}
+	,initComponent: function(config) {
 		Ext.apply(this, {
 			id: 'wndnewexpmnt'
 			,title: 'New Experiment'
-			//,autoWidth: true
 			,autoHeight: true
 			,width: 500
 			,items: [{
-				id: 'frmnewexpmnt'
-				,xtype: 'form'
-				,defaults: {
-					allowBlank: false
-					,labelStyle: {padding: '5px'}
-					,style: {padding: '5px'}
-					,width: 350
-				}
-				,items: [{
-					id: 'title'
-					,name: 'title'
-					,fieldLabel: 'title'
-					,maxLength: 64
-					,xtype: 'textfield'
-				}
-				,{
-					id: 'purpose'
-					,name: 'purpose'
-					,fieldLabel: 'purpose'
-					,maxLength: 128
-					,xtype: 'textarea'
-				}]
-				,buttons: [{
-					id: 'create'
-					,text: 'create'
-					,disabled: true
-					,xtype: 'button'
-				}
-				,{
-					id: 'cancel'
-					,text: 'cancel'
-					,xtype: 'button'
-					,listeners: {
-						'click' : {
-							fn: function() {this.destroy();}
-							,scope: this
-						}
-					}
-				}]
+				xtype: 'newexperimentform'
 			}]
 		});
-		Ext.Window.superclass.constructor.apply(this, arguments);
+		Hippo.dialog.NewExperiment.superclass.initComponent.apply(this, arguments);
+		this.relayEvents(this.getComponent(0), ['newexpformchange']);
+		this.on('newexpformchange', this.onTextFieldClick, this);
 	}
 });
