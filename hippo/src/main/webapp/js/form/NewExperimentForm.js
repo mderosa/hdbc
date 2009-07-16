@@ -3,7 +3,7 @@ Ext.namespace('Hippo.form');
 
 Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 	createButtonActive: function(tf) {
-			this.buttons[0].disabled = (!tf);
+		this.buttons[0].disabled = (!tf);
 	}
 	,initComponent : function() {
 		Ext.apply(this, {
