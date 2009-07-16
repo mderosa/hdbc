@@ -5,11 +5,11 @@ Hippo.dialog.NewExperiment = Ext.extend(Ext.Window, {
 	
 	onTextFieldClick: function() {
 		console.log('begin on text field click');
-		var exists = function(id) {
+		var hasContent = function(id) {
 			return (Ext.get(id).getValue().length > 0);
 		}
-		var btnCreate = this.getComponent(0);
-		btnCreate.createButtonActive(exists('title') && exists('purpose'));
+		var form = this.getComponent(0);
+		form.createButtonActive(hasContent('title') && hasContent('purpose'));
 	}
 	,initComponent: function(config) {
 		Ext.apply(this, {

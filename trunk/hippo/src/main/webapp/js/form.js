@@ -23,8 +23,15 @@ Ext.onReady(function() {
 			name: 'firstName',
 			allowBlank: false,
 			invalidText: 'first name is a required field'
-		},
-		{
+		}
+		,{
+			id: 'test'
+			,name: 'test'
+			,fieldLabel: 'test'
+			,allowBlank: true
+			,xtype: 'textarea'
+		}
+		,{
 			fieldLabel: 'Last Name',
 			name: 'lastName',
 			vtype: 'alpha',
