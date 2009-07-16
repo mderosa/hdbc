@@ -1,7 +1,7 @@
 
 Ext.namespace('Hippo.dialog');
 
-Hippo.dialog.NewExperiment = Ext.extend(Ext.Window, {
+Hippo.dialog.NewExperimentDlg = Ext.extend(Ext.Window, {
 	
 	onTextFieldClick: function() {
 		console.log('begin on text field click');
@@ -21,7 +21,7 @@ Hippo.dialog.NewExperiment = Ext.extend(Ext.Window, {
 				xtype: 'newexperimentform'
 			}]
 		});
-		Hippo.dialog.NewExperiment.superclass.initComponent.apply(this, arguments);
+		Hippo.dialog.NewExperimentDlg.superclass.initComponent.apply(this, arguments);
 		this.relayEvents(this.getComponent(0), ['newexpformchange']);
 		this.on('newexpformchange', this.onTextFieldClick, this);
 	}
