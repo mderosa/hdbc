@@ -2,9 +2,8 @@
 Ext.namespace('Hippo.form');
 
 Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
-	createButtonActive: function(tf) {
-		this.buttons[0].disabled = (!tf);
-	}
+
+	submitHandler: function(e, t) {}
 	,initComponent : function() {
 		Ext.apply(this, {
 			region: 'center'
@@ -12,8 +11,13 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 			,buttons: [{
 				id: 'create'
 				,text: 'create'
-				,disabled: true
 				,xtype: 'button'
+				,listeners: {
+					'click': {
+						fn: this.submitHandler
+						,scope: this
+					}
+				}
 			}
 			,{
 				id: 'cancel'
@@ -21,7 +25,7 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 				,xtype: 'button'
 				,listeners: {
 					'click': {
-						fn: function() {
+						fn: function(e, t) {
 							this.ownerCt.ownerCt.ownerCt.destroy();
 						}
 					}
@@ -29,7 +33,7 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 			}]
 			,defaults: {
 				allowBlank: false
-				,enableKeyEvents: true
+				,labelStyle: 'margin-left:5px'
 				,width: 350
 			}
 			,items: [{
@@ -38,13 +42,6 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 				,fieldLabel: 'title'
 				,maxLength: 64
 				,xtype: 'textfield'
-				,listeners: {'keyup': {
-						fn: function(e, t) {
-							this.fireEvent('newexpformchange');
-						}
-						,scope: this
-					}
-				}
 			}
 			,{
 				id: 'purpose'
@@ -52,16 +49,10 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 				,fieldLabel: 'purpose'
 				,maxLength: 128
 				,xtype: 'textarea'
-				,listeners: {'keyup': {
-						fn: function(e, t) {
-							this.fireEvent('newexpformchange');}
-						,scope: this
-					}
-				}
 			}]
 		});		
 		Hippo.form.NewExperimentForm.superclass.initComponent.apply(this, arguments);
-		this.addEvents('newexpformchange');
+
 	}
 });
 
