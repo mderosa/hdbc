@@ -3,18 +3,21 @@ Ext.namespace('Hippo.form');
 
 Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 
-	submitHandler: function(e, t) {}
+	submitHandler: function() {
+		this.getForm().submit({url: 'console/experiments', waitMsg: 'go...'});
+	}
 	,initComponent : function() {
 		Ext.apply(this, {
 			region: 'center'
 			,id: 'newexpmntform'
+			,method: 'get'
 			,buttons: [{
 				id: 'create'
 				,text: 'create'
 				,xtype: 'button'
 				,listeners: {
 					'click': {
-						fn: this.submitHandler
+						fn: this.submmitHandler
 						,scope: this
 					}
 				}
