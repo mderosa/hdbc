@@ -4,13 +4,23 @@ Ext.namespace('Hippo.form');
 Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 
 	submitHandler: function(e, t) {
-		this.getForm().submit({url: 'console/experiments', waitMsg: 'go...'});
+		this.getForm().submit({
+			url: 'console/experiments'
+			,method: 'post'
+			,params: {
+				title: this.getComponent('title').getValue()
+				,purpose: this.getComponent('purpose').getValue()
+			}
+			,success: function(frm, act) {alert('good');}
+			,failure: function(frm, act) {alert('bad');}
+			,waitMsg: 'saving...'
+		});
 	}
 	,initComponent : function() {
 		Ext.apply(this, {
 			region: 'center'
 			,id: 'newexpmntform'
-			,method: 'get'
+			,method: 'post'
 			,buttons: [{
 				id: 'create'
 				,text: 'create'
