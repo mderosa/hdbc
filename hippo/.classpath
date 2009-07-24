@@ -54,8 +54,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.springsource.server.ide.server.core.runtime.classpath/SpringSource dm Server v1.0"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.beans/3.0.0.M3/org.springframework.beans-3.0.0.M3.jar" sourcepath="/M2_REPO/org/springframework/org.springframework.beans/3.0.0.M3/org.springframework.beans-3.0.0.M3-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/home/odysseus/.m2/repository/org/springframework/spring-framework-javadoc-3.0.0.M3.jar!/javadoc-api"/>
@@ -131,5 +129,10 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.springsource.sts.ide.tomcat.runtimeTarget/SpringSource tc Server v6.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/net/sf/json-lib/json-lib/2.3/json-lib-2.3-jdk15.jar"/>
+	<classpathentry kind="var" path="M2_REPO/net/sf/ezmorph/ezmorph/1.0.6/ezmorph-1.0.6.jar"/>
 	<classpathentry kind="output" path="target/build"/>
 </classpath>
