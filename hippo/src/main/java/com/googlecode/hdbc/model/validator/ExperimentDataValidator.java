@@ -1,11 +1,12 @@
 package com.googlecode.hdbc.model.validator;
 
 import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
-
 import com.googlecode.hdbc.model.record.ExperimentData;
 
-public class ExperimentDataValidator extends DataValidator implements Validator {
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+public class ExperimentDataValidator extends DataValidator implements Validator<ExperimentData> {
 
 	public boolean supports(Class<?> clazz) {
 		return false;
@@ -30,9 +31,9 @@ public class ExperimentDataValidator extends DataValidator implements Validator 
 	 * precondition is obj.title and obj.purpose /= null
 	 * postcondition error.count >= 0
 	 */
-	public void validate(Object target, Errors errors) {
-		ExperimentData data = (ExperimentData) target;
-		if (!this.isNullOrGreaterThan(data.getUid(), 0)) {
+	public JSONObject validate(ExperimentData data) {
+		JSONArray errors = new JSONArray();
+		/*if (!this.isNullOrGreaterThan(data.getUid(), 0)) {
 			errors.rejectValue("uid", ValidationErrorCd.NUMBER_BELOW_MINIMUM.toString(), new Object[] {0}, "na");
 		}
 		if (!this.isNotNullAndUpToLengthN(data.getTitle(), 64)) {
@@ -46,7 +47,13 @@ public class ExperimentDataValidator extends DataValidator implements Validator 
 		}
 		if (!this.isNullOrUptoLengthN(data.getConclusion(), 4000)) {
 			errors.rejectValue("conclusion", ValidationErrorCd.OPTIONAL_STRING_TO_LONG.toString(), new Object[] {4000}, "na");
+		}*/
+		
+		JSONObject jsn = new JSONObject();
+		if (errors.size() > 0) {
+			jsn.put("errors", errors);
 		}
+		return jsn;
 	}
 
 }

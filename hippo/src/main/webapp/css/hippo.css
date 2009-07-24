@@ -103,8 +103,9 @@ form.stdform fieldset textarea {
 	width: 75%;
 }
 
-span.error {
+.error {
     color: #F00;
+    text-align: center;
 }
 
 ul.stdlist {

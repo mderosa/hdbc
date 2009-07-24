@@ -7,24 +7,21 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 		this.getForm().submit({
 			url: 'console/experiments'
 			,method: 'post'
+			,timeout: 5000
 			,params: {
 				title: this.getComponent('title').getValue()
 				,purpose: this.getComponent('purpose').getValue()
 			}
-			,success: function(frm, act) {alert('good');}
-			,failure: function(frm, act) {alert('bad');}
-			,waitMsg: 'saving...'
+			,success: function(frm, act) {this.ownerCt.destroy()}
 		});
 	}
 	,initComponent : function() {
 		Ext.apply(this, {
-			region: 'center'
-			,id: 'newexpmntform'
+			id: 'newexpmntform'
+			,bodyStyle: 'padding: 5px 5px 5px 5px'
+			,frame: true
 			,method: 'post'
-			,buttons: [{
-				id: 'create'
-				,text: 'create'
-				,xtype: 'button'
+			,buttons: [{id: 'create' ,text: 'create' ,xtype: 'button'
 				,listeners: {
 					'click': {
 						fn: this.submitHandler
@@ -46,23 +43,13 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 			}]
 			,defaults: {
 				allowBlank: false
-				,labelStyle: 'margin-left:5px'
-				,width: 350
+				,width: 325
 			}
-			,items: [{
-				id: 'title'
-				,name: 'title'
-				,fieldLabel: 'title'
-				,maxLength: 64
-				,xtype: 'textfield'
-			}
-			,{
-				id: 'purpose'
-				,name: 'purpose'
-				,fieldLabel: 'purpose'
-				,maxLength: 128
-				,xtype: 'textarea'
-			}]
+			,items: [
+				{id: 'title', name: 'title', fieldLabel: 'title', maxLength: 64, xtype: 'textfield'}
+				,{id: 'purpose', name: 'purpose', fieldLabel: 'purpose', maxLength: 128, xtype: 'textarea'}
+			]
+
 		});		
 		Hippo.form.NewExperimentForm.superclass.initComponent.apply(this, arguments);
 
