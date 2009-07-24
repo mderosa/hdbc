@@ -2,14 +2,14 @@
 Ext.namespace('Hippo.dialog');
 
 Hippo.dialog.NewExperimentDlg = Ext.extend(Ext.Window, {
+	id: 'wndnewexpmnt'
+	,title: 'New Experiment'
+	,autoHeight: true
+	,width: 500
 	
-	initComponent: function(config) {
+	,initComponent: function(config) {
 		Ext.apply(this, {
-			id: 'wndnewexpmnt'
-			,title: 'New Experiment'
-			,autoHeight: true
-			,width: 500
-			,items: [{
+			items: [{
 				xtype: 'newexperimentform'
 			}]
 		});
