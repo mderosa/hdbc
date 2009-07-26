@@ -2,37 +2,28 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Test NewExperimentDlg</title>
-	<!-- Include Ext and app-specific scripts: -->
+	<title>ExperimentListPanel Test</title>
+
     <script type="text/javascript" src="../../ext/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="../../ext/ext-all-debug.js"></script>
-    <script type="text/javascript" src="../form/NewExperimentForm.js"></script>
-    <script type="text/javascript" src="NewExperimentDlg.js"></script>
+	<script type="text/javascript" src="ExperimentListPanel.js"></script>
     
     <!-- Include Ext stylesheets here: -->
     <link rel="stylesheet" type="text/css" href="../../ext/resources/css/ext-all.css">
     <link rel="stylesheet" type="text/css" href="../../css/hippo.css">
     
-    <script>
+	<script>
     Ext.onReady(function(){
 
         Ext.QuickTips.init();
         Ext.form.Field.prototype.msgTarget = 'side';
 
-        var wnd = new Hippo.dialog.NewExperimentDlg();
-        wnd.addButton({
-            	text: 'testSubmitSuccess'
-            }, function() {
-                	alert('expected: the window should close');
-                	var frm = this.getComponent(0)
-                	frm.onSubmitSuccess(frm.getForm(), null);
-                }, wnd);
-        wnd.show();
+        var lst = new Hippo.panel.ExperimentListPanel();
+        lst.render('test');
         
-        });
+    });
 
-
-    </script>
+    </script>    
 </head>
 <body>
 	<div id="test"></div>

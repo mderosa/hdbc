@@ -14,6 +14,6 @@ Hippo.dialog.NewExperimentDlg = Ext.extend(Ext.Window, {
 			}]
 		});
 		Hippo.dialog.NewExperimentDlg.superclass.initComponent.apply(this, arguments);
-
+		this.relayEvents(this.getComponent(0), ['newexperimentsaved']);
 	}
 });

@@ -7,8 +7,9 @@ Hippo.panel.ExperimentListPanel = Ext.extend(Ext.grid.GridPanel, {
 		Ext.apply(this, {
 			id: 'expList'
 			,columns: [
-				{header: 'Title', dataIndex: 'title'},
-				{header: 'Purpose', dataIndex: 'purpose'}
+				{dataIndex: 'uid', hidden: true},
+				{header: 'Title', dataIndex: 'title', menuDisabled: true},
+				{header: 'Purpose', dataIndex: 'purpose', menuDisabled: true}
 			]
 			,store: new Ext.data.Store({
 				data: [

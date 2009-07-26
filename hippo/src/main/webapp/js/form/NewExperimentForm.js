@@ -12,8 +12,16 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 				title: this.getComponent('title').getValue()
 				,purpose: this.getComponent('purpose').getValue()
 			}
-			,success: function(frm, act) {this.ownerCt.destroy()}
+			,success: this.onSubmitSuccess
+			,failure: this.onSubmitFail
 		});
+	}
+	,onSubmitSuccess: function(frm, act) {
+		frm.fireEvent("newexperimentsaved", frm.getValues());
+		//frm.ownerCt.destroy();
+	}
+	,onSubmitFail: function(frm, act) {
+		alert('fail');
 	}
 	,initComponent : function() {
 		Ext.apply(this, {
@@ -50,9 +58,11 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 				,{id: 'purpose', name: 'purpose', fieldLabel: 'purpose', maxLength: 128, xtype: 'textarea'}
 			]
 
-		});		
+		});
+		
 		Hippo.form.NewExperimentForm.superclass.initComponent.apply(this, arguments);
-
+		this.addEvents({"newexperimentsaved": true})
+		
 	}
 });
 
