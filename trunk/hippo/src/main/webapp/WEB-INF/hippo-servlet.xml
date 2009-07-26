@@ -21,34 +21,8 @@
 
 	<context:component-scan base-package="com.googlecode.hdbc.controller"/>
 	
-    <!-- Configure Apache Tiles for the view -->
-	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/layouts/layouts.xml</value>
-				<value>/WEB-INF/jsp/tiles-defs.xml</value>
-			</list>
-		</property>
-	</bean>
-	
-	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-    	<property name="mediaTypes">
-        	<map>
-            	<entry key="html" value="text/html"/>
-            	<entry key="xml" value="text/xml" />
-        	</map>
-    	</property>
-    	<property name="viewResolvers">
-        	<list>
-        		<ref bean="textHtmlResolver" />		
-            	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                	<property name="prefix" value="/WEB-INF/jsp/"/>
-                	<property name="suffix" value=".jsp"/>
-	            </bean>
-    	    </list>
-    	</property>
-	</bean>
-	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.XmlViewResolver" />
+		
 	<bean id="textHtmlResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="requestContextAttribute" value="requestContext"/>
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
@@ -65,7 +39,6 @@
 	<bean id="experimentsDao" class="com.googlecode.hdbc.dao.StubExperimentsDao" />
 	<bean id="experimentDao" class="com.googlecode.hdbc.dao.StubExperimentDao" />
 	
-	<bean id="experimentDataValidator" class="com.googlecode.hdbc.model.validator.ExperimentDataValidator">
-		<constructor-arg ref="messageSource" />
-	</bean>
+	<bean id="experimentDataValidator" class="com.googlecode.hdbc.model.validator.ExperimentDataValidator" />
+	
 </beans>

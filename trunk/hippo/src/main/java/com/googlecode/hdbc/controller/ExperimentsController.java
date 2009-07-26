@@ -1,66 +1,58 @@
 package com.googlecode.hdbc.controller;
 
-import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.context.request.WebRequest;
-
+import org.springframework.web.servlet.ModelAndView;
 import com.googlecode.hdbc.dao.IExperimentDao;
 import com.googlecode.hdbc.model.Experiment;
 import com.googlecode.hdbc.model.IExperiment;
 import com.googlecode.hdbc.model.record.ExperimentData;
-import com.googlecode.hdbc.model.validator.Validator;
 
 @Controller
 public class ExperimentsController {
 	public static final String COMMAND_NAME = "experiment";
 	public static final String EXPERIMENT_FORM = "experiments";
 	private final IExperimentDao dao;
-	private final Validator<ExperimentData> validator;
+	private final Validator validator;
 	
-	public ExperimentsController(final IExperimentDao exprmntDao, final Validator<ExperimentData> exprmntValidator) {
+	public ExperimentsController(final IExperimentDao exprmntDao, final Validator exprmntValidator) {
 		dao = exprmntDao;
 		validator = exprmntValidator;
 	}
 
-	@RequestMapping(value="/experiments", method=RequestMethod.GET)
-	public String newExperiment(final Model model, final WebRequest req) {
-		model.addAttribute(COMMAND_NAME, new ExperimentData());
-		return EXPERIMENT_FORM;
-	}
-	
 	@RequestMapping(value="/experiments/{uid}", method=RequestMethod.GET)
-	public String getExperiment(@PathVariable("uid") final long uid, final Model model, final WebRequest req) {
+	public String getExperiment(@PathVariable("uid") final long uid, final Model model) {
 		IExperiment experiment = dao.find(uid);
 		model.addAttribute(COMMAND_NAME, experiment.getData());
 		return EXPERIMENT_FORM;
 	}
 	
 	@RequestMapping(value="/experiments", method=RequestMethod.POST)
-	public String createExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final WebRequest req) {
-		JSONObject result = validator.validate(data, req.getLocale());
+	public ModelAndView createExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult bindResults) {
+		validator.validate(data, bindResults);
 
-		if (!result.containsKey("errors")) {
+		if (!bindResults.hasErrors()) {
 			dao.insert(new Experiment(data));
-		} 
+		}
 		
-		result.put("success", true);
-		return EXPERIMENT_FORM;
+		ModelAndView mv = new ModelAndView("defaultExtJsonView");
+		mv.addObject("errors", bindResults);
+		return mv;
 	}
 	
 	@RequestMapping(value="/experiments/{uid}", method=RequestMethod.PUT)
-	public String updateExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final WebRequest req) {
-		JSONObject result = validator.validate(data, req.getLocale());
+	public String updateExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult result) {
+		validator.validate(data, result);
 		
-		if (!result.containsKey("errors")) {
+		if (!result.hasErrors()) {
 			dao.update(new Experiment(data));
 		}
-		
-		result.put("success", true);
 		return EXPERIMENT_FORM;
 	}
 
