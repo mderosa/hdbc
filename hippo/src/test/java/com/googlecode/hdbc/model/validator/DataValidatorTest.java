@@ -10,7 +10,7 @@ public class DataValidatorTest {
 	
 	@Before
 	public final void setUp() {
-		validator = new ExperimentDataValidator(null);
+		validator = new ExperimentDataValidator();
 	}
 
 	/**
