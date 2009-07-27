@@ -12,13 +12,12 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 				title: this.getComponent('title').getValue()
 				,purpose: this.getComponent('purpose').getValue()
 			}
-			,success: this.onSubmitSuccess
+			,success: this.onSubmitSuccess.createDelegate(this)
 			,failure: this.onSubmitFail
 		});
 	}
 	,onSubmitSuccess: function(frm, act) {
-		frm.fireEvent("newexperimentsaved", frm.getValues());
-		//frm.ownerCt.destroy();
+		this.fireEvent("newexperimentsaved", frm.getValues(), this.ownerCt);
 	}
 	,onSubmitFail: function(frm, act) {
 		Ext.msg.alert('Failure', act.response.statusText);
