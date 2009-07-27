@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" >
+    <class name="com.googlecode.hdbc.model.record.ExperimentData" table="experiments">
+        <id name="uid" column="experiment_cd" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">
+                    seq_experiments
+                </param>
+            </generator>
+        </id>
+        <property name="type" column="name" />
+        <property name="title" column="type" not-null="true" />
+        <property name="purpose" column="metadata" not-null="true" />
+        <property name="method" column="depth" />
+        <property name="conclusion" column="conclusion" />
+    </class>    
+</hibernate-mapping>
