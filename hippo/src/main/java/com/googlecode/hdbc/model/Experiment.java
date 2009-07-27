@@ -7,19 +7,19 @@ import com.googlecode.hdbc.model.record.ExperimentGraphics;
 public class Experiment implements IExperiment {
 	private ExperimentData data;
 	
-	public Experiment(ExperimentData d) {
+	public Experiment(final ExperimentData d) {
 		data = d;
 	}
 	
-	public ExperimentAnalysis analyseData() {
+	public final ExperimentAnalysis analyseData() {
 		return null;
 	}
 
-	public ExperimentGraphics calculateGraphics() {
+	public final ExperimentGraphics calculateGraphics() {
 		return null;
 	}
 
-	public ExperimentData getData() {
+	public final ExperimentData getData() {
 		return data;
 	}
 
