@@ -60,8 +60,10 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 				this.relayEvents(dlg, ['newexperimentsaved']);
 				dlg.show();
 			}, this);
-		this.on('newexperimentsaved', function(evnt, src, data) {
+		this.on('newexperimentsaved', function(data, dlg) {
+				console.log('begin handle newexperimentsaved');
 				this.addNewExperiment(data);
+				dlg.destroy();
 			}, this);
 	}
 	
