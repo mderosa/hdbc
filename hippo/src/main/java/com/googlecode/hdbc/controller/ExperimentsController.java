@@ -36,13 +36,15 @@ public class ExperimentsController {
 	@RequestMapping(value="/experiments", method=RequestMethod.POST)
 	public ModelAndView createExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult bindResults) {
 		validator.validate(data, bindResults);
-
+		
+		Long uid = null;
 		if (!bindResults.hasErrors()) {
-			dao.insert(new Experiment(data));
+			uid = dao.insert(new Experiment(data));
 		}
 		
 		ModelAndView mv = new ModelAndView("defaultExtJsonView");
 		mv.addObject("errors", bindResults);
+		mv.addObject("uid", uid);
 		return mv;
 	}
 	
