@@ -26,15 +26,15 @@ public class ExperimentsController {
 		validator = exprmntValidator;
 	}
 
-	@RequestMapping(value="/experiments/{uid}", method=RequestMethod.GET)
-	public String getExperiment(@PathVariable("uid") final long uid, final Model model) {
-		IExperiment experiment = dao.find(uid);
+	@RequestMapping(value = "/experiments/{uid}", method = RequestMethod.GET)
+	public final String getExperiment(@PathVariable("uid") final long uid, final Model model) {
+		final IExperiment experiment = dao.find(uid);
 		model.addAttribute(COMMAND_NAME, experiment.getData());
 		return EXPERIMENT_FORM;
 	}
 	
-	@RequestMapping(value="/experiments", method=RequestMethod.POST)
-	public ModelAndView createExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult bindResults) {
+	@RequestMapping(value = "/experiments", method = RequestMethod.POST)
+	public final ModelAndView createExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult bindResults) {
 		validator.validate(data, bindResults);
 		
 		Long uid = null;
@@ -42,14 +42,14 @@ public class ExperimentsController {
 			uid = dao.insert(new Experiment(data));
 		}
 		
-		ModelAndView mv = new ModelAndView("defaultExtJsonView");
+		final ModelAndView mv = new ModelAndView("defaultExtJsonView");
 		mv.addObject("errors", bindResults);
 		mv.addObject("uid", uid);
 		return mv;
 	}
 	
-	@RequestMapping(value="/experiments/{uid}", method=RequestMethod.PUT)
-	public String updateExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult result) {
+	@RequestMapping(value = "/experiments/{uid}", method = RequestMethod.PUT)
+	public final String updateExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult result) {
 		validator.validate(data, result);
 		
 		if (!result.hasErrors()) {

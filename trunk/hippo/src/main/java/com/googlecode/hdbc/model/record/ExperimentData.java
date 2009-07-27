@@ -11,44 +11,44 @@ public class ExperimentData {
 	
 	public ExperimentData() { }
 	
-	public ExperimentData(Long id, String nm, String purpse) {
+	public ExperimentData(final Long id, final String nm, final String purpse) {
 		uid = id;
 		title = nm;
 		purpose = purpse;
 	}
 
-	public Long getUid() {
+	public final Long getUid() {
 		return uid;
 	}
-	public void setUid(Long uid) {
+	public final void setUid(final Long uid) {
 		this.uid = uid;
 	}
 
-	public String getTitle() {
+	public final String getTitle() {
 		return title;
 	}
-	public void setTitle(String name) {
+	public final void setTitle(final String name) {
 		this.title = StringUtils.trimToNull(name);
 	}
 
-	public String getPurpose() {
+	public final String getPurpose() {
 		return purpose;
 	}
-	public void setPurpose(String purpose) {
+	public final void setPurpose(final String purpose) {
 		this.purpose = StringUtils.trimToNull(purpose);
 	}
 
-	public String getMethod() {
+	public final String getMethod() {
 		return method;
 	}
-	public void setMethod(String method) {
+	public final void setMethod(final String method) {
 		this.method = StringUtils.trimToNull(method);
 	}
 
-	public String getConclusion() {
+	public final String getConclusion() {
 		return conclusion;
 	}
-	public void setConclusion(String conclusion) {
+	public final void setConclusion(final String conclusion) {
 		this.conclusion = StringUtils.trimToNull(conclusion);
 	}
 	

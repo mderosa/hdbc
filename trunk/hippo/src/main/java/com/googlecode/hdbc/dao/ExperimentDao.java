@@ -4,15 +4,15 @@ import com.googlecode.hdbc.model.IExperiment;
 
 public class ExperimentDao implements IExperimentDao {
 
-	public IExperiment find(long uid) {
+	public final IExperiment find(final long uid) {
 		return null;
 	}
 
-	public long insert(IExperiment experiment) {
+	public final long insert(final IExperiment experiment) {
 		return 0;
 	}
 
-	public void update(IExperiment experiment) {
+	public void update(final IExperiment experiment) {
 		
 	}
 

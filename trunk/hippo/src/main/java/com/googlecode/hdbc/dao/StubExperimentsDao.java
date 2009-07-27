@@ -9,8 +9,8 @@ import com.googlecode.hdbc.model.record.ExperimentData;
 
 public class StubExperimentsDao implements IExperimentsDao {
 
-	public List<IExperiment> findActiveExperiments() {
-		List<IExperiment> experiments = new ArrayList<IExperiment>();
+	public final List<IExperiment> findActiveExperiments() {
+		final List<IExperiment> experiments = new ArrayList<IExperiment>();
 		experiments.add(new Experiment(
 				new ExperimentData(23L, "exp1", "to test stuff")));
 		experiments.add(new Experiment(

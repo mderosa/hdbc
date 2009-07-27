@@ -6,7 +6,7 @@ import com.googlecode.hdbc.model.IExperiment;
 
 public class ExperimentsDao implements IExperimentsDao {
 
-	public List<IExperiment> findActiveExperiments() {
+	public final List<IExperiment> findActiveExperiments() {
 		return null;
 	}
 
