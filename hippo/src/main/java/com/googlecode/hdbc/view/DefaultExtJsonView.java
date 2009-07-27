@@ -7,13 +7,24 @@ import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
+
+import com.googlecode.hdbc.view.policy.DefaultOutputPolicy;
+import com.googlecode.hdbc.view.policy.ICustomOutputPolicy;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class DefaultExtJsonView extends AbstractJsonView {
+	private ICustomOutputPolicy extraOutput;
 	
 	public DefaultExtJsonView(String contentType, String outputEncoding) {
 		super(contentType, outputEncoding);
+		this.extraOutput = new DefaultOutputPolicy();
+	}
+	
+	public DefaultExtJsonView(String contentType, String outputEncoding, ICustomOutputPolicy output) {
+		super(contentType, outputEncoding);
+		this.extraOutput = output;
 	}
 
 	@Override
@@ -27,6 +38,7 @@ public class DefaultExtJsonView extends AbstractJsonView {
 			json.put("errors", errors);
 		} else {
 			json.put("success", true);
+			json.accumulateAll(extraOutput.customOutput(model));
 		}
 		
 		return json;
