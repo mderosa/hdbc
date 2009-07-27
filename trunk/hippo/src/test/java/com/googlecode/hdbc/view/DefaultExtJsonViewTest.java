@@ -40,7 +40,7 @@ public class DefaultExtJsonViewTest {
 		
 		JSONObject json = view.buildJsonResponse(model, new MockHttpServletRequest(),
 				new MockHttpServletResponse());
-		String expected = "{\"success\":true" +
+		String expected = "{\"success\":false" +
 				",\"errors\":[{\"uid\":\"minimum length is 5\"}]}";
 		assertEquals(expected, json.toString());
 	}
@@ -56,5 +56,17 @@ public class DefaultExtJsonViewTest {
 		String expected = "{\"success\":true}";
 
 		assertEquals(expected, json.toString());
+	}
+	
+	@Test
+	public final void testBehaviorOfAccumulate() {
+		JSONObject dest = new JSONObject();
+		JSONObject source = new JSONObject();
+		source.put("one", 1);
+		source.put("two", 2);
+		dest.accumulateAll(source);
+		
+		assertEquals(1, dest.get("one"));
+		assertEquals(2, dest.get("two"));
 	}
 }
