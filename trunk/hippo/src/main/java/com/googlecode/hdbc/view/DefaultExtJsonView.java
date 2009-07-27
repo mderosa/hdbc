@@ -21,10 +21,12 @@ public class DefaultExtJsonView extends AbstractJsonView {
 			HttpServletResponse response) {
 
 		JSONObject json = new JSONObject();
-		json.put("success", true);
 		JSONArray errors = buildErrorArray(model);
 		if (errors.size() > 0) {
+			json.put("success", false);
 			json.put("errors", errors);
+		} else {
+			json.put("success", true);
 		}
 		
 		return json;
