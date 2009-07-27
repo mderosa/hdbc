@@ -1,17 +1,6 @@
 package com.googlecode.hdbc.model.validator;
 
-import java.util.Locale;
-
-import org.springframework.context.MessageSource;
-
-import net.sf.json.JSONObject;
-
 public abstract class DataValidator {
-	private MessageSource messageSource;
-	
-	public DataValidator(MessageSource msgSource) {
-		messageSource = msgSource;
-	}
 
 	public enum ValidationErrorCd {
 		REQUIRED_STRING_TOO_LONG {
@@ -53,13 +42,6 @@ public abstract class DataValidator {
 			return false;
 		}
 		return field.length() <= maxLength;
-	}
-	
-	public JSONObject rejectValue(String jsonKey, String msgKey, Object[] params, Locale locale) {
-		JSONObject temp = new JSONObject();
-		String errorMsg = messageSource.getMessage(msgKey, params, locale);
-		temp.put(jsonKey, errorMsg);
-		return temp;
 	}
 	
 }
