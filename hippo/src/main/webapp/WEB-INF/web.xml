@@ -5,7 +5,11 @@
     version="2.5">
 	
 	<display-name>Hippo</display-name>
-  
+  	
+  	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/log4j.properties</param-value>
+	</context-param>
   	<context-param>
   		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
   		<param-value>language.page-text</param-value>

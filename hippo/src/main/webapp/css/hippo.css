@@ -116,3 +116,7 @@ ul.stdlist {
 ul.stdlist li.gray {
 	background-color: #CCC;
 }
+
+.hippo-icon {
+	background: url(../img/hippo.png) no-repeat fixed;	
+}
