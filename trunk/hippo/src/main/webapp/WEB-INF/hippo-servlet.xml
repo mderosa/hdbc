@@ -41,4 +41,27 @@
 	
 	<bean id="experimentDataValidator" class="com.googlecode.hdbc.model.validator.ExperimentDataValidator" />
 	
+	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+  		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+  		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+  		<property name="username" value="tracker30"/>
+  		<property name="password" value="tracker30"/>
+	</bean>
+	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+  		<property name="dataSource" ref="myDataSource"/>
+  		<property name="mappingResources">
+	    	<list>
+	      		<value>com/googlecode/hdbc/model/record/ExperimentData.hbm.xml</value>
+	    	</list>
+  		</property>
+  		<property name="hibernateProperties">
+		    <props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+			</props>
+  		</property>
+	</bean>
+	
 </beans>
