@@ -50,10 +50,11 @@ public class DefaultExtJsonView extends AbstractJsonView {
 		Errors bindRslt = (BindingResult) model.get("errors");
 		if (bindRslt != null && bindRslt.hasFieldErrors()) {
 			MessageSourceAccessor msgSource = getMessageSourceAccessor();
-			for (FieldError error : bindRslt.getFieldErrors()) {
+			for (Object error : bindRslt.getFieldErrors()) {
+				FieldError err = (FieldError) error;
 				JSONObject temp = new JSONObject();
-				temp.put(error.getField(), 
-					msgSource.getMessage(error.getCode(), error.getArguments()));
+				temp.put(err.getField(), 
+					msgSource.getMessage(err.getCode(), err.getArguments()));
 				errors.add(temp);
 			}
 		}

@@ -11,10 +11,9 @@
                 </param>
             </generator>
         </id>
-        <property name="type" column="name" />
-        <property name="title" column="type" not-null="true" />
-        <property name="purpose" column="metadata" not-null="true" />
-        <property name="method" column="depth" />
+        <property name="title" column="title" not-null="true" />
+        <property name="purpose" column="purpose" not-null="true" />
+        <property name="method" column="method" />
         <property name="conclusion" column="conclusion" />
     </class>    
 </hibernate-mapping>
