@@ -20,7 +20,7 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 		this.fireEvent("newexperimentsaved", frm.getValues(), this.ownerCt);
 	}
 	,onSubmitFail: function(frm, act) {
-		Ext.msg.alert('Failure', act.response.statusText);
+		Ext.Msg.alert('Failure', act.response.statusText);
 	}
 	,initComponent : function() {
 		Ext.apply(this, {

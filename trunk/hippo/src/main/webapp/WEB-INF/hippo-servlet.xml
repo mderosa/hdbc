@@ -37,7 +37,10 @@
 	</bean>		
 		
 	<bean id="experimentsDao" class="com.googlecode.hdbc.dao.StubExperimentsDao" />
-	<bean id="experimentDao" class="com.googlecode.hdbc.dao.StubExperimentDao" />
+	
+	<bean id="experimentDao" class="com.googlecode.hdbc.dao.ExperimentDao" >
+		<constructor-arg ref="mySessionFactory" />
+	</bean>
 	
 	<bean id="experimentDataValidator" class="com.googlecode.hdbc.model.validator.ExperimentDataValidator" />
 	
@@ -49,9 +52,9 @@
 	</bean>
 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
   		<property name="dataSource" ref="myDataSource"/>
-  		<property name="mappingResources">
+  		<property name="mappingDirectoryLocations">
 	    	<list>
-	      		<value>com/googlecode/hdbc/model/record/ExperimentData.hbm.xml</value>
+	      		<value>classpath:com/googlecode/hdbc/model/record</value>
 	    	</list>
   		</property>
   		<property name="hibernateProperties">
