@@ -1,5 +1,6 @@
 package com.googlecode.hdbc.dao;
 
+import java.io.Serializable;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import com.googlecode.hdbc.model.IExperiment;
@@ -18,8 +19,8 @@ public class ExperimentDao implements IExperimentDao {
 
 	public final long insert(final IExperiment experiment) {
 		final ExperimentData data = experiment.getData();
-		tmplt.save(data);
-		return 0;
+		Serializable uid = tmplt.save(data);
+		return (Long) uid;
 	}
 
 	public void update(final IExperiment experiment) {

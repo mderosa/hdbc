@@ -7,7 +7,7 @@ import com.googlecode.hdbc.model.record.ExperimentData;
 
 public class ExperimentDataValidator extends DataValidator implements Validator {
 
-	public boolean supports(Class<?> clazz) {
+	public boolean supports(Class clazz) {
 		return false;
 	}
 

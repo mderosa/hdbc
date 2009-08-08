@@ -1,17 +1,14 @@
 package com.googlecode.hdbc.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import com.googlecode.hdbc.dao.IExperimentDao;
 import com.googlecode.hdbc.model.Experiment;
-import com.googlecode.hdbc.model.IExperiment;
 import com.googlecode.hdbc.model.record.ExperimentData;
 
 @Controller
@@ -26,12 +23,12 @@ public class ExperimentsController {
 		validator = exprmntValidator;
 	}
 
-	@RequestMapping(value = "/experiments/{uid}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/experiments/{uid}", method = RequestMethod.GET)
 	public final String getExperiment(@PathVariable("uid") final long uid, final Model model) {
 		final IExperiment experiment = dao.find(uid);
 		model.addAttribute(COMMAND_NAME, experiment.getData());
 		return EXPERIMENT_FORM;
-	}
+	}*/
 	
 	@RequestMapping(value = "/experiments", method = RequestMethod.POST)
 	public final ModelAndView createExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult bindResults) {
