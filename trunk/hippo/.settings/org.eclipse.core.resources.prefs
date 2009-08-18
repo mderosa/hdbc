@@ -1,0 +1,15 @@
+#Sun Jul 26 12:18:49 CST 2009
+eclipse.preferences.version=1
+encoding//src/main/resources/language/exception-msg.properties=UTF-8
+encoding//src/main/resources/language/exception-msg_en.properties=UTF-8
+encoding//src/main/resources/language/exception-msg_zh.properties=UTF-8
+encoding//src/main/resources/language/page-text.properties=UTF-8
+encoding//src/main/resources/language/page-text_en.properties=UTF-8
+encoding//src/main/resources/language/page-text_zh.properties=UTF-8
+encoding//src/main/resources/language/validation-msg.properties=UTF-8
+encoding//src/main/resources/language/validation-msg_en.properties=UTF-8
+encoding//src/main/resources/language/validation-msg_zh.properties=UTF-8
+encoding//src/main/webapp/403.jsp=UTF-8
+encoding//src/main/webapp/404.jsp=UTF-8
+encoding//src/main/webapp/error.jsp=UTF-8
+encoding//src/main/webapp/index.jsp=UTF-8
