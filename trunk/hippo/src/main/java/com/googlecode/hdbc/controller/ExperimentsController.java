@@ -34,14 +34,11 @@ public class ExperimentsController {
 	public final ModelAndView createExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult bindResults) {
 		validator.validate(data, bindResults);
 		
-		Long uid = null;
 		if (!bindResults.hasErrors()) {
-			uid = dao.insert(new Experiment(data));
+			dao.insert(new Experiment(data));
 		}
 		
 		final ModelAndView mv = new ModelAndView("defaultExtJsonView");
-		mv.addObject("errors", bindResults);
-		mv.addObject("uid", uid);
 		return mv;
 	}
 	
