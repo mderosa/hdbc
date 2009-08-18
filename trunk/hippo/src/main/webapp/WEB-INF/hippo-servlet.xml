@@ -47,8 +47,8 @@
 	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
   		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
   		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
-  		<property name="username" value="tracker30"/>
-  		<property name="password" value="tracker30"/>
+  		<property name="username" value="hippo"/>
+  		<property name="password" value="hippo"/>
 	</bean>
 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
   		<property name="dataSource" ref="myDataSource"/>
