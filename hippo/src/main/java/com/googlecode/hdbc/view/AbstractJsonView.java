@@ -37,9 +37,8 @@ public abstract class AbstractJsonView extends AbstractView {
 		ByteArrayOutputStream baos = createTemporaryOutputStream();
 		
 		JSONObject json = buildJsonResponse(model, request, response);
-		Charset chs = Charset.forName(encoding);
-		ByteBuffer output = chs.encode(json.toString());
-		baos.write(output.array(), 0, output.array().length - 1);
+		byte[] output = json.toString().getBytes(encoding);
+		baos.write(output, 0, output.length);
 		
 		// Flush to HTTP response.
 		writeToResponse(response, baos);

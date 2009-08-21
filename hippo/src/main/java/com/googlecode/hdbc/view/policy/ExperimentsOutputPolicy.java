@@ -16,6 +16,7 @@ public class ExperimentsOutputPolicy implements ICustomOutputPolicy {
 		ExperimentData experiment = (ExperimentData) model.get(ExperimentsController.COMMAND_NAME);
 		detail.put("uid", experiment.getUid());
 		detail.put("title", experiment.getTitle());
+		detail.put("purpose", experiment.getPurpose());
 		JSONObject json = new JSONObject();
 		json.put("experiment", detail);
 		return (Map<String, Object>) json;
