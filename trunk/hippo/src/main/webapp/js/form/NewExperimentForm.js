@@ -8,10 +8,10 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 			url: 'console/experiments'
 			,method: 'post'
 			,timeout: 5000
-			,params: {
-				title: this.getComponent('title').getValue()
-				,purpose: this.getComponent('purpose').getValue()
-			}
+			//,params: {
+			//	title: this.getComponent('title').getValue()
+			//	,purpose: this.getComponent('purpose').getValue()
+			//}
 			,success: this.onSubmitSuccess.createDelegate(this)
 			,failure: this.onSubmitFail
 		});
