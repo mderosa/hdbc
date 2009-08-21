@@ -1,5 +1,7 @@
 package com.googlecode.hdbc.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
@@ -31,7 +33,8 @@ public class ExperimentsController {
 	}*/
 	
 	@RequestMapping(value = "/experiments", method = RequestMethod.POST)
-	public final ModelAndView createExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult bindResults) {
+	public final ModelAndView createExperiment(@ModelAttribute(COMMAND_NAME) final ExperimentData data, final BindingResult bindResults,
+			final HttpServletRequest req) {
 		validator.validate(data, bindResults);
 		
 		if (!bindResults.hasErrors()) {
