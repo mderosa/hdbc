@@ -8,16 +8,13 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 			url: 'console/experiments'
 			,method: 'post'
 			,timeout: 5000
-			//,params: {
-			//	title: this.getComponent('title').getValue()
-			//	,purpose: this.getComponent('purpose').getValue()
-			//}
 			,success: this.onSubmitSuccess.createDelegate(this)
 			,failure: this.onSubmitFail
 		});
 	}
-	,onSubmitSuccess: function(frm, act) {
-		this.fireEvent("newexperimentsaved", frm.getValues(), this.ownerCt);
+	,onSubmitSuccess: function(frm, action) {
+		var jsonRsp = Ext.util.JSON.decode(action.response.responseText);
+		this.fireEvent("newexperimentsaved", jsonRsp, this.ownerCt);
 	}
 	,onSubmitFail: function(frm, act) {
 		Ext.Msg.alert('Failure', act.response.statusText);

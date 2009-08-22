@@ -22,7 +22,8 @@
   		Ext.onReady(function() {
 	  		Ext.BLANK_IMAGE_URL = '<c:url value="/ext/resources/images/default/s.gif" />';
 	  		Ext.QuickTips.init();
-	  		var view = new Hippo.HippoViewport();
+
+	  		view = new Hippo.HippoViewport();
   		});
   	</script>
   
