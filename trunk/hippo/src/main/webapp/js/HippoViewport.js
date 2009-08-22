@@ -12,8 +12,8 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 	}
 	,addNewExperiment: function(data) {
 		var store = this.getComponent('west').getComponent('expList').getStore();
-		var gridRecord = Ext.data.Record.create(['title', 'purpose']);
-		var newdata = new gridRecord({title: data.title, purpose: data.purpose});
+		var gridRecord = Ext.data.Record.create([{name:'uid', type: 'int'}, 'title', 'purpose']);
+		var newdata = new gridRecord({uid: data.uid, title: data.title, purpose: data.purpose});
 		store.add(newdata);
 	}
 	,initComponent: function() {
@@ -60,9 +60,8 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 				this.relayEvents(dlg, ['newexperimentsaved']);
 				dlg.show();
 			}, this);
-		this.on('newexperimentsaved', function(data, dlg) {
-				console.log('begin handle newexperimentsaved');
-				this.addNewExperiment(data);
+		this.on('newexperimentsaved', function(rsp, dlg) {
+				this.addNewExperiment(rsp.experiment);
 				dlg.destroy();
 			}, this);
 	}
