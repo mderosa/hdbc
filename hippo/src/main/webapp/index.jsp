@@ -13,7 +13,8 @@
  	<script type="text/javascript" src="<c:url value="/js/dialog/NewExperimentDlg.js" />" ></script>
  	<script type="text/javascript" src="<c:url value="/js/form/NewExperimentForm.js" />" ></script>
  	<script type="text/javascript" src="<c:url value="/js/panel/ExperimentTabPanel.js" />" ></script>
- 	<script type="text/javascript" src="<c:url value="/js/panel/ExperimentListPanel.js" />" ></script>
+ 	<script type="text/javascript" src="<c:url value="/js/grids/FieldDefinitionFactory.js" />" ></script>
+ 	<script type="text/javascript" src="<c:url value="/js/grids/ExperimentGrid.js" />" ></script>
  	<script type="text/javascript" src="<c:url value="/js/panel/ExperimentSettingsPanel.js" />" ></script>
  	<script type="text/javascript" src="<c:url value="/js/panel/ExperimentToolPanel.js" />" ></script>
     <title>Hippo</title>
