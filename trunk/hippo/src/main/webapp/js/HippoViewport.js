@@ -11,8 +11,10 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 		return toolPanel;
 	}
 	,addNewExperiment: function(data) {
-		var store = this.getComponent('west').getComponent('expList').getStore();
-		var gridRecord = Ext.data.Record.create([{name:'uid', type: 'int'}, 'title', 'purpose']);
+		var store = this.getComponent('west').getComponent('experimentGrid').getStore();
+		var gridRecord = Ext.data.Record.create(
+				Hippo.grids.FieldDefinitionFactory.createFieldDef('experimentGrid')
+			);
 		var newdata = new gridRecord({uid: data.uid, title: data.title, purpose: data.purpose});
 		store.add(newdata);
 	}
@@ -38,7 +40,7 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 				layout: 'accordion',
 				items: [{
 					title: 'Experiments'
-					,xtype: 'experimentlistpanel'
+					,xtype: 'experimentGrid'
 				}
 				,{
 					title: 'Settings'

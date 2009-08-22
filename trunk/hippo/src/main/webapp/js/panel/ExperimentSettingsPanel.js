@@ -1,5 +1,5 @@
 
-Ext.namespace('Hippo');
+Ext.namespace('Hippo.panel');
 
 Hippo.panel.ExperimentSettingsPanel = Ext.extend(Ext.form.FormPanel, {
 	

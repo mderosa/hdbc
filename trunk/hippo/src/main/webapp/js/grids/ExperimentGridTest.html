@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ExperimentGridTest</title>
+	
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/logger/assets/logger.css"> 
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/yuitest/assets/testlogger.css"> 
+	<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+	<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/logger/logger-debug.js"></script> 
+	<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yuitest/yuitest-debug.js"></script> 
+
+    <script type="text/javascript" src="../../ext/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext/ext-all-debug.js"></script>
+    <script type="text/javascript" src="FieldDefinitionFactory.js"></script>
+	<script type="text/javascript" src="ExperimentGrid.js"></script>
+    
+    <!-- Include Ext stylesheets here: -->
+    <link rel="stylesheet" type="text/css" href="../../ext/resources/css/ext-all.css">
+    <link rel="stylesheet" type="text/css" href="../../css/hippo.css">
+     
+</head>
+<body>
+	<div id="test"></div>
+	
+	<script>
+	var assert = YAHOO.util.Assert;
+
+	var testCase = new YAHOO.tool.TestCase({
+		name: 'ExperimentGridTest',
+
+		setUp: function() {
+			this.grid = new Hippo.grids.ExperimentGrid();
+        	this.grid.render('test');
+		},
+
+		tearDown: function() {
+			//this.pnl.destroy();
+		},
+		
+		testNothing: function() {
+			assert.isTrue(true);
+		}
+
+	});
+
+	YAHOO.tool.TestRunner.add(testCase);
+	YAHOO.util.Event.onDOMReady(function() {
+		var logger = new YAHOO.tool.TestLogger("testLogger");
+		YAHOO.tool.TestRunner.run();
+	});
+	</script>
+</body>
+</html>
