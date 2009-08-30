@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.googlecode.hdbc.dao.IExperimentsDao;
 import com.googlecode.hdbc.model.IExperiment;
 
@@ -18,9 +20,11 @@ public class ExperimentsListsController {
 	}
 
 	@RequestMapping(value="active", method=RequestMethod.GET)
-	public void active(Model model) {
+	public void active() {
 		List<IExperiment> experiments = data.findActiveExperiments();
-		model.addAttribute("experiments", experiments);
+
+		ModelAndView mv = new ModelAndView("lists/active");
+		mv.addObject("experiments", experiments);
 	}
 	
 	@RequestMapping(value="search", method=RequestMethod.GET)

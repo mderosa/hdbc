@@ -34,7 +34,9 @@
 		<constructor-arg ref="experimentDataValidator" />
 	</bean>		
 		
-	<bean id="experimentsDao" class="com.googlecode.hdbc.dao.StubExperimentsDao" />
+	<bean id="experimentsDao" class="com.googlecode.hdbc.dao.ExperimentsDao" >
+		<constructor-arg ref="mySessionFactory" />
+	</bean>
 	
 	<bean id="experimentDao" class="com.googlecode.hdbc.dao.ExperimentDao" >
 		<constructor-arg ref="mySessionFactory" />
