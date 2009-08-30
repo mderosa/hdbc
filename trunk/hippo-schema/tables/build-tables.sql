@@ -1,6 +1,8 @@
 
-@@users.sql
-@@experiments.sql
-@@treatments.sql
-@@data.sql
-@@variables.sql
+@@users
+@@experiments
+@@treatments
+@@data
+@@variables
+@@version_change_log
+@@version
