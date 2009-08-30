@@ -15,5 +15,8 @@
         <property name="purpose" column="purpose" not-null="true" />
         <property name="method" column="method" />
         <property name="conclusion" column="conclusion" />
+        <property name="modifiedDate" column="modified_dt" type="date"/>
+        <property name="modifiedBy" column="modified_by" type="long" />
+        <property name="active" column="active" type="boolean" />
     </class>    
 </hibernate-mapping>

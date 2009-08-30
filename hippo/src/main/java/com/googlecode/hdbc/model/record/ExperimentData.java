@@ -1,5 +1,8 @@
 package com.googlecode.hdbc.model.record;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.apache.commons.lang.StringUtils;
 
 public class ExperimentData {
@@ -8,6 +11,9 @@ public class ExperimentData {
 	private String purpose;
 	private String method;
 	private String conclusion;
+	private Date modifiedDate = Calendar.getInstance().getTime();
+	private Long modifiedBy = 0L;
+	private boolean active = true;
 	
 	public ExperimentData() { }
 	
@@ -50,6 +56,27 @@ public class ExperimentData {
 	}
 	public final void setConclusion(final String conclusion) {
 		this.conclusion = StringUtils.trimToNull(conclusion);
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+	public void setModifiedDate(Date date) {
+		this.modifiedDate = date;
+	}
+
+	public Long getModifiedBy() {
+		return modifiedBy;
+	}
+	public void setModifiedBy(Long userId) {
+		this.modifiedBy = userId;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean actv) {
+		this.active = actv;
 	}
 	
 }
