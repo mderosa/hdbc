@@ -1,2 +1,4 @@
 
-@@tables/build-tables.sql
+@@tables/build-tables
+@@sequences/build-sequences
+@@procedures/build-procedures
