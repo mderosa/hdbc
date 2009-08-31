@@ -9,19 +9,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.googlecode.hdbc.dao.IExperimentsDao;
 import com.googlecode.hdbc.model.IExperiment;
+import com.googlecode.hdbc.model.record.ExperimentData;
 
 @Controller
 @RequestMapping("/experiments/lists/*")
 public class ExperimentsListsController {
-	private IExperimentsDao data;
+	private IExperimentsDao experimentsDao;
 	
 	public ExperimentsListsController(IExperimentsDao dao) {
-		data = dao;
+		this.experimentsDao = dao;
 	}
 
 	@RequestMapping(value="active", method=RequestMethod.GET)
 	public void active() {
-		List<IExperiment> experiments = data.findActiveExperiments();
+		List<ExperimentData> experiments = experimentsDao.findActiveExperiments();
 
 		ModelAndView mv = new ModelAndView("lists/active");
 		mv.addObject("experiments", experiments);
@@ -29,7 +30,7 @@ public class ExperimentsListsController {
 	
 	@RequestMapping(value="search", method=RequestMethod.GET)
 	public void search(Model model) {
-		List<IExperiment> experiments = data.findActiveExperiments();
+		List<ExperimentData> experiments = experimentsDao.findActiveExperiments();
 		model.addAttribute("experiments", experiments);
 	}
 }
