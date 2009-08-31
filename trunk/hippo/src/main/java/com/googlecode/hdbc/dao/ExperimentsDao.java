@@ -1,15 +1,14 @@
 package com.googlecode.hdbc.dao;
 
+
 import java.util.Calendar;
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.googlecode.hdbc.model.IExperiment;
+import com.googlecode.hdbc.model.record.ExperimentData;
 
 @Repository
 @Transactional
@@ -25,7 +24,7 @@ public class ExperimentsDao implements IExperimentsDao {
 		"where modifiedDate > :startdt " +
 		"and active is true ";
 	@SuppressWarnings("unchecked")
-	public final List<IExperiment> findActiveExperiments() {
+	public final List<ExperimentData> findActiveExperiments() {
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.DAY_OF_MONTH, -14);
 		
