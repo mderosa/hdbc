@@ -3,9 +3,11 @@ package com.googlecode.hdbc.model.record;
 import java.util.Calendar;
 import java.util.Date;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.StringUtils;
 
-public class ExperimentData {
+public class ExperimentData extends HippoObject {
 	private Long uid;
 	private String title;
 	private String purpose;
@@ -78,5 +80,5 @@ public class ExperimentData {
 	public void setActive(boolean actv) {
 		this.active = actv;
 	}
-	
+
 }
