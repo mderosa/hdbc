@@ -5,9 +5,12 @@ import java.util.Map;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
 import com.googlecode.hdbc.model.record.ExperimentData;
 
+/**
+ * Creates a view string of the form 
+ * {data: [{ExperimentData.toJson()}, {...}, ...]}
+ */
 public class ActiveExperimentsOutputPolicy implements ICustomOutputPolicy {
 
 	@SuppressWarnings("unchecked")
