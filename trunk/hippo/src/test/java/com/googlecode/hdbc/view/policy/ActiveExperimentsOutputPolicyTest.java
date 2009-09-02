@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.junit.Test;
@@ -30,16 +31,15 @@ public class ActiveExperimentsOutputPolicyTest {
 	@Test
 	public final void testAExperimentsListWithContents() {
 		Map<String, Object> model = new HashMap<String, Object>();
-		ArrayList exps = new ArrayList();
+		ArrayList<ExperimentData> exps = new ArrayList<ExperimentData>();
 		exps.add(factory.mkStdExperimentData());
 		exps.add(factory.mkStdExperimentData());
 		model.put("experiments", exps);
 		
 		ActiveExperimentsOutputPolicy policy = new ActiveExperimentsOutputPolicy();
 		JSONObject jsn = (JSONObject) policy.customOutput(model);
-		String expected = "{'data':[" +
-				"{'uid':1,'title':}," +
-				"{}]";
-		assertEquals(expected, jsn.toString());
+		
+		JSONArray data = jsn.getJSONArray("data");
+		assertEquals(2, data.size());
 	}
 }
