@@ -3,12 +3,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="experimentsView" class="com.googlecode.hdbc.view.ExtFormJsonView" >
+	<bean id="experiments" class="com.googlecode.hdbc.view.ExtFormJsonView" >
 		<constructor-arg index="0" value="application/json;charset=UTF-8" />
 		<constructor-arg index="1" value="UTF-8" />
 		<constructor-arg index="2" ref="experimentsOutputPolicy" />
 	</bean>
 	
+	<bean id="experiments.lists.active" class="com.googlecode.hdbc.view.ExtFormJsonView" >
+		<constructor-arg index="0" value="application/json;charset=UTF-8" />
+		<constructor-arg index="1" value="UTF-8" />
+		<constructor-arg index="2" ref="activeExperimentsOutputPolicy" />
+	</bean>
+	
 	<bean id="experimentsOutputPolicy" class="com.googlecode.hdbc.view.policy.ExperimentsOutputPolicy" />
+	<bean id="activeExperimentsOutputPolicy" class="com.googlecode.hdbc.view.policy.ActiveExperimentsOutputPolicy" />
 	
 </beans>

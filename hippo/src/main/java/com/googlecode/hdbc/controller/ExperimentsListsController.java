@@ -6,9 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.googlecode.hdbc.dao.IExperimentsDao;
-import com.googlecode.hdbc.model.IExperiment;
 import com.googlecode.hdbc.model.record.ExperimentData;
 
 @Controller
@@ -24,7 +22,7 @@ public class ExperimentsListsController {
 	public void active() {
 		List<ExperimentData> experiments = experimentsDao.findActiveExperiments();
 
-		ModelAndView mv = new ModelAndView("/experiments/lists/active");
+		ModelAndView mv = new ModelAndView("experiments.lists.active");
 		mv.addObject("experiments", experiments);
 	}
 	

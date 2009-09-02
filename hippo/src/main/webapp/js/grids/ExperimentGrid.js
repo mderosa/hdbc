@@ -14,13 +14,10 @@ Hippo.grids.ExperimentGrid = Ext.extend(Ext.grid.GridPanel, {
 			]
 			,store: new Ext.data.JsonStore({
 				autoDestroy: true,
-				root: 'rows',
+				root: 'data',
 				idProperty: 'uid',
 				fields: Hippo.grids.FieldDefinitionFactory.createFieldDef(name),
-				data: {rows: [
-					{uid:1, title:'expa title1', purpose:'exp purpose1'},
-					{uid:2, title:'exp title2', purpose:'exp purpose2'}
-				]}
+				url: 'console/experiments/lists/active' 
 			})
 			,autoScroll: true
 			,autoHeight: true

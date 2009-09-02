@@ -32,15 +32,15 @@
 			name: 'ExperimentGridTest',
 	
 			setUp: function() {
-				this.grid = new Hippo.grids.ExperimentGrid();
+				this.grid = new Hippo.grids.ExperimentGrid({width: 300});
 				this.grid.store = new Ext.data.JsonStore({
 					autoDestroy: true,
 					root: 'rows',
 					idProperty: 'uid',
 					fields: Hippo.grids.FieldDefinitionFactory.createFieldDef('experimentGrid'),
 					data: {rows: [
-						{uid:1, title:'expa title1', purpose:'exp purpose1'},
-						{uid:2, title:'exp title2', purpose:'exp purpose2'}
+						{uid:3, title:'expa title3', purpose:'exp purpose3'},
+						{uid:4, title:'exp title4', purpose:'exp purpose4'}
 					]}
 				});
 	        	this.grid.render('test');
