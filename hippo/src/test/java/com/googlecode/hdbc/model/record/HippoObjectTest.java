@@ -19,7 +19,6 @@ public class HippoObjectTest {
 		assertEquals(2L, jsn.getLong("uid"));
 		assertEquals("atitle", jsn.getString("title"));
 		assertTrue(jsn.getBoolean("active"));
-		//assertNull(jsn.get("method"));
 		
 		assertTrue(jsn.toString().contains("\"method\":null"));
 		assertTrue(jsn.toString().contains("\"active\":true"));

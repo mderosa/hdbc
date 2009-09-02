@@ -24,7 +24,7 @@ public class ExperimentsListsController {
 	public void active() {
 		List<ExperimentData> experiments = experimentsDao.findActiveExperiments();
 
-		ModelAndView mv = new ModelAndView("lists/active");
+		ModelAndView mv = new ModelAndView("/experiments/lists/active");
 		mv.addObject("experiments", experiments);
 	}
 	
