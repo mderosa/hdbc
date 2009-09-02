@@ -14,6 +14,11 @@ import org.junit.Test;
 import com.googlecode.hdbc.model.factory.ExperimentDataFactory;
 import com.googlecode.hdbc.model.record.ExperimentData;
 
+/**
+ * Returns a JSON object of the form
+ * {data : [ {ExperimentData.toJson()}, {...}, ...]} 
+ *
+ */
 public class ActiveExperimentsOutputPolicyTest {
 	private ExperimentDataFactory factory = new ExperimentDataFactory();
 	
