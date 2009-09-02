@@ -41,7 +41,7 @@ public class ExperimentsController {
 			dao.insert(new Experiment(data));
 		}
 		
-		final ModelAndView mv = new ModelAndView("experimentsView");
+		final ModelAndView mv = new ModelAndView("experiments");
 		return mv;
 	}
 	
