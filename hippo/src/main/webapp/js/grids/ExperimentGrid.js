@@ -27,6 +27,13 @@ Hippo.grids.ExperimentGrid = Ext.extend(Ext.grid.GridPanel, {
 		});
 				
 		Hippo.grids.ExperimentGrid.superclass.initComponent.apply(this, arguments);		
+	},
+	
+	onRender: function() {
+		if (this.store.url) {
+			this.store.load();
+		}
+		Hippo.grids.ExperimentGrid.superclass.onRender.apply(this, arguments);
 	}
 
 });
