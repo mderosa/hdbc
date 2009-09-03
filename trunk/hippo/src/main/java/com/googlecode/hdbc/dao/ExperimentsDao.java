@@ -30,7 +30,7 @@ public class ExperimentsDao implements IExperimentsDao {
 		
 		Session session = sessionFactory.getCurrentSession();
 		Query qry = session.createQuery(activeExp);
-		qry.setDate(0, cal.getTime());
+		qry.setDate("startdt", cal.getTime());
 		return qry.list();
 	}
 
