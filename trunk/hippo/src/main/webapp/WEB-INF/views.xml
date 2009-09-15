@@ -9,7 +9,7 @@
 		<constructor-arg index="2" ref="experimentsOutputPolicy" />
 	</bean>
 	
-	<bean id="experiments.lists.active" class="com.googlecode.hdbc.view.ExtFormJsonView" >
+	<bean id="experiments_lists_active" class="com.googlecode.hdbc.view.ExtFormJsonView" >
 		<constructor-arg index="0" value="application/json;charset=UTF-8" />
 		<constructor-arg index="1" value="UTF-8" />
 		<constructor-arg index="2" ref="activeExperimentsOutputPolicy" />

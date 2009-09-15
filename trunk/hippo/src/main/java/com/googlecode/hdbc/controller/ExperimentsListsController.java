@@ -19,11 +19,12 @@ public class ExperimentsListsController {
 	}
 
 	@RequestMapping(value="active", method=RequestMethod.GET)
-	public void active() {
+	public ModelAndView active() {
 		List<ExperimentData> experiments = experimentsDao.findActiveExperiments();
 
-		ModelAndView mv = new ModelAndView("experiments.lists.active");
+		ModelAndView mv = new ModelAndView("experiments_lists_active");
 		mv.addObject("experiments", experiments);
+		return mv;
 	}
 	
 	@RequestMapping(value="search", method=RequestMethod.GET)
