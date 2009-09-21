@@ -45,10 +45,15 @@
 		var testCase = new YAHOO.tool.TestCase({
 			name: 'ExperimentGridTest',
 	
-			testDataIsDisplayed: function() {
-				var content = this.grid.el.dom.innerHTML;
+			testHeadersAreDisplayed: function() {
+				var content = grid.el.dom.innerHTML;
 				assert.isNotNull(/Title/.exec(content));
 				assert.isNotNull(/Purpose/.exec(content));
+			},
+
+			testGridContentIsDisplayed: function() {
+				var content = grid.el.dom.innerHTML;
+				assert.isNotNull(/expa/.exec(content));
 			}
 	
 		});
