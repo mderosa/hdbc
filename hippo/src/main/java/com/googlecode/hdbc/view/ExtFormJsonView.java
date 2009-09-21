@@ -10,6 +10,11 @@ import net.sf.json.JSONObject;
 public class ExtFormJsonView extends AbstractJsonView {
 	private ICustomOutputPolicy extraOutput;
 	
+	public ExtFormJsonView(ICustomOutputPolicy policy) {
+		super("application/json;charset=UTF-8", "UTF-8");
+		extraOutput = policy;
+	}
+	
 	public ExtFormJsonView(String contentType, String outputEncoding, ICustomOutputPolicy output) {
 		super(contentType, outputEncoding);
 		this.extraOutput = output;
