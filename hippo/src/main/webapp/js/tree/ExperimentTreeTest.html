@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ExperimentGridTest</title>
+	
+	<link rel="stylesheet" type="text/css" href="../../yui/logger/assets/logger.css"> 
+	<link rel="stylesheet" type="text/css" href="../../yui/yuitest/assets/testlogger.css"> 
+	<script type="text/javascript" src="../../yui/yahoo-dom-event/yahoo-dom-event.js"></script> 
+	<script type="text/javascript" src="../../yui/logger/logger-debug.js"></script> 
+	<script type="text/javascript" src="../../yui/yuitest/yuitest-debug.js"></script> 
+
+    <script type="text/javascript" src="../../ext/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext/ext-all-debug.js"></script>
+    <script type="text/javascript" src="FieldDefinitionFactory.js"></script>
+	<script type="text/javascript" src="ExperimentGrid.js"></script>
+    
+    <!-- Include Ext stylesheets here: -->
+    <link rel="stylesheet" type="text/css" href="../../ext/resources/css/ext-all.css">
+    <link rel="stylesheet" type="text/css" href="../../css/hippo.css">
+     
+</head>
+<body>
+	<div id="test"></div>
+	
+	<script>
+	
+	Ext.onReady(function() {
+		var grid = new Hippo.grids.ExperimentGrid({width: 300});
+		grid.store = new Ext.data.JsonStore({
+			autoDestroy: true,
+			root: 'rows',
+			idProperty: 'uid',
+			fields: Hippo.grids.FieldDefinitionFactory.createFieldDef('experimentGrid'),
+			data: {rows: [
+				{uid:3, title:'expa title3', purpose:'exp purpose3'},
+				{uid:4, title:'exp title4', purpose:'exp purpose4'}
+			]}
+		});
+    	grid.render('test');
+	
+	
+		var assert = YAHOO.util.Assert;
+		
+		var testCase = new YAHOO.tool.TestCase({
+			name: 'ExperimentGridTest',
+	
+			testHeadersAreDisplayed: function() {
+				var content = grid.el.dom.innerHTML;
+				assert.isNotNull(/Title/.exec(content));
+				assert.isNotNull(/Purpose/.exec(content));
+			},
+
+			testGridContentIsDisplayed: function() {
+				var content = grid.el.dom.innerHTML;
+				assert.isNotNull(/expa/.exec(content));
+			}
+	
+		});
+	
+		YAHOO.tool.TestRunner.add(testCase);
+		YAHOO.util.Event.onDOMReady(function() {
+			var logger = new YAHOO.tool.TestLogger("testLogger");
+			YAHOO.tool.TestRunner.run();
+		});
+	});
+
+	</script>
+</body>
+</html>
