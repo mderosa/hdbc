@@ -5,20 +5,7 @@ Hippo.panel.ExperimentTabPanel = new Ext.extend(Ext.TabPanel, {
 	
 	initComponent: function() {
 		Ext.apply(this, {
-			id: 'expTab'
-			,activeItem: 0
-			,items: [{
-				title: 'Overview',
-				html: 'put overview data here'
-			},
-			{
-				title: 'Data',
-				html: 'put raw data here'
-			},
-			{
-				title: 'Graphics',
-				html: 'put graphic analysis here'
-			}]
+			activeItem: 0
 		});
 		
 		Hippo.panel.ExperimentTabPanel.superclass.initComponent.apply(this, arguments);
@@ -26,4 +13,4 @@ Hippo.panel.ExperimentTabPanel = new Ext.extend(Ext.TabPanel, {
 
 });
 
-Ext.reg('experimenttabpanel', Hippo.panel.ExperimentTabPanel);
+Ext.reg('panel.ExperimentTabPanel', Hippo.panel.ExperimentTabPanel);

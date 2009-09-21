@@ -48,8 +48,19 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 				}]
 			},
 			{
-				region: 'center'
-				,xtype: 'experimenttabpanel'
+				region: 'center',
+				xtype: 'panel.ExperimentTabPanel',
+				items: [
+					{
+						xtype: 'form.ExperimentDetailForm'
+					},
+					{
+						title: 'Data'
+					},
+					{
+						title: 'Graphics'
+					}
+				]
 			}]
 		});
 		
