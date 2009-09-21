@@ -4,15 +4,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 	<bean id="experiments" class="com.googlecode.hdbc.view.ExtFormJsonView" >
-		<constructor-arg index="0" value="application/json;charset=UTF-8" />
-		<constructor-arg index="1" value="UTF-8" />
-		<constructor-arg index="2" ref="experimentsOutputPolicy" />
+		<constructor-arg ref="experimentsOutputPolicy" />
 	</bean>
 	
-	<bean id="experiments_lists_active" class="com.googlecode.hdbc.view.ExtFormJsonView" >
-		<constructor-arg index="0" value="application/json;charset=UTF-8" />
-		<constructor-arg index="1" value="UTF-8" />
-		<constructor-arg index="2" ref="activeExperimentsOutputPolicy" />
+	<bean id="experiments_lists_active" class="com.googlecode.hdbc.view.StandardJsonView" >
+		<constructor-arg ref="activeExperimentsOutputPolicy" />
 	</bean>
 	
 	<bean id="experimentsOutputPolicy" class="com.googlecode.hdbc.view.policy.ExperimentsOutputPolicy" />

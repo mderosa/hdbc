@@ -26,30 +26,25 @@
 	<script>
 	
 	Ext.onReady(function() {
+		var grid = new Hippo.grids.ExperimentGrid({width: 300});
+		grid.store = new Ext.data.JsonStore({
+			autoDestroy: true,
+			root: 'rows',
+			idProperty: 'uid',
+			fields: Hippo.grids.FieldDefinitionFactory.createFieldDef('experimentGrid'),
+			data: {rows: [
+				{uid:3, title:'expa title3', purpose:'exp purpose3'},
+				{uid:4, title:'exp title4', purpose:'exp purpose4'}
+			]}
+		});
+    	grid.render('test');
+	
+	
 		var assert = YAHOO.util.Assert;
 		
 		var testCase = new YAHOO.tool.TestCase({
 			name: 'ExperimentGridTest',
 	
-			setUp: function() {
-				this.grid = new Hippo.grids.ExperimentGrid({width: 300});
-				this.grid.store = new Ext.data.JsonStore({
-					autoDestroy: true,
-					root: 'rows',
-					idProperty: 'uid',
-					fields: Hippo.grids.FieldDefinitionFactory.createFieldDef('experimentGrid'),
-					data: {rows: [
-						{uid:3, title:'expa title3', purpose:'exp purpose3'},
-						{uid:4, title:'exp title4', purpose:'exp purpose4'}
-					]}
-				});
-	        	this.grid.render('test');
-			},
-	
-			tearDown: function() {
-				//this.pnl.destroy();
-			},
-			
 			testDataIsDisplayed: function() {
 				var content = this.grid.el.dom.innerHTML;
 				assert.isNotNull(/Title/.exec(content));
@@ -63,8 +58,8 @@
 			var logger = new YAHOO.tool.TestLogger("testLogger");
 			YAHOO.tool.TestRunner.run();
 		});
-
 	});
+
 	</script>
 </body>
 </html>

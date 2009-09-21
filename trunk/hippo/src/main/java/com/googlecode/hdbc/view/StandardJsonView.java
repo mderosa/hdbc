@@ -12,6 +12,11 @@ import net.sf.json.JSONObject;
 
 public class StandardJsonView extends AbstractJsonView {
 	private ICustomOutputPolicy outputPolicy;
+	
+	public StandardJsonView(ICustomOutputPolicy policy) {
+		super("application/json;charset=UTF-8", "UTF-8");
+		outputPolicy = policy;
+	}
 
 	public StandardJsonView(String contentType, String outputEncoding, ICustomOutputPolicy policy) {
 		super(contentType, outputEncoding);
