@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment></comment>
+    <entry key="db.jdbc.connection.string">jdbc:oracle:thin:@localhost:1521:ORCL</entry>
+    <entry key="db.user">tracker30</entry>
+    <entry key="db.password">tracker30</entry>
+</properties>
+
