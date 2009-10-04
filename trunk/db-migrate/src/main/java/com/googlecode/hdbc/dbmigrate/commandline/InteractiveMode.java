@@ -1,6 +1,6 @@
 package com.googlecode.hdbc.dbmigrate.commandline;
 
-public class InteractiveMode implements RunMode {
+public class InteractiveMode extends RunMode {
 
 	@Override
 	public int getFromVersion() {

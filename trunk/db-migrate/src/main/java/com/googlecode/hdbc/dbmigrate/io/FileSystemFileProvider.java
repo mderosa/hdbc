@@ -1,11 +1,13 @@
 package com.googlecode.hdbc.dbmigrate.io;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 public class FileSystemFileProvider implements IFileProvider {
     private static final int BUFFER_LENGTH = 512;
@@ -202,5 +204,14 @@ public class FileSystemFileProvider implements IFileProvider {
 
     public final void initializeTemplatesDirectory(final String schema) throws IOException {
         initializeBaseDirectory(schema, TEMPLATES_DIRECTORY);
+    }
+    
+    public final Properties readProperties() throws IOException {
+        File file = new File(".");
+        String path = file.getCanonicalPath();
+        FileInputStream steam = new FileInputStream(path + "/config.xml");
+        Properties props = new Properties();
+        props.loadFromXML(steam);
+        return props;
     }
 }
