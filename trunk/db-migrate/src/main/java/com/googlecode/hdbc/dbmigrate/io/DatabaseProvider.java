@@ -15,7 +15,7 @@ public class DatabaseProvider implements IDatabaseProvider {
 	}
 
 	@Override
-	public int getCurrentVersion() {
+	public int getCurrentVersion() throws SQLException {
 		int version = 0;
 		
 		DataSource ds = this.makeDataSource(props);
@@ -26,13 +26,9 @@ public class DatabaseProvider implements IDatabaseProvider {
 			stmt = cn.createStatement();
 			stmt.execute("SELECT version FROM version");
 			ResultSet rs = stmt.getResultSet();
-			boolean found = rs.first();
-			if (found) {
-				version = rs.getInt(0);
+			if (rs.next()) {
+				version = rs.getInt(1);
 			} 
-				
-		} catch (SQLException e) {
-			
 		} finally {
 			if (stmt != null) {
 				try {
@@ -50,20 +46,20 @@ public class DatabaseProvider implements IDatabaseProvider {
 	}
 	
     protected final DataSource makeDataSource(final Properties props) {
-        OracleDataSource odsTest;
+        OracleDataSource ods;
         try {
-            odsTest = new OracleDataSource();
-            odsTest.setConnectionCachingEnabled(true);
+            ods = new OracleDataSource();
+            ods.setConnectionCachingEnabled(true);
             String url = props.getProperty("db.jdbc.connection.string");
-            odsTest.setURL(url);
+            ods.setURL(url);
             String user = props.getProperty("db.user");
-            odsTest.setUser(user);
+            ods.setUser(user);
             String pwd = props.getProperty("db.password");
-            odsTest.setPassword(pwd);
+            ods.setPassword(pwd);
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
-        return odsTest;
+        return ods;
     }
 
     private void closeDatasource(final DataSource ds) {

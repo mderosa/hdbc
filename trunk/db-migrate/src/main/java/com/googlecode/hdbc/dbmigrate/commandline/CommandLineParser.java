@@ -1,5 +1,6 @@
 package com.googlecode.hdbc.dbmigrate.commandline;
 
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +18,7 @@ public class CommandLineParser {
 		fs = fileSystem;
 	}
 
-	public RunMode parse(String[] args) {
+	public RunMode parse(String[] args) throws SQLException {
 		if (!containsToVersionParameter(args)) {
 			return new InteractiveMode();
 		} else {

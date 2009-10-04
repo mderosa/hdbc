@@ -1,6 +1,9 @@
 package com.googlecode.hdbc.dbmigrate.commandline;
 
 import static org.junit.Assert.*;
+
+import java.sql.SQLException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +42,7 @@ public class CommandLineParserTest {
 	 * args = []
 	 */
 	@Test
-	public void testInteractiveModeStdCase() {
+	public void testInteractiveModeStdCase() throws SQLException {
 		RunMode actual = parser.parse(new String[] {});
 		assertTrue(actual instanceof InteractiveMode);
 	}
@@ -48,7 +51,7 @@ public class CommandLineParserTest {
 	 * contains "^-t\d*" args == False
 	 */
 	@Test 
-	public void testInteractiveMode2() {
+	public void testInteractiveMode2() throws SQLException {
 		RunMode actual = parser.parse(new String[] {"10-t", "-a"});
 		assertTrue(actual instanceof InteractiveMode);
 	}
@@ -60,7 +63,7 @@ public class CommandLineParserTest {
 	 * version available 
 	 */
 	@Test
-	public void testAutoModeStdCase() {
+	public void testAutoModeStdCase() throws SQLException {
 		context.checking(new Expectations() {{
 			oneOf(db).getCurrentVersion();
 			will(returnValue(23));
@@ -79,7 +82,7 @@ public class CommandLineParserTest {
 	 * contains "^-t(\d*)" args == True && (\d*) <= version max
 	 */
 	@Test 
-	public void testAutoMode2() {
+	public void testAutoMode2() throws SQLException {
 		context.checking(new Expectations() {{
 			oneOf(db).getCurrentVersion();
 			will(returnValue(23));
@@ -100,7 +103,7 @@ public class CommandLineParserTest {
 	 * In this case we want to default the to variable to version max
 	 */
 	@Test
-	public void testAutoMode3() {
+	public void testAutoMode3() throws SQLException {
 		context.checking(new Expectations() {{
 			oneOf(db).getCurrentVersion();
 			will(returnValue(23));
