@@ -4,7 +4,7 @@
   <groupId>com.googlecode.hdbc</groupId>
   <artifactId>db-migrate</artifactId>
   <packaging>jar</packaging>
-  <version>0.8</version>
+  <version>0.9</version>
   <name>DbMigrate</name>
   <url>http://www.googlecode.com/p/hdbc</url>
   <dependencies>
