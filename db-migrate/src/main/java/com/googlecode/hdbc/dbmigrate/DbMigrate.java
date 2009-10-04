@@ -26,6 +26,19 @@ public final class DbMigrate {
 
     }
 
+    /**
+     * The entry point to the program
+     * <p>
+     * The program can be run in interactive mode, or automated mode.  In the interactive
+     * mode the user will be presented with a guided menu of selections which will enable
+     * him to either generate a do/undo script or a full migration script.  In automated
+     * mode the user can generate a full migration script by adding command line parameters.
+     * An example is: db-migrate.jar -t10
+     * where '-t' is shorthand for 'to' and the number following the '-t' specifies the 
+     * version to migrate the database to.  It is also possible to just enter a '-t'.  In
+     * this case the database is migrated to the highest version number available in the
+     * do directory. 
+     */
     public static void main(final String[] args) {
         Menu menu = menu(processWith(TopLevelMenuResponseProcessor.class), validateWith(TopLevelMenuResponseValidator.class), Prompt.ONE_TWO_THREE)
                 .add(item("1. Create a new do/undo script from a template",
@@ -43,8 +56,10 @@ public final class DbMigrate {
             new DbMigrate().personalizeOnFirstRun(new FileSystemFileProvider());
             menu.run(new EnumMap<Key, String>(Key.class));
             System.out.println("Success");
+            System.exit(0);
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
+            System.exit(1);
         }
 
     }
