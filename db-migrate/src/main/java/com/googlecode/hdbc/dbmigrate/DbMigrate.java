@@ -1,12 +1,21 @@
 package com.googlecode.hdbc.dbmigrate;
 
-import static com.googlecode.hdbc.dbmigrate.Menu.*;
-import static com.googlecode.hdbc.dbmigrate.MenuItem.*;
+import static com.googlecode.hdbc.dbmigrate.Menu.menu;
+import static com.googlecode.hdbc.dbmigrate.Menu.processWith;
+import static com.googlecode.hdbc.dbmigrate.Menu.validateWith;
+import static com.googlecode.hdbc.dbmigrate.MenuItem.item;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.EnumMap;
+
+import com.googlecode.hdbc.dbmigrate.commandline.AutomatedMode;
+import com.googlecode.hdbc.dbmigrate.commandline.CommandLineParser;
+import com.googlecode.hdbc.dbmigrate.commandline.InteractiveMode;
+import com.googlecode.hdbc.dbmigrate.commandline.RunMode;
+import com.googlecode.hdbc.dbmigrate.io.DatabaseProvider;
 import com.googlecode.hdbc.dbmigrate.io.FileSystemFileProvider;
 import com.googlecode.hdbc.dbmigrate.io.IFileProvider;
 import com.googlecode.hdbc.dbmigrate.processor.CurrentDbVersionProcessor;
@@ -40,21 +49,16 @@ public final class DbMigrate {
      * do directory. 
      */
     public static void main(final String[] args) {
-        Menu menu = menu(processWith(TopLevelMenuResponseProcessor.class), validateWith(TopLevelMenuResponseValidator.class), Prompt.ONE_TWO_THREE)
-                .add(item("1. Create a new do/undo script from a template",
-                        menu(processWith(MigrationScriptNameProcessor.class), validateWith(MigrationScriptNameValidator.class), Prompt.ALPHANUMERIC)
-                        .add(item("Enter the name of the migration script:",
-                                menu(processWith(ScriptTypeProcessor.class), validateWith(ScriptTypeValidator.class), Prompt.DDL_DML)
-                                .add(item("Do you wish to create a DDL script or a PL/SQL DML script (DDL/DML):", null))))))
-                .add(item("2. Create a full migration script",
-                        menu(processWith(CurrentDbVersionProcessor.class), validateWith(CurrentDbVersionValidator.class), Prompt.NUMERIC)
-                        .add(item("Enter the current database version (Enter 0 if the db is currently unversioned):",
-                                menu(processWith(GoToDbVersionProcessor.class), validateWith(GoToDbVersionValidator.class), Prompt.NUMERIC)
-                                .add(item("Enter the version that you wish to migrate to:", null))))))
-                .add(item("3. Quit", null));
+        IFileProvider fs = new FileSystemFileProvider();
         try {
-            new DbMigrate().personalizeOnFirstRun(new FileSystemFileProvider());
-            menu.run(new EnumMap<Key, String>(Key.class));
+            new DbMigrate().personalizeOnFirstRun(fs);
+            RunMode mode = new CommandLineParser(
+            		new DatabaseProvider(fs.readProperties()), fs).parse(args);
+            if (mode instanceof AutomatedMode) {
+            	DbMigrate.runInMode((AutomatedMode) mode, new GoToDbVersionProcessor());
+            } else {
+            	DbMigrate.runInMode((InteractiveMode) mode);
+            }
             System.out.println("Success");
             System.exit(0);
         } catch (IOException e) {
@@ -62,6 +66,36 @@ public final class DbMigrate {
             System.exit(1);
         }
 
+    }
+    
+    protected static void runInMode(InteractiveMode mode) throws IOException {
+    	Menu menu = menu(processWith(TopLevelMenuResponseProcessor.class), validateWith(TopLevelMenuResponseValidator.class), Prompt.ONE_TWO_THREE)
+	        .add(item("1. Create a new do/undo script from a template",
+	                menu(processWith(MigrationScriptNameProcessor.class), validateWith(MigrationScriptNameValidator.class), Prompt.ALPHANUMERIC)
+	                .add(item("Enter the name of the migration script:",
+	                        menu(processWith(ScriptTypeProcessor.class), validateWith(ScriptTypeValidator.class), Prompt.DDL_DML)
+	                        .add(item("Do you wish to create a DDL script or a PL/SQL DML script (DDL/DML):", null))))))
+	        .add(item("2. Create a full migration script",
+	                menu(processWith(CurrentDbVersionProcessor.class), validateWith(CurrentDbVersionValidator.class), Prompt.NUMERIC)
+	                .add(item("Enter the current database version (Enter 0 if the db is currently unversioned):",
+	                        menu(processWith(GoToDbVersionProcessor.class), validateWith(GoToDbVersionValidator.class), Prompt.NUMERIC)
+	                        .add(item("Enter the version that you wish to migrate to:", null))))))
+	        .add(item("3. Quit", null));
+    	
+    	menu.run(new EnumMap<Key, String>(Key.class));
+    }
+    
+    protected static void runInMode(AutomatedMode mode, GoToDbVersionProcessor processor) throws IOException {
+    	String toVersion;
+    	EnumMap<Key, String> params = new EnumMap<Key, String>(Key.class);
+    	if (mode.getToVersion() > mode.getFromVersion()) {
+    		toVersion = Integer.toString(mode.getToVersion());
+    		params.put(Key.CURRENT_DB_VERSION, Integer.toString(mode.getFromVersion()));
+    	} else {
+    		toVersion = Integer.toString(mode.getFromVersion());
+    		params.put(Key.CURRENT_DB_VERSION, Integer.toString(mode.getToVersion()));
+    	}
+    	processor.process(toVersion, null, params);
     }
 
     protected void personalizeOnFirstRun(final IFileProvider provider) throws IOException {

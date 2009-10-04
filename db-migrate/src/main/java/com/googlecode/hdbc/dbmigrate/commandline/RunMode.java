@@ -1,8 +1,8 @@
 package com.googlecode.hdbc.dbmigrate.commandline;
 
-public interface RunMode {
+public abstract class RunMode {
 	
-	int getFromVersion();
-	int getToVersion();
+	public abstract int getFromVersion();
+	public abstract int getToVersion();
 
 }

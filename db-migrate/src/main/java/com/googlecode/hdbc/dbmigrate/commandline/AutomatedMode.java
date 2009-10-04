@@ -1,6 +1,6 @@
 package com.googlecode.hdbc.dbmigrate.commandline;
 
-public class AutomatedMode implements RunMode {
+public class AutomatedMode extends RunMode {
 	int from;
 	int to;
 	

@@ -38,6 +38,11 @@
       <version>1.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+        <groupId>oracle</groupId>
+        <artifactId>ojdbc14</artifactId>
+        <version>10.2.0</version>
+    </dependency>
   </dependencies>
   <build>
   <plugins>
@@ -55,7 +60,8 @@
           <configuration>
               <archive>
                 <manifest>
-                  <mainClass>com.googlecode.hdbc.dbmigrate.DbMigrate</mainClass>
+                	<addClasspath>true</addClasspath>
+                	<mainClass>com.googlecode.hdbc.dbmigrate.DbMigrate</mainClass>
                 </manifest>
               </archive>
           </configuration>

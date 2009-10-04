@@ -13,5 +13,6 @@
 	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-library/1.1/hamcrest-library-1.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO"/>
+	<classpathentry kind="var" path="M2_REPO/oracle/ojdbc14/10.2.0/ojdbc14-10.2.0.jar"/>
 	<classpathentry kind="output" path="target/build"/>
 </classpath>

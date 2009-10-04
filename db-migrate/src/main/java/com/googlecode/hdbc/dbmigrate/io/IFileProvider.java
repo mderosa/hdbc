@@ -2,6 +2,7 @@ package com.googlecode.hdbc.dbmigrate.io;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 public interface IFileProvider {
 
@@ -15,4 +16,6 @@ public interface IFileProvider {
     void initializeDoDirectory(String schema) throws IOException;
     void initializeUnDoDirectory(String schema) throws IOException;
     void initializeTemplatesDirectory(String schema) throws IOException;
+    
+    Properties readProperties() throws IOException;
 }
