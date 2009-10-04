@@ -3,7 +3,7 @@
 <properties>
 	<comment></comment>
     <entry key="db.jdbc.connection.string">jdbc:oracle:thin:@localhost:1521:ORCL</entry>
-    <entry key="db.user">tracker30</entry>
-    <entry key="db.password">tracker30</entry>
+    <entry key="db.user">hippo</entry>
+    <entry key="db.password">hippo</entry>
 </properties>
 

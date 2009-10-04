@@ -61,7 +61,7 @@ public final class DbMigrate {
             }
             System.out.println("Success");
             System.exit(0);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             System.exit(1);
         }
