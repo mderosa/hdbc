@@ -1,6 +1,9 @@
 package com.googlecode.hdbc.dbmigrate.io;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 import javax.sql.DataSource;
 import oracle.jdbc.pool.OracleDataSource;
@@ -13,9 +16,37 @@ public class DatabaseProvider implements IDatabaseProvider {
 
 	@Override
 	public int getCurrentVersion() {
+		int version = 0;
+		
 		DataSource ds = this.makeDataSource(props);
+		Connection cn = null;
+		Statement stmt = null;
+		try {
+			cn = ds.getConnection();
+			stmt = cn.createStatement();
+			stmt.execute("SELECT version FROM version");
+			ResultSet rs = stmt.getResultSet();
+			boolean found = rs.first();
+			if (found) {
+				version = rs.getInt(0);
+			} 
+				
+		} catch (SQLException e) {
+			
+		} finally {
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {}
+			}
+			if (cn != null) {
+				try {
+					cn.close();
+				} catch (SQLException e) {}
+			}
+		}
 		this.closeDatasource(ds);
-		return 0;
+		return version;
 	}
 	
     protected final DataSource makeDataSource(final Properties props) {
