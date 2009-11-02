@@ -34,7 +34,8 @@ public class MigrationScriptNameProcessor implements IInputProcessor {
 
     protected final String preprocessRawInputName(final String input) {
         StringBuilder temp = new StringBuilder();
-        String[] parts = input.split("[-_]");
+        String strippedInput = input.replaceAll("\\s", "");
+        String[] parts = strippedInput.split("[-_]");
         boolean beginningOfInput = true;
         for (String part : parts) {
             String head = part.substring(0, 1);

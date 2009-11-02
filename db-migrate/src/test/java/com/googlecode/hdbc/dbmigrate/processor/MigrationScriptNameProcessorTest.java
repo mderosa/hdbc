@@ -24,6 +24,17 @@ public class MigrationScriptNameProcessorTest {
         String actual = proc.preprocessRawInputName("this-is_an_example");
         assertEquals("thisIsAnExample", actual);
     }
+    
+    /**
+     * When a migration file contains names sqlplus will not be able to
+     * execute it.
+     */
+    @Test
+    public final void rawInputNamesShouldNotHaveSpaces() {
+    	String actual = proc.preprocessRawInputName(" AndThis String");
+    	assertEquals("AndThisString", actual);
+    }
+    
 
     @Test
     public final void testNextFileIndex() {
