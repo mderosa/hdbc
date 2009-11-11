@@ -11,6 +11,10 @@
 		<constructor-arg ref="activeExperimentsOutputPolicy" />
 	</bean>
 	
+	<bean id="experiments_experiment" class="com.googlecode.hdbc.view.ExtFormJsonView" >
+		<constructor-arg ref="experimentsOutputPolicy" />
+	</bean>
+	
 	<bean id="experimentsOutputPolicy" class="com.googlecode.hdbc.view.policy.ExperimentsOutputPolicy" />
 	<bean id="activeExperimentsOutputPolicy" class="com.googlecode.hdbc.view.policy.ActiveExperimentsOutputPolicy" />
 	
