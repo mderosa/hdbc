@@ -10,7 +10,7 @@ Hippo.dialog.NewExperimentDlg = Ext.extend(Ext.Window, {
 	,initComponent: function(config) {
 		Ext.apply(this, {
 			items: [{
-				xtype: 'newexperimentform'
+				xtype: 'form.NewExperimentForm'
 			}]
 		});
 		Hippo.dialog.NewExperimentDlg.superclass.initComponent.apply(this, arguments);

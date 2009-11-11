@@ -24,4 +24,4 @@ Hippo.panel.ExperimentSettingsPanel = Ext.extend(Ext.form.FormPanel, {
 
 });
 
-Ext.reg('experimentsettingspanel', Hippo.panel.ExperimentSettingsPanel);
+Ext.reg('panel.ExperimentSettingsPanel', Hippo.panel.ExperimentSettingsPanel);

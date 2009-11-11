@@ -40,11 +40,11 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 				layout: 'accordion',
 				items: [{
 					title: 'Experiments'
-					,xtype: 'experimentGrid'
+					,xtype: 'grids.ExperimentGrid'
 				}
 				,{
 					title: 'Settings'
-					,xtype: 'experimentsettingspanel'
+					,xtype: 'panel.ExperimentSettingsPanel'
 				}]
 			},
 			{
