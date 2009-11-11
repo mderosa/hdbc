@@ -3,6 +3,14 @@ Ext.namespace('Hippo.grids');
 
 Hippo.grids.ExperimentGrid = Ext.extend(Ext.grid.GridPanel, {
 	
+	addNewExperiment: function(data) {
+		var gridRecord = Ext.data.Record.create(
+				Hippo.grids.FieldDefinitionFactory.createFieldDef('experimentGrid')
+			);
+		var newdata = new gridRecord({uid: data.uid, title: data.title, purpose: data.purpose});
+		this.store.add(newdata);
+	},
+	
 	initComponent: function() {
 		var name = 'experimentGrid';
 		Ext.apply(this, {
@@ -26,7 +34,13 @@ Hippo.grids.ExperimentGrid = Ext.extend(Ext.grid.GridPanel, {
 			}
 		});
 				
-		Hippo.grids.ExperimentGrid.superclass.initComponent.apply(this, arguments);		
+		Hippo.grids.ExperimentGrid.superclass.initComponent.apply(this, arguments);
+		this.relayEvents(Ext.getCmp('viewport'), ['newexperimentsaved']);
+		
+		this.on('newexperimentsaved', function(rsp, dlg) {
+				this.addNewExperiment(rsp.experiment);
+				dlg.destroy();
+			}, this);
 	},
 	
 	onRender: function() {

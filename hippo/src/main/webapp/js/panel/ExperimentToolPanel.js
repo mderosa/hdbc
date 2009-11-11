@@ -23,7 +23,9 @@ Hippo.panel.ExperimentToolPanel = Ext.extend(Ext.Toolbar, {
 				,listeners: {
 					click: {
 						fn: function(e, t) {
-							this.fireEvent('newexperiment');
+							if (!Ext.getCmp('newexperimentdlg')) {
+								new Hippo.dialog.NewExperimentDlg().show();
+							}
 						},
 						scope: this
 					}
@@ -32,8 +34,6 @@ Hippo.panel.ExperimentToolPanel = Ext.extend(Ext.Toolbar, {
 		});
 		
 		Hippo.panel.ExperimentToolPanel.superclass.initComponent.apply(this, arguments);
-		
-		this.addEvents('newexperiment');
 	}
 
 });
