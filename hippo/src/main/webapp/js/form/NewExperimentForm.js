@@ -62,4 +62,4 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 	}
 });
 
-Ext.reg('newexperimentform', Hippo.form.NewExperimentForm);
+Ext.reg('form.NewExperimentForm', Hippo.form.NewExperimentForm);

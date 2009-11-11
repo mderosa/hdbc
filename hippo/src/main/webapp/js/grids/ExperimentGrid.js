@@ -38,4 +38,4 @@ Hippo.grids.ExperimentGrid = Ext.extend(Ext.grid.GridPanel, {
 
 });
 
-Ext.reg('experimentGrid', Hippo.grids.ExperimentGrid);
+Ext.reg('grids.ExperimentGrid', Hippo.grids.ExperimentGrid);
