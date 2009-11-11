@@ -10,7 +10,7 @@ Hippo.grids.ExperimentGrid = Ext.extend(Ext.grid.GridPanel, {
 			,columns: [
 				{header: 'Uid', dataIndex: 'uid', hidden: true},
 				{header: 'Title', dataIndex: 'title', menuDisabled: true},
-				{header: 'Purpose', dataIndex: 'purpose', menuDisabled: true}
+				{header: 'Purpose', dataIndex: 'purpose',  menuDisabled: true}
 			]
 			,store: new Ext.data.JsonStore({
 				autoDestroy: true,
