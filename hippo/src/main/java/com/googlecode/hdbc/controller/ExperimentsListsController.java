@@ -23,13 +23,13 @@ public class ExperimentsListsController {
 		List<ExperimentData> experiments = experimentsDao.findActiveExperiments();
 
 		ModelAndView mv = new ModelAndView("experiments_lists_active");
-		mv.addObject("experiments", experiments);
+		mv.addObject(ModelAttributes.COLLECTION, experiments);
 		return mv;
 	}
 	
 	@RequestMapping(value="search", method=RequestMethod.GET)
 	public void search(Model model) {
 		List<ExperimentData> experiments = experimentsDao.findActiveExperiments();
-		model.addAttribute("experiments", experiments);
+		model.addAttribute(ModelAttributes.COLLECTION, experiments);
 	}
 }

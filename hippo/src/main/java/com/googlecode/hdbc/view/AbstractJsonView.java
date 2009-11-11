@@ -1,15 +1,12 @@
 package com.googlecode.hdbc.view;
 
 import java.io.ByteArrayOutputStream;
-import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;

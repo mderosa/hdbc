@@ -36,7 +36,7 @@ public abstract class HippoObject {
 		config.registerJsonValueProcessor(Date.class, new JsonValueProcessor() {
 			@Override
 			public Object processArrayValue(Object value, JsonConfig config) {
-				throw new UnsupportedOperationException("formatting of date arrays in currently not supported");
+				throw new UnsupportedOperationException("formatting of date arrays is currently not supported");
 			}
 
 			@Override

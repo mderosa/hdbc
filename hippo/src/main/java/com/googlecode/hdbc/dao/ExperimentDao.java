@@ -17,7 +17,7 @@ public class ExperimentDao implements IExperimentDao {
 	}
 
 	public final IExperiment find(final long uid) {
-		return null;
+		return (IExperiment) sessionFactory.getCurrentSession().load(ExperimentData.class, uid);
 	}
 
 	public final long insert(final IExperiment experiment) {
