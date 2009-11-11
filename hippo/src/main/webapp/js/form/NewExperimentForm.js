@@ -14,7 +14,7 @@ Hippo.form.NewExperimentForm = Ext.extend(Ext.form.FormPanel, {
 	}
 	,onSubmitSuccess: function(frm, action) {
 		var jsonRsp = Ext.util.JSON.decode(action.response.responseText);
-		Ext.getCmp('viewport').fireEvent("newexperimentsaved", jsonRsp, this.ownerCt);
+		Ext.getCmp('viewport').fireEvent("on_newExperimentSaved", jsonRsp, this.ownerCt);
 	}
 	,onSubmitFail: function(frm, act) {
 		Ext.Msg.alert('Failure', act.response.statusText);

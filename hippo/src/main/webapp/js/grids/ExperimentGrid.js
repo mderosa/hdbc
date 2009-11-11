@@ -35,12 +35,18 @@ Hippo.grids.ExperimentGrid = Ext.extend(Ext.grid.GridPanel, {
 		});
 				
 		Hippo.grids.ExperimentGrid.superclass.initComponent.apply(this, arguments);
-		this.relayEvents(Ext.getCmp('viewport'), ['newexperimentsaved']);
 		
-		this.on('newexperimentsaved', function(rsp, dlg) {
+		this.relayEvents(Ext.getCmp('viewport'), ['newexperimentsaved']);		
+		this.on('on_newExperimentSaved', function(rsp, dlg) {
 				this.addNewExperiment(rsp.experiment);
 				dlg.destroy();
 			}, this);
+		this.on('rowclick', function(grid, rowIndex, evntObj) {
+				var uid = grid.getStore().getAt(rowIndex).get('uid');
+				Ext.getCmp('viewport').fireEvent('on_experimentSelected', uid)
+				console.log(uid);
+			}, this);
+			
 	},
 	
 	onRender: function() {
