@@ -68,7 +68,8 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 		
 		Hippo.HippoViewport.superclass.initComponent.apply(this, arguments);
 		this.addEvents({
-			"newexperimentsaved": true,
+			"on_newExperimentSaved": true,
+			"on_experimentSelected": true
 		})
 	}
 	
