@@ -38,4 +38,4 @@ Hippo.panel.ExperimentToolPanel = Ext.extend(Ext.Toolbar, {
 
 });
 
-Ext.reg('experimenttoolpanel', Hippo.panel.ExperimentToolPanel);
+Ext.reg('panel.ExperimentToolPanel', Hippo.panel.ExperimentToolPanel);
