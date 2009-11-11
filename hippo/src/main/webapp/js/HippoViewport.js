@@ -5,7 +5,7 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 	layout: 'border',
 	getToolPanel: function() {
 		var toolPanel = this.getComponent(0);
-		if (toolPanel == null || toolPanel.xtype != 'experimenttoolpanel') {
+		if (toolPanel == null || toolPanel.xtype != 'panel.ExperimentToolPanel') {
 			throw new Error('the component has not been initialized or is misconfigured');
 		}
 		return toolPanel;
@@ -26,7 +26,7 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 				region: 'north'
 				,id: 'north'
 				,height: 30
-				,xtype: 'experimenttoolpanel'
+				,xtype: 'panel.ExperimentToolPanel'
 			}
 			,{
 				region: 'west'
