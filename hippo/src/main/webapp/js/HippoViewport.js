@@ -1,6 +1,14 @@
 
 Ext.namespace('Hippo');
 
+/**
+ * The central viewport and event locus for the application
+ * <p>
+ * Note that we want the id field set in the configuration passed to extend() as this is necessary
+ * for the other components to find the viewport during initialization and register events
+ * @class Hippo.HippoViewport
+ * @extends Ext.Viewport
+ */
 Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 	layout: 'border',
 	id: 'viewport',
