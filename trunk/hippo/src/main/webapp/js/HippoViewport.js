@@ -3,6 +3,8 @@ Ext.namespace('Hippo');
 
 Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 	layout: 'border',
+	id: 'viewport',
+	
 	getToolPanel: function() {
 		var toolPanel = this.getComponent(0);
 		if (toolPanel == null || toolPanel.xtype != 'panel.ExperimentToolPanel') {
@@ -10,19 +12,11 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 		}
 		return toolPanel;
 	}
-	,addNewExperiment: function(data) {
-		var store = this.getComponent('west').getComponent('experimentGrid').getStore();
-		var gridRecord = Ext.data.Record.create(
-				Hippo.grids.FieldDefinitionFactory.createFieldDef('experimentGrid')
-			);
-		var newdata = new gridRecord({uid: data.uid, title: data.title, purpose: data.purpose});
-		store.add(newdata);
-	}
+
 	,initComponent: function() {
 		Ext.apply(this, {
-			id: 'viewport'
-			
-			,items: [{
+
+			items: [{
 				region: 'north'
 				,id: 'north'
 				,height: 30
@@ -64,19 +58,10 @@ Hippo.HippoViewport = Ext.extend(Ext.Viewport, {
 			}]
 		});
 		
-		
 		Hippo.HippoViewport.superclass.initComponent.apply(this, arguments);
-		
-		this.relayEvents(this.getToolPanel(), ['newexperiment']);
-		this.on('newexperiment', function(){
-				var dlg = new Hippo.dialog.NewExperimentDlg();
-				this.relayEvents(dlg, ['newexperimentsaved']);
-				dlg.show();
-			}, this);
-		this.on('newexperimentsaved', function(rsp, dlg) {
-				this.addNewExperiment(rsp.experiment);
-				dlg.destroy();
-			}, this);
+		this.addEvents({
+			"newexperimentsaved": true,
+		})
 	}
 	
 });
