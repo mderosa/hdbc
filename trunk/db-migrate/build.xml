@@ -4,13 +4,30 @@
     <property name="version" value="1" />
 
     <target name="clean">
-        <delete file="target/migration.war" />
+        <delete dir="target" />
     </target>
     
     <target name="tar">
         <mkdir dir="target" />
         <tar destfile="target/migration.tar" basedir="." includes="**/*.sql" />
     </target>
+	
+	<target name="filter-tar">
+		<delete dir="target" />
+		<mkdir dir="target" />
+		<copy todir="target/do">
+			<fileset dir="do" />
+		</copy>
+		<copy todir="target/undo">
+			<fileset dir="undo" />
+		</copy>
+		<replaceregexp flags="gi" byline="true">
+			<regexp pattern="original" />
+			<substitution expression="modified" />
+			<fileset dir="target" includes="**/*.sql" />
+		</replaceregexp>
+		<tar destfile="target/migration.tar" basedir="target" includes="**/*.sql" />
+	</target>
 
 </project>
 
