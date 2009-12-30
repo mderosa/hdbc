@@ -33,7 +33,7 @@ public class ScriptTypeProcessor implements IInputProcessor {
         provider.writeDoFile(doFileName, doFileContent);
 
         String undoFileName = undoFileName(params);
-        String undoFileContent = rawContent.replaceAll(SCRIPT_NAME_RGX, doFileName);
+        String undoFileContent = rawContent.replaceAll(SCRIPT_NAME_RGX, undoFileName);
         String version = params.get(Key.MIGRATION_NUMBER);
         int n = Integer.parseInt(version);
         String previousVersion = String.valueOf(n - 1);
