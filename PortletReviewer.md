@@ -1,0 +1,9 @@
+# Introduction #
+
+Portlet development is a bit different than regular web development and its hard to remember all of the little gotchas.  This program knows all of the best practices and never forgets.
+
+# Using #
+
+  * To use this starting with a source distribution, download the source and compile it with the Glasgow Haskell Compiler.
+  * Alternatively you can download a precompiled executable from the downloads page.  The download executable is compiled for a Windows system.
+  * Once you have an executable you can run it from the command line and it will ask for all the information it needs
