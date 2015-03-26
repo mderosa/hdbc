@@ -4,17 +4,20 @@
 
 ### PortletReviewer
 * Desc: A static analysis tool for portlet developement. Checks for all common mistakes and suggests remediation
-* Status: Works and is useful 
+* Status: Works and is useful
+* more at the wiki page [https://github.com/mderosa/hdbc/wiki/PortletReviewer]
 
 ### DbDiff
 * Version: 0.7
 * Desc: Compares two separate oracle database schemas and prints the differences to standard out. The program does an existance comparison on all user objects, and then does a detail comparison on the common tables, views, stored procedures and functions
-* Status: Works - I may want to make it less verbose 
+* Status: Works - I may want to make it less verbose
+* more at the wiki page [https://github.com/mderosa/hdbc/wiki/DbDiff]
 
 ### DbMigration
 * Version: 0.9
 * Desc: A tool to automatically setup and automate, as much as possible, the maintainence of a versioning scheme for Oracle databases. This is for organizations where the dba's cant be expected to have ant or other java tools on their computers. It just requires sqlplus
 * Status: Works - the next steps are static analysis of written scripts to flag bad stuff 
+* more at the wiki page [https://github.com/mderosa/hdbc/wiki/DbMigration]
 
 ### Hippo
 * Desc: A RESTful web application which provides a central location to create and to analyze web experiments. Right now I'm working on the server part of the application but eventually there will be a client jar as well which will make it easy to integrate the Hippo server into existing third party applications.
