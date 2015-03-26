@@ -16,7 +16,7 @@
 ### DbMigration
 * Version: 0.9
 * Desc: A tool to automatically setup and automate, as much as possible, the maintainence of a versioning scheme for Oracle databases. This is for organizations where the dba's cant be expected to have ant or other java tools on their computers. It just requires sqlplus
-* Status: Works - the next steps are static analysis of written scripts to flag bad stuff 
+* Status: Production ready - the next steps are static analysis of written scripts to flag bad stuff 
 * more at the wiki page [https://github.com/mderosa/hdbc/wiki/DbMigration]
 
 ### Hippo
