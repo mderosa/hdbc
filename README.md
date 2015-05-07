@@ -29,3 +29,4 @@
 ### Sumarian
 * Desc: Creates a summary of public methods in project organized by package and then class. Each method is followed by a summary complexity measure in the form "{;;{};;}" which is a representation of the block structure, size, and complexity of the method.
 * Status: Usable. I currently run it from the Clojure repl. 
+* Tags: Clojure
