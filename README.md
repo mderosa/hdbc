@@ -1,10 +1,12 @@
 ### Psp
 * Desc: Stands for personal software process. This program helps keeps track of time spent in the phases of development, and mistakes made in coding
 * Status: Currently this records data in a csv file; automated analysis of the file is on the todo list 
+* Tags: Haskell, GTK
 
 ### PortletReviewer
 * Desc: A static analysis tool for portlet developement. Checks for all common mistakes and suggests remediation
 * Status: Works and is useful
+* Tags: Haskell, Java Portlets
 * more at the wiki page [https://github.com/mderosa/hdbc/wiki/PortletReviewer]
 
 ### DbDiff
@@ -17,6 +19,7 @@
 * Version: 0.9
 * Desc: A tool to automatically setup and automate, as much as possible, the maintainence of a versioning scheme for Oracle databases. This is for organizations where the dba's cant be expected to have ant or other java tools on their computers. It just requires sqlplus
 * Status: Production ready - the next steps are static analysis of written scripts to flag bad stuff 
+* Tags: Java, Oracle
 * more at the wiki page [https://github.com/mderosa/hdbc/wiki/DbMigration]
 
 ### Hippo
